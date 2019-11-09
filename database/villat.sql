@@ -1,10 +1,22 @@
 pragma foreign_keys=OFF;
 
+create table picture(
+    fileName text unique,
+    pictureType text
+);
+
+create table housePicture(
+    houseID references house on delete cascade on update cascade,
+    pictureID references house on delete cascade on update cascade
+);
+
 create table user(
     id integer primary key,
+    username text,
     firstName text,
     lastName text,
     email text unique,
+    profilePicture integer references picture(fileName) on delete set null on update cascade,
     password text not null
 );
 
