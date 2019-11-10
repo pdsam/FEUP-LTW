@@ -12,7 +12,7 @@ create table housePicture(
 
 create table user(
     id integer primary key,
-    username text,
+    username text unique,
     firstName text,
     lastName text,
     email text unique,
