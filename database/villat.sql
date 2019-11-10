@@ -1,13 +1,13 @@
 pragma foreign_keys=OFF;
 
-create table picture(
-    fileName text unique,
-    pictureType text
+create table profilePicture(
+    pictureID text primary key,
+    userID integer unique references on delete cascade on update cascade
 );
 
 create table housePicture(
-    houseID references house on delete cascade on update cascade,
-    pictureID references house on delete cascade on update cascade
+    pictureID text primary key,
+    houseID references house on delete cascade on update cascade
 );
 
 create table user(
@@ -77,8 +77,8 @@ begin
 end;
 
 
-drop trigger if exists PreventRentOnHouse;
-create trigger PreventRentOnHouse
+drop trigger if exists PreventRentOwnHouse;
+create trigger PreventRentOwnHouse
 before insert on rent
 for each row
 when(exists(select houseID from house where (new.tenantID == house.landlordID and new.houseID == house.houseID)))
