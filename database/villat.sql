@@ -1,10 +1,5 @@
 pragma foreign_keys=OFF;
 
-create table profilePicture(
-    pictureID text primary key,
-    userID integer unique references on delete cascade on update cascade
-);
-
 create table housePicture(
     pictureID text primary key,
     houseID references house on delete cascade on update cascade
@@ -33,7 +28,7 @@ create table house(
     landlordID integer references landlord on delete cascade on update cascade,
     pricePerNight integer check(priceperNight > 0), 
     avgRating real check(avgRating >= 0) default 0,
-    decription text,
+    description text,
     area integer check(area > 0),
     address text,
     capacity integer check(capacity > 0)
