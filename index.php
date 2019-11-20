@@ -1,12 +1,11 @@
-<DOCTYPE html>
 <html>
   <head>
     <title>Villat</title>
     <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="/stylesheets/common.css">
-    <link rel="stylesheet" href="/stylesheets/topbar.css">
-    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="stylesheets/common.css">
+    <link rel="stylesheet" href="stylesheets/topbar.css">
+    <link rel="stylesheet" href="stylesheets/index.css">
   </head>
 
   <body>
@@ -71,8 +70,6 @@
       </section>
     </section>
 
-    <footer class="site-footer">
-      <p>&copy; Villat 2019</p>
-    </footer>
+    <?php include_once('templates/common/footer.php'); ?>
   </body>
 </html>
