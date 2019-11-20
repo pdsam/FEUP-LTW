@@ -1,0 +1,16 @@
+body {
+    --main-color: #5fd96e;
+    --background-color: #3b3a43;
+
+    margin: 0;
+}
+
+.main-content {
+    margin: auto;
+    width: 70em;
+}
+
+.site-footer {
+    padding: 1em;
+    background-color: var(--background-color);
+}

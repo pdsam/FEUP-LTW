@@ -1,0 +1,32 @@
+.topbar {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+
+    background-color: var(--main-color);
+}
+
+.bar-logo {
+    justify-self: start;
+    margin-right: auto;
+    font-size: 3em;
+}
+
+.bar-logo p {
+    margin: 0;
+}
+
+.topbar .user-options-container {
+    display: flex;
+}
+
+.topbar .user-options-container p {
+    margin: 0;
+    padding: 0.5em;
+
+    margin-left: 1em;
+    border: 1px solid rgb(12, 4, 4);
+    border-radius: 5px;
+
+    background-color: white;
+}
