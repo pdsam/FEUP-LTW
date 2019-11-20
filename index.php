@@ -9,15 +9,8 @@
   </head>
 
   <body>
-    <nav class="topbar">
-      <div class="bar-logo">
-        <p>Villat</p>
-      </div>
-      <div class="user-options-container">
-        <p>Register</p>
-        <p>Login</p>
-      </div>
-    </nav>
+    
+  <?php include_once('templates/common/footer.php'); ?>
 
     <section class="main-content">
       <section class="filter-renderer">
