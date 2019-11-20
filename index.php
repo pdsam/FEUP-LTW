@@ -10,7 +10,7 @@
 
   <body>
     
-  <?php include_once('templates/common/footer.php'); ?>
+  <?php include_once('templates/common/header.php'); ?>
 
     <section class="main-content">
       <section class="filter-renderer">
