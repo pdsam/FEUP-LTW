@@ -1,14 +1,29 @@
 body {
     --main-color: #5fd96e;
     --background-color: #3b3a43;
+    --light-background: #aaa;
     --main-color2: #173132;
 
     margin: 0;
 }
 
+.topbar {
+    position: relative;
+    z-index: 1;
+}
+
+.bar-logo a {
+    color: black;
+    text-decoration: none;
+}
+
 .main-content {
     margin: auto;
-    width: 70em;
+    max-width: 65em;
+
+    background-color: var(--light-background);
+
+    box-shadow: 0 0 10px 1px black;
 }
 
 .site-footer {
@@ -18,4 +33,9 @@ body {
 
 .site-footer p{
     color: var(--main-color);
+}
+
+.standart-border {
+    border: 1px solid var(--light-background);
+    border-radius: 5px;
 }

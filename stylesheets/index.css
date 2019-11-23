@@ -58,16 +58,19 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 
     overflow: hidden;
-
-    text-align: center;
 }
 
 .card-thumbnail {
-    display: inline-block;
-    height: 100%;
-    width: auto;
-    height: 20em;
-    vertical-align: middle;
+    margin: 0 auto;
+
+    display: block;
+
+    background-image: url('/house.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    height: 15em;
 }
 
 .card-info {

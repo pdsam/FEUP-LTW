@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="stylesheets/common.css">
     <link rel="stylesheet" href="stylesheets/topbar.css">
     <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="stylesheets/login.css">
   </head>
 
   <body>
-    
-  <?php include_once('templates/common/header.php'); ?>
+    <?php include_once('templates/common/header.php'); ?>
 
     <section class="main-content">
       <section class="filter-renderer">
@@ -26,35 +26,28 @@
 
       <section class="houses-display">
         <div class="house-card">
-          <img class="card-thumbnail" src="/database/profilePictures/default" alt="p">
+          <div class="card-thumbnail"></div>
           <div class="card-info">
             <h3>House</h3>
             <p>house desc</p>
           </div>
         </div>
         <div class="house-card">
-          <img class="card-thumbnail" src="house.jpg" alt="p">
+          <div class="card-thumbnail"></div>
           <div class="card-info">
             <h3>House</h3>
             <p>house desc</p>
           </div>
         </div>
         <div class="house-card">
-          <img class="card-thumbnail" src="/database/profilePictures/default" alt="p">
+          <div class="card-thumbnail"></div>
           <div class="card-info">
             <h3>House</h3>
             <p>house desc</p>
           </div>
         </div>
         <div class="house-card">
-          <img class="card-thumbnail" src="/database/profilePictures/default" alt="p">
-          <div class="card-info">
-            <h3>House</h3>
-            <p>house desc</p>
-          </div>
-        </div>
-        <div class="house-card">
-          <img class="card-thumbnail" src="/database/profilePictures/default" alt="p">
+          <div class="card-thumbnail"></div>
           <div class="card-info">
             <h3>House</h3>
             <p>house desc</p>
@@ -62,6 +55,19 @@
         </div>
       </section>
     </section>
+
+    <div class="login-background">
+      <div class="login-form-wrapper">
+        <form class="login-form" action="login.php" method="post">
+          <label for="username">Username</label>
+          <input class="text-input" type="text" name="username" id="username">
+          <label for="password">Password</label>
+          <input class="text-input" type="password" name="pw" id="password">
+
+          <input class="login-button standart-border" type="submit" value="Login">
+        </form>
+      </div>
+    </div>
 
     <?php include_once('templates/common/footer.php'); ?>
   </body>
