@@ -19,17 +19,13 @@ include_once('../config.php');
     <section class="main-content">
       <div class="house-carousel">
         <div class="image-changer">
-          <svg width="100" height="100">
-          <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-          </svg>
+          <p>&larr;</p>
         </div>
         <div class="image-wrapper">
           <img class="house-image" src="/house.jpg" alt="House image">
         </div>
         <div class="image-changer">
-          <svg width="100" height="100">
-          <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-          </svg>
+          <p>&rarr;</p>
         </div>
       </div>
       <div class="house-content-wrapper">
@@ -40,28 +36,19 @@ include_once('../config.php');
         </div>
 
         <ul class="content-tabs" >
-          <li>Description</li>
-          <li>Reviews</li>
+          <li class="selected-tab" id="description-tab">Description</li>
+          <li id="reviews-tab">Reviews</li>
         </ul>
+
+        <section class="tabbed-content" >
+
+        </section>
       </div>
     </section>
 
-    <div class="login-background">
-      <div class="login-form-wrapper">
-        <form class="login-form" action="login.php" method="post">
-          <label for="username">Username</label>
-          <input class="text-input" type="text" name="username" id="username">
-          <label for="password">Password</label>
-          <input class="text-input" type="password" name="pw" id="password">
+    <?php include_once(ROOT.'templates/common/loginForm.php'); ?>
+    <?php include_once(ROOT.'templates/common/footer.php'); ?>
 
-          <input class="login-button standart-border" type="submit" value="Login">
-        </form>
-      </div>
-    </div>
-
-    <footer class="site-footer">
-      <p>Villat 2019</p>
-    </footer>
   </body>
 </html>
 

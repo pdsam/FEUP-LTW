@@ -1,7 +1,7 @@
 body {
     --main-color: #5fd96e;
     --background-color: #3b3a43;
-    --light-background: #aaa;
+    --light-background: #ddd;
     --main-color2: #173132;
 
     margin: 0;
@@ -19,6 +19,7 @@ body {
 
 .main-content {
     margin: auto;
+    /*margin: 1em auto auto auto;*/
     max-width: 65em;
 
     background-color: var(--light-background);
