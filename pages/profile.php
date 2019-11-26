@@ -15,6 +15,6 @@ function draw_profile() { ?>
 <?php 
 } 
 
-renderPage(array('profile'), array(), draw_profile);
+renderPage(array('profile'), array(), 'draw_profile');
 
 ?>

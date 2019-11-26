@@ -4,7 +4,7 @@ include_once(ROOT . 'templates/common/header.php');
 include_once(ROOT . 'templates/common/footer.php');
 include_once(ROOT . 'templates/common/loginForm.php');
 
-function renderPage($stylesheets, $scripts, $rendererFunc) {?>
+function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {?>
 
 <!DOCTYPE html>
 <html>
