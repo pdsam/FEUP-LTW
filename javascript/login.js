@@ -41,7 +41,14 @@ loginForm.addEventListener('submit', (event) => {
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 
     request.addEventListener('load', (event) => {
-        console.log(event.currentTarget.responseText);
+        let text =event.currentTarget.responseText;
+        console.log(text);
+
+        let responseJson = JSON.parse(text);
+
+        if (responseJson['result'] == 'success') {
+            window.location = 'pages/house.php';
+        }
     });
 
     request.send(encodeForAjax({

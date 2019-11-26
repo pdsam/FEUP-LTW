@@ -1,5 +1,7 @@
 <?php 
 include_once('../config.php');
+include_once(ROOT . 'templates/common/header.php');
+include_once(ROOT.'templates/common/footer.php');
 ?>
 <html>
   <head>
@@ -11,10 +13,11 @@ include_once('../config.php');
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="stylesheet" href="/stylesheets/login.css">
     <link rel="stylesheet" href="/stylesheets/profile.css">
+    <script src="/javascript/login.js" defer></script>
   </head>
 
   <body>
-    <?php include_once(ROOT . 'templates/common/header.php'); ?>
+    <?php draw_header(); ?>
 
     <section class="main-content">
       <div class="profile-content">
@@ -31,6 +34,6 @@ include_once('../config.php');
 
     <?php include_once(ROOT .'templates/common/loginForm.php'); ?>
 
-    <?php include_once(ROOT.'templates/common/footer.php'); ?>
+    <?php draw_footer(); ?>
   </body>
 </html>
