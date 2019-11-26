@@ -2,6 +2,7 @@
 include_once('../config.php');
 include_once(ROOT . 'templates/common/header.php');
 include_once(ROOT.'templates/common/footer.php');
+include_once(ROOT.'templates/common/loginForm.php');
 ?>
 <DOCTYPE html>
 <html>
@@ -48,7 +49,7 @@ include_once(ROOT.'templates/common/footer.php');
       </div>
     </section>
 
-    <?php include_once(ROOT.'templates/common/loginForm.php'); ?>
+    <?php draw_login_form(); ?>
     <?php draw_footer(); ?>
 
   </body>

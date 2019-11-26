@@ -1,3 +1,4 @@
+<?php function draw_login_form() { ?>
 <div id="login-form-wrapper" class="login-wrapper">
     <div id="login-form-container" class="login-form-container">
     <form id="login-form" class="login-form" action="#" method="post">
@@ -10,3 +11,4 @@
     </form>
     </div>
 </div>
+<?php } ?>

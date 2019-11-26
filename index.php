@@ -1,7 +1,8 @@
 <?php 
-  include_once('templates/common/header.php');
-  include_once('templates/common/footer.php');
-  include_once('templates/common/house_card.php')
+include_once('templates/common/header.php');
+include_once('templates/common/footer.php');
+include_once('templates/common/house_card.php');
+include_once('templates/common/loginForm.php');
 ?>
 
 
@@ -13,9 +14,10 @@
 
     <link rel="stylesheet" href="stylesheets/common.css">
     <link rel="stylesheet" href="stylesheets/topbar.css">
-    <link rel="stylesheet" href="stylesheets/index.css">
     <link rel="stylesheet" href="stylesheets/login.css">
     <script src="/javascript/login.js" defer></script>
+
+    <link rel="stylesheet" href="stylesheets/index.css">
   </head>
 
   <body>
@@ -38,7 +40,7 @@
       </section>
     </section>
 
-    <?php include_once('templates/common/loginForm.php'); ?>
+    <?php draw_login_form(); ?>
 
     <?php draw_footer(); ?>
   </body>
