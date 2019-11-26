@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="stylesheets/topbar.css">
     <link rel="stylesheet" href="stylesheets/index.css">
     <link rel="stylesheet" href="stylesheets/login.css">
+    <script src="/javascript/login.js" defer></script>
   </head>
 
   <body>
@@ -38,7 +39,6 @@
     </section>
 
     <?php include_once('templates/common/loginForm.php'); ?>
-    <?php include_once('templates/common/registerForm.php'); ?>
 
     <?php draw_footer(); ?>
   </body>

@@ -1,5 +1,5 @@
-.login-background {
-    display: none;
+.login-wrapper {
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
@@ -10,19 +10,7 @@
     background-color: rgba(1, 1, 1, 0.3);
 }
 
-.register-background {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    width: 100%;
-    height: 100%;
-
-    background-color: rgba(1, 1, 1, 0.3);
-}
-
-.login-form-wrapper {
+.login-form-container {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -49,7 +37,8 @@
 }
 
 .login-form .text-input {
-    width: 100%;
+    display: block;
+    width: 15em;
 
     margin-bottom: 0.5em;
 
