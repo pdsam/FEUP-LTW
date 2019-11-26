@@ -1,3 +1,11 @@
+<?php 
+  include_once('templates/common/header.php');
+  include_once('templates/common/footer.php');
+  include_once('templates/common/house_card.php')
+?>
+
+
+<!DOCTYPE html>
 <html>
   <head>
     <title>Villat</title>
@@ -10,7 +18,7 @@
   </head>
 
   <body>
-    <?php include_once('templates/common/header.php'); ?>
+    <?php draw_header(); ?>
 
     <section class="main-content">
       <section class="filter-renderer">
@@ -25,40 +33,13 @@
       </section>
 
       <section class="houses-display">
-        <div class="house-card">
-          <div class="card-thumbnail"></div>
-          <div class="card-info">
-            <h3>House</h3>
-            <p>house desc</p>
-          </div>
-        </div>
-        <div class="house-card">
-          <div class="card-thumbnail"></div>
-          <div class="card-info">
-            <h3>House</h3>
-            <p>house desc</p>
-          </div>
-        </div>
-        <div class="house-card">
-          <div class="card-thumbnail"></div>
-          <div class="card-info">
-            <h3>House</h3>
-            <p>house desc</p>
-          </div>
-        </div>
-        <div class="house-card">
-          <div class="card-thumbnail"></div>
-          <div class="card-info">
-            <h3>House</h3>
-            <p>house desc</p>
-          </div>
-        </div>
+        <?php draw_house_cards(); ?>
       </section>
     </section>
 
     <?php include_once('templates/common/loginForm.php'); ?>
     <?php include_once('templates/common/registerForm.php'); ?>
 
-    <?php include_once('templates/common/footer.php'); ?>
+    <?php draw_footer(); ?>
   </body>
 </html>
