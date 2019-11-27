@@ -1,5 +1,5 @@
 <?php
-include_once('includes/db_houses.php');
+include_once(ROOT . 'includes/db_houses.php');
 
 function draw_house_cards() {
   $houses = getHouseInfo();
