@@ -4,7 +4,7 @@ body {
     --light-background: #ddd;
     --main-color2: #173132;
     --light-grey: #f4f4f2;
-
+    background-color: var(--light-grey);
     margin: 0;
 }
 
@@ -23,9 +23,8 @@ body {
     /*margin: 1em auto auto auto;*/
     max-width: 65em;
 
-    background-color: var(--light-background);
+    background-color: var(--light-grey);
 
-    box-shadow: 0 0 10px 1px black;
 }
 
 
