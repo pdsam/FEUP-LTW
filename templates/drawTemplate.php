@@ -11,17 +11,17 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
     <title>Villat</title>
     <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="/stylesheets/common.css">
-    <link rel="stylesheet" href="/stylesheets/topbar.css">
-    <link rel="stylesheet" href="/stylesheets/login.css">
-    <script src="/javascript/login.js" defer></script>
+    <link rel="stylesheet" href="../stylesheets/common.css">
+    <link rel="stylesheet" href="../stylesheets/topbar.css">
+    <link rel="stylesheet" href="../stylesheets/login.css">
+    <script src="../javascript/login.js" defer></script>
 
     <?php foreach($stylesheets as $stylesheet) { ?>
-        <link rel="stylesheet" href="/stylesheets/<?=$stylesheet?>.css">
+        <link rel="stylesheet" href="../stylesheets/<?=$stylesheet?>.css">
     <?php } ?>
 
     <?php foreach($scripts as $script) { ?>
-        <script src="/javascript/<?=$script?>.js"></script>
+        <script src="../javascript/<?=$script?>.js"></script>
 		<?php } ?>
 	</head>
 	<body>
