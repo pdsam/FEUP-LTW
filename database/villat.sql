@@ -11,7 +11,7 @@ create table user(
     firstName text,
     lastName text,
     email text unique,
-    profilePicture integer references picture(fileName) on delete set null on update cascade,
+    profilePicture text default 'default', -- the filename and extension of the picture
     password text not null
 );
 
