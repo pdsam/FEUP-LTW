@@ -15,6 +15,7 @@ include_once(ROOT . 'templates/common/loginForm.php');
 
     <link rel="stylesheet" href="../stylesheets/common.css">
     <link rel="stylesheet" href="../stylesheets/topbar.css">
+    <link rel="stylesheet" href="../stylesheets/forms.css">
     <link rel="stylesheet" href="../stylesheets/login.css">
     <script src="../javascript/login.js" defer></script>
 

@@ -18,4 +18,8 @@ if (checkUserPassword($username, $password)) {
     $response['message'] = 'Invalid user or password.';
 }
 
+$_SESSION['username'] = $username;
+
+echo json_encode($response);
+
 ?>

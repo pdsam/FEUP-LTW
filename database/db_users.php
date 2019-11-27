@@ -19,7 +19,7 @@ function checkUserPassword($username, $password) {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('SELECT username, password FROM user WHERE username=?');
-    $stmt.execute(array($username));
+    $stmt->execute(array($username));
 
     $user = $stmt->fetch();
 

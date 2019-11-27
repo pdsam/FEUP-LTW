@@ -36,7 +36,7 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 			<?php $rendererFunc(); ?>
 		</section>
     
-    <?php if (!isset($_SESSION)) {
+    <?php if (!isset($_SESSION['username'])) {
 		  draw_login_form();
     } ?>
 
