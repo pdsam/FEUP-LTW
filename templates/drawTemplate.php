@@ -14,6 +14,7 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
     <link rel="stylesheet" href="/stylesheets/common.css">
     <link rel="stylesheet" href="/stylesheets/topbar.css">
     <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
     <script src="/javascript/login.js" defer></script>
 
     <?php foreach($stylesheets as $stylesheet) { ?>

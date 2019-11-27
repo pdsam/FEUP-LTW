@@ -1,0 +1,10 @@
+.site-footer{
+    background-color: var(--light-grey);
+    padding: 1em;
+    
+}
+
+
+.site-footer p{
+    color: var(#273c48);
+}
