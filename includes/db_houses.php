@@ -1,5 +1,4 @@
 <?php
-include_once('../config.php');
 include_once(ROOT . 'includes/database.php');
 
 function getHouseInfo() {

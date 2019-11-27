@@ -29,7 +29,7 @@ function encodeForAjax(data) {
 
 loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    let url = "actions/login.php";
+    let url = "actions/action_login.php";
 
     let username = getFormValue(loginForm, 'username');
     let pw = getFormValue(loginForm, 'password');
@@ -53,6 +53,6 @@ loginForm.addEventListener('submit', (event) => {
 
     request.send(encodeForAjax({
         username: username,
-        pw: pw
+        password: pw
     }));
 });

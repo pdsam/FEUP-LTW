@@ -30,31 +30,3 @@
 .login-form {
     margin: 0;
 }
-
-.login-form label {
-    display: block;
-    margin: 0.5em 0;
-}
-
-.login-form .text-input {
-    display: block;
-    width: 15em;
-
-    margin-bottom: 0.5em;
-
-    padding: 0.5em;
-
-    border: 1px solid #aaa;
-    border-radius: 5px;
-}
-
-.login-form .login-button {
-    font-size: 16px;
-
-    margin-left: auto;
-
-    padding: 0.5em;
-
-    background-color: var(--background-color);
-    color: white;
-}
