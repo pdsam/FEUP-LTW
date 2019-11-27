@@ -5,7 +5,7 @@ include_once(ROOT . 'templates/drawTemplate.php');
 function draw_profile() { ?>
   <div class="profile-content">
     <div class="profile-picture-container">
-      <img src="/database/profilePictures/default" alt="Profile picture">
+      <img src="../database/profilePictures/default" alt="Profile picture">
     </div>
     <div class="user-details">
       <h1 class="name">Name</h1>

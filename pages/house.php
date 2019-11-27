@@ -10,11 +10,11 @@ include_once(ROOT.'templates/common/loginForm.php');
     <title>Villat</title>
     <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="/stylesheets/common.css">
-    <link rel="stylesheet" href="/stylesheets/topbar.css">
-    <link rel="stylesheet" href="/stylesheets/login.css">
-    <link rel="stylesheet" href="/stylesheets/house.css">
-    <script src="/javascript/login.js" defer></script>
+    <link rel="stylesheet" href="../stylesheets/common.css">
+    <link rel="stylesheet" href="../stylesheets/topbar.css">
+    <link rel="stylesheet" href="../stylesheets/login.css">
+    <link rel="stylesheet" href="../stylesheets/house.css">
+    <script src="../javascript/login.js" defer></script>
   </head>
 
   <body>
@@ -25,7 +25,7 @@ include_once(ROOT.'templates/common/loginForm.php');
           <p>&larr;</p>
         </div>
         <div class="image-wrapper">
-          <img class="house-image" src="/house.jpg" alt="House image">
+          <img class="house-image" src="../house.jpg" alt="House image">
         </div>
         <div class="image-changer">
           <p>&rarr;</p>
