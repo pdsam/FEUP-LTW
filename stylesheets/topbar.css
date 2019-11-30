@@ -1,23 +1,28 @@
 .topbar {
-    padding: 1em;
+    padding: 0.5em;
     display: flex;
     align-items: center;
     background-color: var(--main-color);
     /*background-image: linear-gradient(#173132, #3b3a43);*/
+    font-family: 'Roboto', sans-serif;
 }
 
 .bar-logo {
     justify-self: start;
     margin-right: auto;
     font-size: 3em;
+
 }
 
 .bar-logo p {
     margin: 0;
     color:#273c48;
+    padding-left:0.2em;
+    font-size: 0.9em;
 }
 
 .topbar .user-options-container {
+    padding-right: 1em;
     display: flex;
 }
 
@@ -26,13 +31,21 @@
     padding: 0.5em;
 
     margin-left: 1em;
-    border: 1px solid rgb(12, 4, 4);
-    border-radius: 5px;
+    border: 0px solid rgb(12, 4, 4);
 
-    background-color: white;
+}
+.button{
+    color:white;
+}
+
+.topbar .user-options-container p:hover{
+    border-bottom: 1px solid rgb(12, 4, 4);
+    color: black;
+
 }
 
 .topbar .user-options-container a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
+
