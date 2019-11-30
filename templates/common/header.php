@@ -13,11 +13,12 @@ function draw_header()
     <?php if (isset($_SESSION['username'])) { ?>
       <a href="../actions/action_logout.php">logout</a>
     <?php } else { ?> <div class="user-options-container">
-        <a href="../pages/register.php">
-          <p id="register-button" class="button">Register</p>
+      <p id="login-button" class="button">Sign in</p>
+        
+      <a href="../pages/register.php">
+        <p id="register-button" class="button">Sign up</p>
         </a>
 
-        <p id="login-button" class="button">Login</p>
       </div>
     <?php } ?>
   </nav>

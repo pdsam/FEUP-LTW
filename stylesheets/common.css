@@ -1,11 +1,13 @@
 body {
-    --main-color: #5fd96e;
+    --green: #5fd96e;
     --background-color: #3b3a43;
     --light-background: #ddd;
     --main-color2: #173132;
     --light-grey: #f4f4f2;
-    background-color: var(--light-grey);
+    --main-background: white;
+    background-color: white;
     margin: 0;
+    font-family:'roboto', sans-serif;
 }
 
 .topbar {
@@ -23,7 +25,7 @@ body {
     /*margin: 1em auto auto auto;*/
     max-width: 65em;
 
-    background-color: var(--light-grey);
+    background-color: var(--main-background);
 
 }
 
@@ -36,4 +38,3 @@ body {
 .button {
     cursor: pointer;
 }
-
