@@ -1,20 +1,45 @@
 <?php 
 include_once('../config.php');
 include_once(ROOT . 'templates/drawTemplate.php');
+include_once(ROOT . 'includes/database.php');
+include_once(ROOT . 'database/db_users.php');
+include_once(ROOT . 'database/db_houses.php');
 
-function draw_profile() { ?>
-  <div class="profile-content">
-    <div class="profile-picture-container">
-      <img src="../database/profilePictures/default" alt="Profile picture">
+if (!isset($_SESSION['username'])) {
+  header('Location: ../pages/home.php');
+  die;
+}
+
+$user = getUser($_SESSION['username']);
+
+renderPage(array('profile'), array(), function() use ($user) { ?>
+    <div class="profile-content">
+      <div class="profile-picture-container">
+        <img src="../database/profilePictures/<?= $user['profilePicture'] ?>" alt="Profile picture">
+      </div>
+      <div class="user-details">
+        <h1 class="name"><?=$user['firstName']?> <?=$user['lastName']?></h1>
+        <p class="user-email"><?=$user['email']?></p>
+      </div>
     </div>
-    <div class="user-details">
-      <h1 class="name">Name</h1>
-      <p class="user-email">email@domain.com</p>
-    </div>
-  </div>
-<?php 
-} 
+    <?php if (!isLandlord($user['id'])) { ?>
+      <a href="../actions/action_register_landlord.php">Register this account as landlord.</a>
+    <?php } else { ?>
+      <section class="landlord-houses">
+        <a id="" href="#">Post a house</a>
 
-renderPage(array('profile'), array(), 'draw_profile');
+        <div class="houses-container">
+          <?php 
+          $houses = getLandlordHouses($user['id']);
+          foreach ($houses as $house) { ?>
+            <div class="house-overview">
+              
+            </div>
+          <?php } ?>
+        </div>
 
+    </section>
+    <?php } 
+  }
+);
 ?>

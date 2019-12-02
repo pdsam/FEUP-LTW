@@ -28,6 +28,7 @@ create table house(
     landlordID integer references landlord on delete cascade on update cascade,
     pricePerNight integer check(priceperNight > 0), 
     avgRating real check(avgRating >= 0) default 0,
+    title text,
     description text,
     area integer check(area > 0),
     address text,
