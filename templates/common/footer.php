@@ -1,5 +1,6 @@
-<?php function draw_footer() { ?>
+<?php function draw_footer()
+{ ?>
     <footer class="site-footer">
-        <p>&copy; Villat 2019</p>
+        <p>&copy; Villat <?php echo date('Y') ?></p>
     </footer>
 <?php } ?>
