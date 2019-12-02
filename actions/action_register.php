@@ -7,8 +7,8 @@ require_once(ROOT . 'includes/User.php');
 
 $user = new User();
 
-$user->firstname = $_POST['firstname'];
-$user->lastName = $_POST['lastname'];
+$user->firstname = $_POST['fname'];
+$user->lastName = $_POST['lname'];
 $user->username = $_POST['username'];
 $user->email = $_POST['email'];
 $password = $_POST['password'];

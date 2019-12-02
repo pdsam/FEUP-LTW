@@ -26,22 +26,47 @@ function checkUserPassword($username, $password) {
     return user !== false && password_verify($password, $user['password']);
 }
 
+function getUser($username) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("SELECT * FROM USER WHERE username=?");
+    $stmt->execute(array($username));
+
+    return $stmt->fetch();
+}
+
 function userExists($username) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare("SELECT username FROM USER WHERE username=?");
+    $stmt = $db->prepare("SELECT count(*) as count FROM USER WHERE username=?");
     $stmt->execute(array($username));
 
-    return $stmt->rowCount() > 0;
+    return $stmt->fetch()['count'] > 0;
 }
 
 function emailExists($email) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare("SELECT username FROM USER WHERE email=?");
+    $stmt = $db->prepare("SELECT count(*) as count FROM user WHERE email=?");
     $stmt->execute(array($email));
 
-    return $stmt->rowCount() > 0;
+    return $stmt->fetch()['count'] > 0;
+}
+
+function addLanlord($userID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("INSERT INTO landlord(id) values (?)");
+    $stmt->execute(array(intval($userID)));
+}
+
+function isLandlord($userID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("SELECT count(*) as count FROM landlord WHERE id=?");
+    $stmt->execute(array(intval($userID)));
+
+    return $stmt->fetch()['count'] > 0;
 }
 
 ?>
