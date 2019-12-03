@@ -5,7 +5,6 @@ include_once(ROOT . 'templates/common/loginForm.php');
 include_once(ROOT . 'includes/session.php');
 
 function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {?>
-
 <!DOCTYPE html>
 <html>
   <head>
