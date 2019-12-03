@@ -1,2 +1,5 @@
 .vscode
 ${workspaceFolder}
+database/villat.db
+database/housePictures/
+database/profilePictures/

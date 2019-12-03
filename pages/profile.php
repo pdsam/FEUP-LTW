@@ -26,14 +26,16 @@ renderPage(array('profile'), array(), function() use ($user) { ?>
       <a href="../actions/action_register_landlord.php">Register this account as landlord.</a>
     <?php } else { ?>
       <section class="landlord-houses">
-        <a id="" href="#">Post a house</a>
+        <a id="add-house-link" href="add_house.php">Post a house</a>
 
         <div class="houses-container">
           <?php 
           $houses = getLandlordHouses($user['id']);
           foreach ($houses as $house) { ?>
             <div class="house-overview">
-              
+              <p><?= $house['title'] ?></p>
+              <p><?= $house['pricePerNight'] ?></p>
+              <p><?= $house['description'] ?></p>
             </div>
           <?php } ?>
         </div>

@@ -21,3 +21,14 @@
 
     margin-left: 1em;
 }
+
+.houses-container {
+    padding: 1em;
+}
+
+.house-overview {
+    padding: 0.5em;
+
+    border: 1px solid black;
+
+}
