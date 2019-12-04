@@ -34,4 +34,13 @@ function getLandlordHouses($landlordID) {
     return $stmt->fetchAll();
 }
 
+function getReservations($houseID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM rent WHERE houseID=?');
+    $stmt->execute(array($houseID));
+
+    return $stmt->fetchAll();
+}
+
 ?>
