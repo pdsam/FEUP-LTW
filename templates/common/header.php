@@ -13,17 +13,20 @@ function draw_header()
     </div>
     <?php if (isset($_SESSION['username'])) { 
       $user = getUser($_SESSION['username']);
-      print_r($user);
       ?>
-      <a href="../actions/action_logout.php">logout</a>
-      <a href="../pages/profile.php"><?= $user['firstName'] ?></a>
+      <div class="user-options-container">
+        <a href="../pages/profile.php"><?= $user['firstName'] ?> </a>
+      </div>
+
+      <div class="user-options-container">
+        <a href="../actions/action_logout.php">logout</a>
+      </div>
     <?php } else { ?> <div class="user-options-container">
       <p id="login-button" class="button">Sign in</p>
         
-      <a href="../pages/register.php">
-        <p id="register-button" class="button">Sign up</p>
+        <a href="../pages/register.php">
+          <p id="register-button" class="button">Sign up</p>
         </a>
-
       </div>
     <?php } ?>
   </nav>

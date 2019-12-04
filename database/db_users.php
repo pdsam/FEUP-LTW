@@ -23,7 +23,7 @@ function checkUserPassword($username, $password) {
 
     $user = $stmt->fetch();
 
-    return user !== false && password_verify($password, $user['password']);
+    return $user !== false && password_verify($password, $user['password']);
 }
 
 function getUser($username) {

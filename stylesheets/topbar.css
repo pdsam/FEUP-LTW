@@ -27,7 +27,7 @@
     display: flex;
 }
 
-.topbar .user-options-container p {
+.topbar .user-options-container a {
     margin: 0;
     padding: 0.5em;
 
@@ -41,7 +41,7 @@
     font-size: 1.2em;
 }
 
-.topbar .user-options-container p:hover{
+.topbar .user-options-container a:hover{
    /* border-bottom: 1px solid rgb(12, 4, 4);*/
     color: var(--green);
 
