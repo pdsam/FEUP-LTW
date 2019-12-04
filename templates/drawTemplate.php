@@ -33,9 +33,9 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 	<body>
 		<?php draw_header(); ?>
 
-    <section class="main-content">
+    <main class="main-content">
 			<?php $rendererFunc(); ?>
-		</section>
+		</main>
     
     <?php if (!isset($_SESSION['username'])) {
 		  draw_login_form();
@@ -44,4 +44,5 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 		<?php draw_footer(); ?>
 	</body>
 
+  </html>
 <?php } ?>
