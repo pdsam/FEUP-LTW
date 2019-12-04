@@ -2,6 +2,7 @@
 let loginButton = document.getElementById('login-button');
 let loginFormWrapper = document.getElementById('login-form-wrapper');
 let loginFormContainer = document.getElementById('login-form-container');
+let loginErrorLabel = document.getElementById('login-error-label');
 
 loginButton.addEventListener('click', () => {
     loginFormWrapper.style.display = "block";
@@ -46,9 +47,11 @@ loginForm.addEventListener('submit', (event) => {
 
         let responseJson = JSON.parse(text);
 
-        if (responseJson['result'] == 'success') {
-            window.location = '../pages/profile.php';
+        if (responseJson['result'] == 'error') {
+            loginErrorLabel.innerHTML = responseJson['message'];
         }
+        
+        window.location = '../pages/profile.php';
     });
 
     request.send(encodeForAjax({

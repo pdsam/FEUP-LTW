@@ -10,6 +10,7 @@ function draw_login_form() { ?>
 
         <input id="login-submit-button" class="button submit-button standart-border" type="submit" value="Login">
     </form>
+    <p id="login-error-label"></p>
     </div>
 </div>
 <?php } ?>

@@ -30,3 +30,7 @@
 .login-form {
     margin: 0;
 }
+
+#login-error-label {
+    color: red;
+}
