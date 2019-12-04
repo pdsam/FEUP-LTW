@@ -5,7 +5,6 @@ include_once(ROOT . 'templates/common/loginForm.php');
 include_once(ROOT . 'includes/session.php');
 
 function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,7 +15,6 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
     <link rel="stylesheet" href="../stylesheets/topbar.css">
     <link rel="stylesheet" href="../stylesheets/login.css">
     <link rel="stylesheet" href="../stylesheets/footer.css">
-    <link rel="stylesheet" href="../stylesheets/button.css">
     <script src="../javascript/login.js" defer></script>
     <link rel="stylesheet" href="../stylesheets/forms.css">
 
@@ -35,9 +33,9 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 	<body>
 		<?php draw_header(); ?>
 
-    <section class="main-content">
+    <main class="main-content">
 			<?php $rendererFunc(); ?>
-		</section>
+		</main>
     
     <?php if (!isset($_SESSION['username'])) {
 		  draw_login_form();
@@ -46,4 +44,5 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 		<?php draw_footer(); ?>
 	</body>
 
+  </html>
 <?php } ?>

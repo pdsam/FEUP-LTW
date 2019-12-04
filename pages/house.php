@@ -3,55 +3,50 @@ include_once('../config.php');
 include_once(ROOT . 'templates/common/header.php');
 include_once(ROOT.'templates/common/footer.php');
 include_once(ROOT.'templates/common/loginForm.php');
-?>
-<DOCTYPE html>
-<html>
-  <head>
-    <title>Villat</title>
-    <meta charset="utf-8" />
+include_once(ROOT . 'templates/drawTemplate.php');
+include_once(ROOT . 'database/db_users.php');
+include_once(ROOT . 'database/db_houses.php');
 
-    <link rel="stylesheet" href="../stylesheets/common.css">
-    <link rel="stylesheet" href="../stylesheets/topbar.css">
-    <link rel="stylesheet" href="../stylesheets/login.css">
-    <link rel="stylesheet" href="../stylesheets/house.css">
-    <script src="../javascript/login.js" defer></script>
-  </head>
+if (!isset($_SESSION['username'])) {
+  header('Location: ../pages/home.php');
+  die;
+}
 
-  <body>
-    <?php draw_header(); ?>
-    <section class="main-content">
-      <div class="house-carousel">
-        <div class="image-changer">
-          <p>&larr;</p>
-        </div>
-        <div class="image-wrapper">
-          <img class="house-image" src="../house.jpg" alt="House image">
-        </div>
-        <div class="image-changer">
-          <p>&rarr;</p>
-        </div>
-      </div>
-      <div class="house-content-wrapper">
-        <div class="house-information">
-          <h1>House title</h1>
-          <p>Rating</p>
-          <p>1000$</p>
-        </div>
+$user = getUser($_SESSION['username']);
 
-        <ul class="content-tabs" >
-          <li class="selected-tab" id="description-tab">Description</li>
-          <li id="reviews-tab">Reviews</li>
-        </ul>
-
-        <section class="tabbed-content" >
-
-        </section>
+renderPage(array('house'),array(),function() use ($user) {
+  $houses = getLandlordHouses($user['id']);
+  $houseIndex = 0; //will be incremented to cyvle trough houses
+  ?>
+  <div class="house-carousel">
+    <div class="image-changer">
+      <p>&larr;</p>
+    </div>
+    <div class="image-wrapper">
+      <img class="house-image" src="../house.jpg" alt="House image">
+    </div>
+    <div class="image-changer">
+      <p>&rarr;</p>
+    </div>
+  </div>
+  <div class="house-content-wrapper">
+    <div class="house-information">
+      <h1>House <?= $houses[$houseIndex]['houseID'] ?></h1>
+      <p>Rating</p>
+      <p><?= $houses[$houseIndex]['pricePerNight'] ?>€ per night</p>
+    </div>
+  
+    <ul class="content-tabs" >
+      <li class="selected-tab" id="description-tab">Description</li>
+      <li id="reviews-tab">Reviews</li>
+    </ul>
+  
+    <!-- only description for now -->
+    <section class="tabbed-content" > 
+      <div>
+        <p><?= $houses[$houseIndex]['description'] ?></p>
       </div>
     </section>
-
-    <?php draw_login_form(); ?>
-    <?php draw_footer(); ?>
-
-  </body>
-</html>
+  </div>
+<?php } ); ?>
 

@@ -21,7 +21,7 @@ function addHouse($house) {
 function getHouseInfo() {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT houseID description FROM house');
+    $stmt = $db->prepare('SELECT * FROM house');
     $stmt->execute();
     return $stmt->fetchAll();
 }
