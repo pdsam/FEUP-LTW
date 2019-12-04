@@ -14,11 +14,11 @@ $password = $_POST['password'];
 if (checkUserPassword($username, $password)) {
     $response['result'] = 'success'; 
     $response['message'] = 'Successful login.'; 
+
+    $_SESSION['username'] = $username;
 } else {
     $response['message'] = 'Invalid user or password.';
 }
-
-$_SESSION['username'] = $username;
 
 echo json_encode($response);
 
