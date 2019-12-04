@@ -34,6 +34,7 @@ include_once(ROOT . 'includes/session.php');
     <main>
     <section class="intro">
         <section class="floater">
+            <h3>Look for the place of your dreams</h3>
             <form id="search-form" action="#" method="post">
                 <label class="block-label" for="flocation">Where</label>
                 <input class="text-input" type="text" name="fname" id="flocation" required>
@@ -52,8 +53,8 @@ include_once(ROOT . 'includes/session.php');
 
                 <label class="block-label" for="numberPeople">Number of guests</label>
                 <input type="number" id="numberPeople" value="1" min="1" max="100" step="1">
+                <input type="submit" >
             </form>
-            <button>search!</button>
         </section>
     </section>
 
