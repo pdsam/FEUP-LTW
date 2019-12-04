@@ -27,7 +27,7 @@ renderPage(array('house'),array(),function() use ($houseID) {
   </div>
   <div class="house-content-wrapper">
     <div class="house-information">
-      <h1>House <?= $house['houseID'] ?></h1>
+      <h1><?= $house['title'] ?></h1>
       <p>Rating</p>
       <p><?= $house['pricePerNight'] ?>€ per night</p>
     </div>
