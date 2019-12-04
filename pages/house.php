@@ -7,16 +7,10 @@ include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
 
-if (!isset($_SESSION['username'])) {
-  header('Location: ../pages/home.php');
-  die;
-}
+$houseID = $_GET['h'];
 
-$user = getUser($_SESSION['username']);
-
-renderPage(array('house'),array(),function() use ($user) {
-  $houses = getLandlordHouses($user['id']);
-  $houseIndex = 0; //will be incremented to cyvle trough houses
+renderPage(array('house'),array(),function() use ($houseID) {
+  $house = getHouseInfo($houseID);
   ?>
   <div class="house-carousel">
     <div class="image-changer">
@@ -31,9 +25,9 @@ renderPage(array('house'),array(),function() use ($user) {
   </div>
   <div class="house-content-wrapper">
     <div class="house-information">
-      <h1>House <?= $houses[$houseIndex]['houseID'] ?></h1>
+      <h1>House <?= $house['houseID'] ?></h1>
       <p>Rating</p>
-      <p><?= $houses[$houseIndex]['pricePerNight'] ?>€ per night</p>
+      <p><?= $house['pricePerNight'] ?>€ per night</p>
     </div>
   
     <ul class="content-tabs" >
@@ -44,7 +38,7 @@ renderPage(array('house'),array(),function() use ($user) {
     <!-- only description for now -->
     <section class="tabbed-content" > 
       <div>
-        <p><?= $houses[$houseIndex]['description'] ?></p>
+        <p><?= $house['description'] ?></p>
       </div>
     </section>
   </div>
