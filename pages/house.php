@@ -1,17 +1,19 @@
 <?php 
 include_once('../config.php');
-include_once(ROOT . 'templates/common/header.php');
-include_once(ROOT.'templates/common/footer.php');
-include_once(ROOT.'templates/common/loginForm.php');
 include_once(ROOT . 'templates/drawTemplate.php');
-include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
 
 $houseID = $_GET['h'];
 
 renderPage(array('house'),array(),function() use ($houseID) {
   $house = getHouseInfo($houseID);
+
+  if ($house === false) {
+    header('Location: ../pages/404.php');
+    die;
+  }
   ?>
+
   <div class="house-carousel">
     <div class="image-changer">
       <p>&larr;</p>
