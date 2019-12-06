@@ -11,6 +11,7 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
     <title>Villat</title>
     <meta charset="utf-8" />
 
+    <link rel="stylesheet" href="../stylesheets/palette.css">
     <link rel="stylesheet" href="../stylesheets/common.css">
     <link rel="stylesheet" href="../stylesheets/topbar.css">
     <link rel="stylesheet" href="../stylesheets/login.css">

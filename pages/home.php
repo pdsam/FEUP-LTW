@@ -14,7 +14,8 @@ include_once(ROOT . 'templates/common/loginForm.php');
   <title>Villat</title>
   <meta charset="utf-8" />
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="../stylesheets/palette.css">
   <link rel="stylesheet" href="../stylesheets/common.css">
   <link rel="stylesheet" href="../stylesheets/topbar.css">
   <link rel="stylesheet" href="../stylesheets/forms.css">
@@ -29,7 +30,7 @@ include_once(ROOT . 'templates/common/loginForm.php');
 <body>
   <?php draw_header(); ?>
 
-  <section class="main-content">
+  <main class="main-content">
     <section class="filter-renderer">
       <div class="search-form-container">
         <form class="filter-form" action="#" method="GET">
@@ -44,7 +45,7 @@ include_once(ROOT . 'templates/common/loginForm.php');
     <section class="houses-display">
       <?php draw_house_cards(); ?>
     </section>
-  </section>
+</main>
 
   <?php draw_login_form(); ?>
 
