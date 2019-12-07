@@ -1,6 +1,7 @@
 .site-footer{
-    background-color: var(--light-background);
+    background-color: var(--light-grey-background);
     padding: 1em;
+    margin-top: auto;
     
 }
 

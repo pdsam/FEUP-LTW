@@ -1,5 +1,6 @@
 <?php
 include_once('../config.php');
+include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'templates/common/header.php');
 include_once(ROOT . 'templates/common/footer.php');
 include_once(ROOT . 'templates/common/house_card.php');
@@ -14,7 +15,8 @@ include_once(ROOT . 'templates/common/loginForm.php');
   <title>Villat</title>
   <meta charset="utf-8" />
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../stylesheets/palette.css">
   <link rel="stylesheet" href="../stylesheets/common.css">
   <link rel="stylesheet" href="../stylesheets/topbar.css">
   <link rel="stylesheet" href="../stylesheets/forms.css">
@@ -27,9 +29,10 @@ include_once(ROOT . 'templates/common/loginForm.php');
 </head>
 
 <body>
-  <?php draw_header(); ?>
 
-  <section class="main-content">
+  <?php draw_header(); ?>
+  <main class="main-content">
+
     <section class="filter-renderer">
       <div class="search-form-container">
         <form class="filter-form" action="#" method="GET">
@@ -44,11 +47,12 @@ include_once(ROOT . 'templates/common/loginForm.php');
     <section class="houses-display">
       <?php draw_house_cards(); ?>
     </section>
-  </section>
+
+  </main>
+  <?php draw_footer(); ?>
 
   <?php draw_login_form(); ?>
 
-  <?php draw_footer(); ?>
 </body>
 
 </html>
