@@ -13,22 +13,16 @@ body {
 
 body{
     margin:0;
+    font-family: var(--title-font);
     display: flex;
     flex-direction: column;
-    font-family: var(--title-font);
+    min-height: 100vh;    
 }
 
-main .main-content{
-    flex:2;
-    flex-grow: 1;  
-}
+
 
 p{
     font-family: var(--content-font);
-}
-.topbar {
-    position: relative;
-    z-index: 1;
 }
 
 .bar-logo a {
@@ -36,13 +30,10 @@ p{
     text-decoration: none;
 }
 
-.main-content{
+.houses-display{
     margin: auto;
-    /*margin: 1em auto auto auto;*/
     max-width: 65em;
-
     background-color: var(--main-background);
-    /*min-height: 83vh;*/
 }
 
 
@@ -53,4 +44,8 @@ p{
 
 .button {
     cursor: pointer;
+}
+
+main{
+    flex-grow: 1;
 }
