@@ -49,6 +49,7 @@ loginForm.addEventListener('submit', (event) => {
 
         if (responseJson['result'] == 'error') {
             loginErrorLabel.innerHTML = responseJson['message'];
+            return;
         }
         
         window.location = '../pages/profile.php';

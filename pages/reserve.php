@@ -29,8 +29,8 @@ renderPage(array('reservation'), array('reservation'), function () use ($houseID
     <label for="checkout">Check out date</label>
     <input type="date" name="checkOutDate" id="checkout">
   </div>
-  <input type="hidden" name="houseID" value="<?= $houseID ?>">
-  <input type="hidden" name="tenantID" value="<?= $user['id'] ?>">
+  <input type="hidden" name="houseId" value="<?= $houseID ?>">
+  <input type="hidden" name="tenantId" value="<?= $user['id'] ?>">
 
   <input type="submit" value="Submit">
 </form>

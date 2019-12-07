@@ -26,6 +26,14 @@ function getHouseInfo() {
     return $stmt->fetchAll();
 }
 
+function getHouse($houseId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM house WHERE houseID=?');
+    $stmt->execute(array($houseId));
+    return $stmt->fetch();
+}
+
 function getLandlordHouses($landlordID) {
     $db = Database::instance()->db();
 
@@ -41,6 +49,21 @@ function getReservations($houseID) {
     $stmt->execute(array($houseID));
 
     return $stmt->fetchAll();
+}
+
+function addReservation($reservation) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('insert into rent(houseID, tenantID, startDate, endDate, numberOfPeople) values (?,?,?,?,?)');
+    $stmt->execute(array(
+        $reservation->houseId,
+        $reservation->userId,
+        $reservation->startDate,
+        $reservation->endDate,
+        $reservation->numberOfPeople
+    ));
+
+    return $db->lastInsertId();
 }
 
 ?>
