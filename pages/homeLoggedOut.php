@@ -14,6 +14,7 @@ include_once(ROOT . 'includes/session.php');
     <title>Villat</title>
     <meta charset="utf-8" />
 
+    <link rel="stylesheet" href="../stylesheets/palette.css">
     <link rel="stylesheet" href="../stylesheets/homeLoggedOut.css">
     <link rel="stylesheet" href="../stylesheets/common.css">
     <link rel="stylesheet" href="../stylesheets/topbar.css">
@@ -29,8 +30,6 @@ include_once(ROOT . 'includes/session.php');
 </head>
 
 <body>
-    <?php draw_header(); ?>
-
     <main>
     <section class="intro">
         <section class="floater">
