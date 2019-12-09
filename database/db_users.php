@@ -26,6 +26,38 @@ function checkUserPassword($username, $password) {
     return $user !== false && password_verify($password, $user['password']);
 }
 
+function updateUserInfo($username, $firstname, $lastname, $email) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('UPDATE user SET firstName=?, lastName=?, email=? where username=?');
+    $stmt->execute(
+        $firstname,
+        $lastname,
+        $email,
+        $username
+    );
+}
+
+function updateUserPassword($username, $oldPassword, $newPassword) {
+    if ($newPassword === '') {
+        return false;
+    }
+
+    if (!checkUserPassword($username, $oldPassword)) {
+        return false;
+    }
+
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('UPDATE user SET password=? where username=?');
+    $stmt->execute(
+        password_hash($newPassword, PASSWORD_DEFAULT),
+        $username
+    );
+
+    return true;
+}
+
 function getUser($username) {
     $db = Database::instance()->db();
 
