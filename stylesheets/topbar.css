@@ -20,7 +20,9 @@
     margin: 0;
     color:var(--green);
     font-size: 0.9em;
+    font-family: var(--title-font);
 }
+
 
 .topbar .user-options-container {
     padding-right: 2em;
@@ -36,13 +38,13 @@
     transition-duration: 300ms;
 
 }
-.button{
+.nav-button{
     color:black;
     font-size: 1.2em;
+    cursor: pointer;
 }
 
 .topbar .user-options-container p:hover{
-   /* border-bottom: 1px solid rgb(12, 4, 4);*/
     color: var(--green);
 
 }

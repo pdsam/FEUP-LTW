@@ -1,18 +1,19 @@
 .profile-content {
     display: grid;
-
     padding: 1em;
-
     grid-template-columns: 1fr 2fr;
 }
 
 .profile-picture-container {
     grid-column-start: 1;
     grid-column-end: 2;
+    justify-self: center;
 }
 
 .profile-picture-container img {
     height: 20em;
+    border-radius: 50%;
+    border: 2px solid var(--grey-lines);
 }
 
 .user-details {

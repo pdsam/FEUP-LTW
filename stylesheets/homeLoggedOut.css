@@ -49,3 +49,9 @@ input[type=submit]{
 input[type=submit]:hover{
     background-color: #3b8a45;
 }
+
+/*
+input[type=range]{
+
+}
+*/

@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once('../config.php');
 include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'includes/database.php');
@@ -12,36 +12,41 @@ if (!isset($_SESSION['username'])) {
 
 $user = getUser($_SESSION['username']);
 
-renderPage(array('profile'), array(), function() use ($user) { ?>
-    <div class="profile-content">
-      <div class="profile-picture-container">
-        <img src="../database/profilePictures/<?= $user['profilePicture'] ?>" alt="Profile picture">
-      </div>
-      <div class="user-details">
-        <h1 class="name"><?=$user['firstName']?> <?=$user['lastName']?></h1>
-        <p class="user-email"><?=$user['email']?></p>
-      </div>
+renderPage(
+  array('profile'),
+  array(),
+  function () use ($user) { ?>
+  <div class="profile-content">
+    <div class="profile-picture-container">
+      <img src="../database/profilePictures/<?= $user['profilePicture'] ?>" alt="Profile picture">
     </div>
-    <?php if (!isLandlord($user['id'])) { ?>
-      <a href="../actions/action_register_landlord.php">Register this account as landlord.</a>
-    <?php } else { ?>
-      <section class="landlord-houses">
-        <a id="add-house-link" href="add_house.php">Post a house</a>
+    <div class="user-details">
+      <h1 class="name"><?= $user['firstName'] ?> <?= $user['lastName'] ?></h1>
+      <p class="user-email"><?= $user['email'] ?></p>
+    </div>
+  </div>
+  <?php if (!isLandlord($user['id'])) { ?>
+    <a href="../actions/action_register_landlord.php">Register this account as landlord.</a>
+  <?php } else { ?>
+    <section class="landlord-houses">
+      <a id="add-house-link" href="add_house.php">
+        <button>Post a house</button>
+      </a>
 
-        <div class="houses-container">
-          <?php 
-          $houses = getLandlordHouses($user['id']);
-          foreach ($houses as $house) { ?>
-            <div class="house-overview">
-              <p><?= $house['title'] ?></p>
-              <p><?= $house['pricePerNight'] ?></p>
-              <p><?= $house['description'] ?></p>
-            </div>
-          <?php } ?>
-        </div>
+      <div class="houses-container">
+        <?php
+            $houses = getLandlordHouses($user['id']);
+            foreach ($houses as $house) { ?>
+          <div class="house-overview">
+            <p><?= $house['title'] ?></p>
+            <p><?= $house['pricePerNight'] ?></p>
+            <p><?= $house['description'] ?></p>
+          </div>
+        <?php } ?>
+      </div>
 
     </section>
-    <?php } 
-  }
+<?php }
+}
 );
 ?>
