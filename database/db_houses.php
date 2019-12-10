@@ -42,10 +42,19 @@ function getLandlordHouses($landlordID) {
     return $stmt->fetchAll();
 }
 
-function getReservations($houseID) {
+function getConfirmedReservations($houseID) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM reservation WHERE houseID=?');
+    $stmt = $db->prepare('SELECT * FROM reservation WHERE houseID=? and pending=0');
+    $stmt->execute(array($houseID));
+
+    return $stmt->fetchAll();
+}
+
+function getPendingReservations($houseID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM reservation WHERE houseID=? and pending=1');
     $stmt->execute(array($houseID));
 
     return $stmt->fetchAll();

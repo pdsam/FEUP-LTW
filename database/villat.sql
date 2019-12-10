@@ -51,8 +51,8 @@ CREATE TABLE reservation(
     endDate text,
     numberOfPeople integer check(numberOfPeople > 0)
 , pending integer check(pending=0 or pending=1) default 0);
-INSERT INTO reservation VALUES(1,3,6,'2019-12-09','2019-12-11',2,1);
-INSERT INTO reservation VALUES(2,3,6,'2019-12-12','2019-12-21',2,1);
+INSERT INTO reservation VALUES(1,3,6,'2019-12-09','2019-12-11',2,0);
+INSERT INTO reservation VALUES(2,3,6,'2019-12-12','2019-12-21',2,0);
 CREATE TABLE review(
     reviewID integer primary key,
     houseID integer references house on delete cascade on update cascade,
@@ -82,4 +82,4 @@ begin
     select raise(ABORT, "Can't rent own house.");
 end;
 COMMIT;
-PRAGMA foreign_keys=ON;
+PRAGMA foreign_keys=ON;`

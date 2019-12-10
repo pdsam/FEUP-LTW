@@ -18,7 +18,7 @@ if ($house['landlordID'] !== $user['id']) {
     die;
 }
 
-$reservations = getReservations($house['houseID']);
+$reservations = getConfirmedReservations($house['houseID']);
 
 renderPage(array('house_reservations'), array(), function() use ($house, $reservations) { ?>
 
