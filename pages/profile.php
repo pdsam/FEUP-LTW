@@ -11,6 +11,15 @@ if (!isset($_SESSION['username'])) {
 }
 
 $user = getUser($_SESSION['username']);
+$id = $_GET['id'];
+  if(!isset($id)){
+    //header('Location: ../pages/home.php');
+    //die;
+    
+  }
+
+$user=getUserById($id);
+var_dump($user);
 
 renderPage(
   array('profile'),
