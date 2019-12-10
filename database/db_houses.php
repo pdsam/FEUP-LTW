@@ -51,6 +51,27 @@ function getReservations($houseID, $status) {
     return $stmt->fetchAll();
 }
 
+function getReservation($reservationId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("SELECT * FROM reservation WHERE reservationID=?");
+    $stmt->execute(array($reservationId));
+
+    return $stmt->fetchAll();
+}
+
+function setReservationStatus($reservationId, $status) {
+    if ($status !== 'accepted' && $status !== 'pending' && $status !== 'rejected') {
+        return false;
+    }
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('UPDATE reservation SET status=? WHERE reservationID=?');
+    $stmt->execute(array($status, $reservationId));
+
+    return true;
+}
+
 function addReservation($reservation) {
     $db = Database::instance()->db();
 

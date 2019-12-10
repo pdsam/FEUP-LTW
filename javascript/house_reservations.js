@@ -20,3 +20,38 @@ pendingButton.addEventListener('click', (e) => {
 });
 
 makeReqest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
+
+function handleReservationStatusResponse(event) {
+    let json = event.currentTarget.responseText;
+
+    let data = JSON.parse(json);
+
+    if (data['result'] === 'error') {
+        alert('An error has ocurred.');
+        window.location = '../pages/home.php';
+        return;
+    }
+
+    let row = document.getElementById('reservation'+data['reservationId']);
+    row.parentElement.removeChild(row);
+
+    alert('Reservation status successfully updated.');
+}
+
+function acceptReservation(reservationId) {
+    confirm('Are you sure you want to accept this reservation?');
+    makeReqest(
+        '../actions/action_setReservationStatus.php', 
+        'post', 
+        handleReservationStatusResponse,
+        {reservationId:reservationId, status:'accepted'});
+}
+
+function rejectReservation(reservationId) {
+    confirm('Are you sure you want to reject this reservation?');
+    makeReqest(
+        '../actions/action_setReservationStatus.php', 
+        'post', 
+        handleReservationStatusResponse,
+        {reservationId:reservationId, status:'rejected'});
+}

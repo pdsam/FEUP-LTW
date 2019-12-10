@@ -19,7 +19,6 @@ $id = $_GET['id'];
   }
 
 $user=getUserById($id);
-var_dump($user);
 
 renderPage(
   array('profile'),

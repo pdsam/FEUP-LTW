@@ -76,17 +76,6 @@ function getUserById($userId) {
     return $stmt->fetch();
 }
 
-function getUserById($id){
-    $db = Database::instance()->db();
-
-    $stmt = $db->prepare("SELECT * FROM USER WHERE username=?");
-    $stmt->execute(array($id));
-
-    return $stmt->fetch();
-
-
-}
-
 function userExists($username) {
     $db = Database::instance()->db();
 
