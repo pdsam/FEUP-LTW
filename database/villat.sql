@@ -82,4 +82,4 @@ begin
     select raise(ABORT, "Can't rent own house.");
 end;
 COMMIT;
-PRAGMA foreign_keys=ON;`
+PRAGMA foreign_keys=ON;
