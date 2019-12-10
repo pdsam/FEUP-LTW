@@ -13,7 +13,7 @@
 .profile-picture-container img {
     height: 20em;
     border-radius: 50%;
-    border: 2px solid var(--grey-lines);
+    border: 2px solid var(--gray-lines);
 }
 
 .user-details {
