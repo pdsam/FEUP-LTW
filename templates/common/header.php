@@ -16,6 +16,9 @@ function draw_header()
         <a href="../pages/profile.php">
           <p class="nav-button">Profile</p>
         </a>
+        <a href="../pages/dashboard.php">
+          <p class="nav-button">Dashboard</p>
+        </a>
         <a href="../actions/action_logout.php">
           <p class="nav-button">Sign Out</p>
         </a>
