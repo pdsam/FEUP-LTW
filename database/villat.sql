@@ -35,8 +35,8 @@ create table house(
     capacity integer check(capacity > 0)
 );
 
-create table rent(
-    rentID integer primary key,
+create table reservation(
+    reservationID integer primary key,
     tenantID integer references tenant on delete cascade on update cascade,
     houseID integer references house on delete cascade on update cascade,
     startDate text,
@@ -67,7 +67,7 @@ drop trigger if exists CreateReview;
 create trigger CreateReview
 before insert on review
 for each row
-when (not exists (select rentID from rent where new.userID == rent.tenantID and new.houseID == rent.houseID))
+when (not exists (select reservationID from reservation where new.userID == reservation.tenantID and new.houseID == reservation.houseID))
 begin
     select raise(ABORT, "User hasn't rented the house.");
 end;
@@ -75,7 +75,7 @@ end;
 
 drop trigger if exists PreventRentOwnHouse;
 create trigger PreventRentOwnHouse
-before insert on rent
+before insert on reservation
 for each row
 when(exists(select houseID from house where (new.tenantID == house.landlordID and new.houseID == house.houseID)))
 begin
