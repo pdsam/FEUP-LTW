@@ -18,35 +18,20 @@ if ($house['landlordID'] !== $user['id']) {
     die;
 }
 
-$reservations = getConfirmedReservations($house['houseID']);
+$reservations = getReservations($house['houseID'], 'accepted');
 
-renderPage(array('house_reservations'), array(), function() use ($house, $reservations) { ?>
+renderPage(
+    array('house_reservations'), 
+    array('request', 'house_reservations'), 
+    function() use ($house, $reservations) { ?>
 
 <h1>House overview</h1>
 <h2><?= $house['title'] ?></h2>
-
+<div id="reservation-type-buttons">
+    <a id="confirmed-reservations-tab">Confirmed</a>
+    <a id="pending-reservations-tab">Pending</a>
+</div>
 <table id="reservations-table">
-    <tr>
-        <th align="left">Tenant</th>
-        <th align="left">Check in date</th>
-        <th align="left">Check out date</th>
-        <th align="left">Numer of people</th>
-    </tr>
-    <?php foreach($reservations as $reservation) { 
-        $tenant = getUserById($reservation['tenantID']);
-        ?>
-
-        <tr class="reservation">
-            <td>
-                <a href="profile.php?Id=<?= $tenant['id'] ?>">
-                    <b><?= $tenant['firstName'] ?> <?= $tenant['lastName'] ?></b>
-                </a>
-            </td>
-            <td><?= $reservation['startDate'] ?></td>
-            <td><?= $reservation['endDate'] ?></td>
-            <td><?= $reservation['numberOfPeople'] ?></td>
-        </tr>
-    <?php } ?>
 </table>
 
 <?php }) ?>

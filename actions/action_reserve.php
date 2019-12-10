@@ -28,7 +28,7 @@ if ($checkInDate > $checkOutDate) {
     die;
 }
 
-$reservations = getReservations($_POST['houseId']);
+$reservations = getReservations($_POST['houseId'], 'accepted');
 
 foreach ($reservations as $reservation) {
     $reservationStart = $reservation['startDate'];

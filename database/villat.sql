@@ -49,10 +49,11 @@ CREATE TABLE reservation(
     houseID integer references house on delete cascade on update cascade,
     startDate text,
     endDate text,
-    numberOfPeople integer check(numberOfPeople > 0)
-, pending integer check(pending=0 or pending=1) default 0);
-INSERT INTO reservation VALUES(1,3,6,'2019-12-09','2019-12-11',2,0);
-INSERT INTO reservation VALUES(2,3,6,'2019-12-12','2019-12-21',2,0);
+    numberOfPeople integer check(numberOfPeople > 0), 
+    status text check(status='pending' or status='accepted' or status='rejected') default 'pending'
+);
+INSERT INTO reservation VALUES(1,3,6,'2019-12-09','2019-12-11',2,'accepted');
+INSERT INTO reservation VALUES(2,3,6,'2019-12-12','2019-12-21',2,'accepted');
 CREATE TABLE review(
     reviewID integer primary key,
     houseID integer references house on delete cascade on update cascade,
