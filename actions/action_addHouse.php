@@ -23,6 +23,6 @@ $house->description = $_POST['description'];
 
 $houseID = addHouse($house);
 
-header("Location: ../pages/add_house_images.php?houseid=$houseID");
+header("Location: ../pages/add_house_images.php?houseId=$houseID");
 
 ?>

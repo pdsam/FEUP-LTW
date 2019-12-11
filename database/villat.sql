@@ -14,9 +14,9 @@ CREATE TABLE user(
     password text not null,
     bio text default 'Bio Out of service'
 );
-INSERT INTO user VALUES(1,'jradaval','Jarvazio','Radaval','jradaval@gmail.com','default','$2y$10$zEqUtTFDw5YLwArg.imnoOwHIDYWxbp3cBJFx0k3Yzx4ULD8wWiQe');
-INSERT INTO user VALUES(2,'manel','Manel','Manuel','manel@manel.manel','default','$2y$10$oL01mgnRlqmXaE2mpMfkNeFDu.otdBtG4fMy8oJu6Z8zrfEXnFala');
-INSERT INTO user VALUES(3,'motavia','Maria','Otavia','motavia@gmail.com','default','$2y$10$T6PDAC.jFX0rsbJAg.TSy.sTL1QCcukGYjOAc/gIPEd.9/NTumrRa');
+INSERT INTO user VALUES(1,'jradaval','Jarvazio','Radaval','jradaval@gmail.com','default','$2y$10$zEqUtTFDw5YLwArg.imnoOwHIDYWxbp3cBJFx0k3Yzx4ULD8wWiQe', '');
+INSERT INTO user VALUES(2,'manel','Manel','Manuel','manel@manel.manel','default','$2y$10$oL01mgnRlqmXaE2mpMfkNeFDu.otdBtG4fMy8oJu6Z8zrfEXnFala', '');
+INSERT INTO user VALUES(3,'motavia','Maria','Otavia','motavia@gmail.com','default','$2y$10$T6PDAC.jFX0rsbJAg.TSy.sTL1QCcukGYjOAc/gIPEd.9/NTumrRa', '');
 CREATE TABLE tenant(
     id integer primary key references user on delete cascade on update cascade
 );

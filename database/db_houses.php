@@ -34,6 +34,22 @@ function getHouse($houseId) {
     return $stmt->fetch();
 }
 
+function pictureExists($picID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("SELECT count(*) as count FROM housePicture WHERE pictureID=?");
+    $stmt->execute(array($picID));
+
+    return intval($stmt->fetch()['count']) > 0;
+}
+
+function addHousePicture($houseId, $pictureId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("INSERT INTO housePicture(pictureID, houseID) values (?,?)");
+    $stmt->execute(array($pictureId, $houseId));
+}
+
 function getLandlordHouses($landlordID) {
     $db = Database::instance()->db();
 
