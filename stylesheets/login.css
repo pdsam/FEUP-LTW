@@ -35,7 +35,7 @@
     color: red;
 }
 #login-submit-button{
-    color: black;
+    color: white;
     border: 1px solid var(--gray-lines);
 
 }
