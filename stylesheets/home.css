@@ -51,10 +51,10 @@
     box-shadow: 0 0px 6px rgba(0, 0, 0, 0.6);
     overflow: hidden;
     background-color: white;
-    text-overflow: ellipsis;
 }
 
 .card-thumbnail {
+    z-index: 9;
     margin: 0 auto;
     display: block;
     background-image: url('../house.jpg');
@@ -71,5 +71,33 @@
 }
 
 .card-info {
+    z-index: 10;
     padding: 0.5em;
+}
+
+.card-info p {
+    margin: 0;
+}
+
+.house-card-title {
+    margin: 0;
+}
+
+.clip-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.house-card-address {
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.price-rating-container {
+    display: flex;
+}
+
+.price-rating-container p {
+    margin-right: 1rem;
 }
