@@ -8,7 +8,7 @@ function draw_header()
   ?>
   <nav class="topbar">
     <section class="bar-logo">
-      <a href="/">
+      <a href="../index.php">
         <p>Villat</p>
       </a>
     </section>
