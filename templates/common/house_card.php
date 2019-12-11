@@ -15,7 +15,7 @@ function draw_house_cards() {
     <div class="house-card">
       <div class="card-thumbnail"></div>
       <div class="card-info">
-        <h3>House <?= $house['houseID'] ?></h3>
+        <h3><?= $house['title'] ?></h3>
         <p><?= $house['description'] ?></p>
       </div>
   </div>

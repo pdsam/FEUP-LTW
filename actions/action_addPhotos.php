@@ -9,11 +9,11 @@ if (!isset($_SESSION['username'])) {
 
 $imageNames = $_FILES['images']['tmp_name'];
 
-var_dump($imageNames);
-
 foreach($imageNames as $image) {
     $fileName = basename($image);
     move_uploaded_file($image, ROOT . 'database/housePictures/'.$fileName);
 }
+
+header('Location: ../pages/home.php');
 
 ?>
