@@ -6,7 +6,7 @@ include_once(ROOT . 'database/db_houses.php');
 $houseID = $_GET['h'];
 
 renderPage(array('house'),array(),function() use ($houseID) {
-  $house = getHouseInfo($houseID);
+  $house = getHouse($houseID);
 
   if ($house === false) {
     header('Location: ../pages/404.php');
