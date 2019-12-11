@@ -23,7 +23,7 @@ $reservations = getReservations($house['houseID'], 'accepted');
 renderPage(
     array('house_reservations'), 
     array('request', 'house_reservations'), 
-    function() use ($house, $reservations) { ?>
+    function() use ($house) { ?>
 
 <h1>House overview</h1>
 <h2><?= $house['title'] ?></h2>
