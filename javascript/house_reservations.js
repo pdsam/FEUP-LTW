@@ -11,11 +11,15 @@ function setTableContent(event) {
 
 confirmedButton.addEventListener('click', (e) => {
     reservationsTable.innerHTML = '';
+    pendingButton.classList.remove('selected-tab');
+    confirmedButton.classList.add('selected-tab');
     makeReqest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
 });
 
 pendingButton.addEventListener('click', (e) => {
     reservationsTable.innerHTML = '';
+    confirmedButton.classList.remove('selected-tab');
+    pendingButton.classList.add('selected-tab');
     makeReqest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'pending'});
 });
 

@@ -28,15 +28,11 @@ renderPage(
 <h1>House overview</h1>
 <h2><?= $house['title'] ?></h2>
 <div id="reservation-type-buttons">
-    <a id="confirmed-reservations-tab">
-        <div class="tab-button-container">
+    <a class="selected-tab" id="confirmed-reservations-tab">
             Confirmed
-        </div>
     </a>
     <a id="pending-reservations-tab">
-        <div class="tab-button-container">
             Pending
-        </div>
     </a>
 </div>
 <table id="reservations-table">

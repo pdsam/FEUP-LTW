@@ -10,22 +10,26 @@
 }
 
 #reservation-type-buttons {
-    margin: 0 1em;
+    margin: 1rem;
     display: flex;
+    justify-content: center;
 }
 
 #reservation-type-buttons a {
-    border-width: 0 1px;
-    border-style: solid;
-    border-color: gray;
-    cursor: pointer;
-}
-
-.tab-button-container {
+    margin: 0 1rem;
     padding: 1em;
+    cursor: pointer;
+
+    border-radius: 5px;
+
+    background-color: gray;
 }
 
-.tab-button-container:hover {
+#reservation-type-buttons .selected-tab {
+    background-color: var(--green);
+}
+
+#reservation-type-buttons a:hover {
     background-color: gray;
 }
 

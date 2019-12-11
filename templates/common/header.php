@@ -1,10 +1,12 @@
 <?php
-
 include_once(ROOT . 'includes/session.php');
 include_once(ROOT . 'database/db_users.php');
 
+$user = getSessionUser();
+
 function draw_header()
 { 
+  global $user;
   ?>
   <nav class="topbar">
     <section class="bar-logo">
@@ -12,7 +14,7 @@ function draw_header()
         <p>Villat</p>
       </a>
     </section>
-    <?php if (isset($_SESSION['username'])) { 
+    <?php if ($user) { 
       ?>
       <section class="user-options-container">
         
@@ -22,9 +24,11 @@ function draw_header()
        echo "<a href='../pages/profile.php?id=$userID'>" ;?>
           <p class="nav-button">Profile</p>
         </a>
-        <a href="../pages/dashboard.php">
-          <p class="nav-button">Dashboard</p>
-        </a>
+        <?php if (isLandlord($user['id'])) { ?>
+          <a href="../pages/dashboard.php">
+            <p class="nav-button">Dashboard</p>
+          </a>
+        <?php } ?>
         <a href="../actions/action_logout.php">
           <p class="nav-button">Sign Out</p>
         </a>
