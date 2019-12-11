@@ -76,6 +76,8 @@ function getUserById($userId) {
     return $stmt->fetch();
 }
 
+
+
 function userExists($username) {
     $db = Database::instance()->db();
 
@@ -109,5 +111,6 @@ function isLandlord($userID) {
 
     return $stmt->fetch()['count'] > 0;
 }
+
 
 ?>

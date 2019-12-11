@@ -1,19 +1,25 @@
 <?php
 
 include_once(ROOT . 'includes/session.php');
+include_once(ROOT . 'database/db_users.php');
 
 function draw_header()
-{ ?>
+{ 
+  ?>
   <nav class="topbar">
     <section class="bar-logo">
       <a href="/">
         <p>Villat</p>
       </a>
     </section>
-    <?php if (isset($_SESSION['username'])) { ?>
+    <?php if (isset($_SESSION['username'])) { 
+      ?>
       <section class="user-options-container">
-
-        <a href="../pages/profile.php">
+        
+        <?php
+        $user = getUser($_SESSION['username']);
+        $userID = $user['id'];
+       echo "<a href='../pages/profile.php?id=$userID'>" ;?>
           <p class="nav-button">Profile</p>
         </a>
         <a href="../pages/dashboard.php">
