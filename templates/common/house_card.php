@@ -12,11 +12,17 @@ function draw_house_cards() {
 
 
 <?php function draw_house_card($house) { ?>
-    <div class="house-card">
-      <a class="card-thumbnail" href="house.php?h=<?= $house['houseID'] ?>"></a>
-      <div class="card-info">
-        <h3><?= $house['title'] ?></h3>
-        <p><?= $house['description'] ?></p>
+<a href="../pages/house.php?h=<?= $house['houseID'] ?>">
+  <div class="house-card">
+    <div class="card-thumbnail" style="background-image: url(../house.jpg)"></div>
+    <div class="card-info">
+      <h3 class="house-card-title clip-text"><?= $house['title'] ?></h3>
+      <p class="house-card-address clip-text"><?= $house['address'] ?></p>
+      <div class="price-rating-container">
+        <p class="house-card-price"><?= $house['pricePerNight'] ?>$/night</p>
+        <p class="house-card-rating"><?= $house['avgRating'] ?>&star;</p>
       </div>
+    </div>
   </div>
+</a>
 <?php } ?>
