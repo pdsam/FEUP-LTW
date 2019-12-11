@@ -10,48 +10,43 @@ $signedUser = getUser($_SESSION['username']);
 
 if (isset($id)) {
   $user = getUserById($id);
-}
-else if (isset($_SESSION['username'])) {
+} else if (isset($_SESSION['username'])) {
   $user = getUser($_SESSION['username']);
 }
 
 if ($user != NULL) {
-  renderPage(array('profile'), array(), function () use ($user, $signedUser) { ?>
-    <div class="profile-content">
-      <div class="profile-picture-container">
-        <img src="../database/profilePictures/<?= $user['profilePicture'] ?>" alt="Profile picture">
-      </div>
-      <div class="user-details">
-        <h1 class="name"><?= $user['firstName'] ?> <?= $user['lastName'] ?></h1>
-        <p class="user-email"><?= $user['email'] ?></p>
-      </div>
-    </div>
-    <?php if (!isLandlord($user['id']) && $user['id'] == $signedUser['id']) { ?>
-      <a href="../actions/action_register_landlord.php"><button>Register this account as landlord.</button></a>
-    <?php } else if ($user['id'] == $signedUser['id']) { ?>
-      <section class="landlord-houses">
-        <a id="add-house-link" href="add_house.php">
-          <button>Post a house</button>
-        </a>
-
-        <div class="houses-container">
-          <?php
-                $houses = getLandlordHouses($user['id']);
-                foreach ($houses as $house) { ?>
-            <div class="house-overview">
-              <p><?= $house['title'] ?></p>
-              <p><?= $house['pricePerNight'] ?></p>
-              <p><?= $house['description'] ?></p>
-            </div>
-          <?php } ?>
+  renderPage(
+    array('profile'),
+    array(),
+    function () use ($user, $signedUser) { ?>
+    <section class="profile-container">
+      <header class="profile-header">
+        <div class="profile-picture-container">
+          <img src="../database/profilePictures/<?= $user['profilePicture'] ?>" alt="Profile picture">
         </div>
+        <div class="user-details">
+          <div class="first-line">
+            <h1 class="name"><?= $user['firstName'] ?> <?= $user['lastName'] ?></h1> <span>(<?= $user['username'] ?>)</span>
+            <?php if ($user['id'] == $signedUser['id']) { ?>
+              <a href="/">
+                <button>Edit Profile</button>
+              </a>
+            <?php } ?>
+          </div>
+          <p class="user-email"><?= $user['email'] ?></p>
+          <p class="user-bio"><?= $user['bio'] ?></p>
+        </div>
+        <?php if (!isLandlord($user['id']) && $user['id'] == $signedUser['id']) { ?>
+          <a href="../actions/action_register_landlord.php"><button>Register this account as landlord.</button></a>
 
-      </section>
-<?php }
+      </header>
+    </section>
+
+<?php
+    }
   }
 );
-}
-else{
+} else {
   header('Location: ../pages/404.php');
 }
 ?>
