@@ -5,27 +5,18 @@ include_once(ROOT . 'includes/database.php');
 include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
 
-if (!isset($_SESSION['username'])) {
-  // header('Location: ../pages/home.php');
-  // die;
-}
-
+$id = $_GET['id'];
 $signedUser = getUser($_SESSION['username']);
 
-
-$id = $_GET['id'];
-if (!isset($id)) {
-  //header('Location: ../pages/home.php');
-  //die;
-
+if (isset($id)) {
+  $user = getUserById($id);
+}
+else if (isset($_SESSION['username'])) {
+  $user = getUser($_SESSION['username']);
 }
 
-$user = getUserById($id);
-if (isset($user)) {
-  renderPage(
-    array('profile'),
-    array(),
-    function () use ($user, $signedUser) { ?>
+if ($user != NULL) {
+  renderPage(array('profile'), array(), function () use ($user, $signedUser) { ?>
     <div class="profile-content">
       <div class="profile-picture-container">
         <img src="../database/profilePictures/<?= $user['profilePicture'] ?>" alt="Profile picture">
