@@ -18,7 +18,7 @@ function addHouse($house) {
     return $db->lastInsertId();
 }
 
-function getHouseInfo() {
+function getAllHouseInfo() {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('SELECT * FROM house');

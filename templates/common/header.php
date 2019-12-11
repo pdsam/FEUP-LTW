@@ -29,7 +29,8 @@ function draw_header()
           <p class="nav-button">Sign Out</p>
         </a>
       </section>
-    <?php } else { ?> <section class="user-options-container">
+    <?php } else { ?> 
+      <section class="user-options-container">
         <p id="login-button" class="nav-button">Sign in</p>
 
         <a href="../pages/register.php">
