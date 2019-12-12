@@ -5,38 +5,32 @@ include_once(ROOT . 'database/db_users.php');
 
 $reservations = getReservations($_GET['houseId'],  $_GET['status']);
 
-?>
-<tr>
-    <th align="left">Tenant</th>
-    <th align="left">Check in date</th>
-    <th align="left">Check out date</th>
-    <th align="left">Numer of people</th>
-</tr>
-<?php
-foreach($reservations as $reservation) { 
-    $tenant = getUserById($reservation['tenantID']);
-    ?>
+$response = array(
+    'result'=>'error',
+    'message'=>''
+);
 
-    <tr class="reservation" id="reservation<?= $reservation['reservationID'] ?>">
-        <td>
-            <a href="profile.php?Id=<?= $tenant['id'] ?>">
-                <b><?= $tenant['firstName'] ?> <?= $tenant['lastName'] ?></b>
-            </a>
-        </td>
-        <td><?= $reservation['startDate'] ?></td>
-        <td><?= $reservation['endDate'] ?></td>
-        <td><?= $reservation['numberOfPeople'] ?></td>
-        <?php if ($_GET['status'] === 'pending') { ?>
-        <td>
-            <button onclick="acceptReservation(<?= $reservation['reservationID'] ?>)">
-                Accept
-            </button>
-        </td>
-        <td>
-            <button style="background-color: red" onclick="rejectReservation(<?= $reservation['reservationID'] ?>)">
-                Reject
-            </button>
-        </td>
-        <?php } ?>
-    </tr>
-<?php } ?>
+$responseContent = array();
+foreach ($reservations as $reservation) {
+    $res = array();
+    $tenant = getUserById($reservation['tenantID']);
+
+    $res['reservationId'] = $reservation['reservationID'];
+    $res['tenantId'] = $reservation['tenantID'];
+    $res['tenantName'] = $tenant['firstName'] . ' ' . $tenant['lastName'];
+    $res['startDate'] = $reservation['startDate'];
+    $res['endDate'] = $reservation['endDate'];
+    $res['numberOfPeople'] = $reservation['numberOfPeople'];
+    $res['status'] = $reservation['status'];
+
+    $responseContent[] = $res;
+}
+
+$response['result'] = 'success';
+$response['message'] = 'Retrived reservations successfully';
+$response['reservationsStatus'] = $_GET['status'];
+$response['content'] = $responseContent;
+
+echo json_encode($response);
+
+?>

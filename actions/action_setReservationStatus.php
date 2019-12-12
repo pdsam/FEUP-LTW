@@ -19,19 +19,17 @@ if (!$user) {
 }
 
 $reservation = getReservation($_POST['reservationId']);
-$house = getHouse($reservation[0]['houseID']);
-//$response['id'] = var_dump($reservation);
-//TODO ask wth fethc() returns array in array.
+$house = getHouse($reservation['houseID']);
 
 if ($house['landlordID'] !== $user['id']) {
-    $response['type'] = '2';
+    $response['type'] = '1';
     $response['message'] = 'Not owner of the house.';
     echo json_encode($response);
     die;
 }
 
 if (!setReservationStatus($_POST['reservationId'], $_POST['status'])) {
-    $response['type'] = '3';
+    $response['type'] = '2';
     $response['message'] = 'Incorrect status.';
     echo json_encode($response);
     die;

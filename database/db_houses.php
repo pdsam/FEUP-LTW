@@ -67,17 +67,26 @@ function getReservations($houseID, $status) {
     return $stmt->fetchAll();
 }
 
+function getReservationsNumber($houseId, $status) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT count(*) as count FROM reservation WHERE houseID=? and status=?');
+    $stmt->execute(array($houseId, $status));
+
+    return $stmt->fetch();
+}
+
 function getReservation($reservationId) {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare("SELECT * FROM reservation WHERE reservationID=?");
     $stmt->execute(array($reservationId));
 
-    return $stmt->fetchAll();
+    return $stmt->fetch();
 }
 
 function setReservationStatus($reservationId, $status) {
-    if ($status !== 'accepted' && $status !== 'pending' && $status !== 'rejected') {
+    if ($status !== 'accepted' && $status !== 'pending' && $status !== 'rejected' && $status !== 'canceled') {
         return false;
     }
     $db = Database::instance()->db();
@@ -94,7 +103,7 @@ function addReservation($reservation) {
     $stmt = $db->prepare('insert into reservation(houseID, tenantID, startDate, endDate, numberOfPeople) values (?,?,?,?,?)');
     $stmt->execute(array(
         $reservation->houseId,
-        $reservation->userId,
+        $reservation->tenantId,
         $reservation->startDate,
         $reservation->endDate,
         $reservation->numberOfPeople
