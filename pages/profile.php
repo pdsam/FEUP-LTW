@@ -14,7 +14,7 @@ if (isset($id)) {
   $user = getUser($_SESSION['username']);
 }
 
-if ($user != NULL) {
+if (isset($user)) {
   renderPage(
     array('profile'),
     array(),
@@ -28,16 +28,14 @@ if ($user != NULL) {
           <div class="first-line">
             <h1 class="name"><?= $user['firstName'] ?> <?= $user['lastName'] ?></h1> <span>(<?= $user['username'] ?>)</span>
             <?php if ($user['id'] == $signedUser['id']) { ?>
-              <a href="/">
-                <button>Edit Profile</button>
-              </a>
+              <button id="edit-profile">Edit Profile</button>
             <?php } ?>
+            <?php if (!isLandlord($user['id']) && $user['id'] == $signedUser['id']) { ?>
+              <a href="../actions/action_register_landlord.php"><button>Register this account as landlord.</button></a>
           </div>
           <p class="user-email"><?= $user['email'] ?></p>
           <p class="user-bio"><?= $user['bio'] ?></p>
         </div>
-        <?php if (!isLandlord($user['id']) && $user['id'] == $signedUser['id']) { ?>
-          <a href="../actions/action_register_landlord.php"><button>Register this account as landlord.</button></a>
 
       </header>
     </section>
