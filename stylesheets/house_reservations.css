@@ -10,6 +10,8 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     align-items: center;
+
+    border: 1px solid var(--gray-lines);
 }
 
 .reservations-table-row p {

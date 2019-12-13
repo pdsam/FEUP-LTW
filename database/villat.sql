@@ -84,5 +84,13 @@ when(exists(select houseID from house where (new.tenantID == house.landlordID an
 begin
     select raise(ABORT, "Can't rent own house.");
 end;
+CREATE TRIGGER UpdateHouseAvgScore
+after insert on review
+for each row
+begin
+    update house set avgRating=(
+        select avg(rating) from review where houseID=new.houseID
+    ) where houseID=new.houseID;
+end;
 COMMIT;
 PRAGMA foreign_keys=ON;

@@ -58,6 +58,31 @@ function getLandlordHouses($landlordID) {
     return $stmt->fetchAll();
 }
 
+function hasRented($userId, $houseId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT count(*) as count FROM reservation WHERE houseID=? and tenantID=?');
+    $stmt->execute(array($houseId, $userId));
+
+    return intval($stmt->fetch()['count']) > 0;
+}
+
+function getUserHouseReservations($userId, $houseId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM reservation WHERE houseID=? and tenantID=?');
+    $stmt->execute(array($houseId, $userId));
+
+    return $stmt->fetchAll();
+}
+
+function postReview($houseId, $userId, $rating, $text) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('INSERT INTO review(houseID, userID, rating, reviewText) values(?,?,?,?)');
+    $stmt->execute(array($houseId, $userId, $rating, $text));
+}
+
 function getReservations($houseID, $status) {
     $db = Database::instance()->db();
 
