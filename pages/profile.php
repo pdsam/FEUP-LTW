@@ -4,6 +4,7 @@ include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'includes/database.php');
 include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
+include_once(ROOT . 'templates/common/editProfileForm.php');
 
 $id = $_GET['id'];
 $signedUser = getUser($_SESSION['username']);
@@ -14,7 +15,7 @@ if (isset($id)) {
   $user = getUser($_SESSION['username']);
 }
 
-if (isset($user)) {
+if ($user) {
   renderPage(
     array('profile'),
     array(),
@@ -42,6 +43,7 @@ if (isset($user)) {
 
 <?php
     }
+    draw_edit_profile_form();
   }
 );
 } else {

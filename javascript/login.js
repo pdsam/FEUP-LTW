@@ -1,4 +1,3 @@
-
 let loginButton = document.getElementById('login-button');
 let loginFormWrapper = document.getElementById('login-form-wrapper');
 let loginFormContainer = document.getElementById('login-form-container');
@@ -23,9 +22,9 @@ function getFormValue(form, fieldName) {
 }
 
 function encodeForAjax(data) {
-  return Object.keys(data).map(function(k){
-    return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-  }).join('&')
+    return Object.keys(data).map(function (k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+    }).join('&')
 }
 
 loginForm.addEventListener('submit', (event) => {
@@ -42,7 +41,7 @@ loginForm.addEventListener('submit', (event) => {
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 
     request.addEventListener('load', (event) => {
-        let text =event.currentTarget.responseText;
+        let text = event.currentTarget.responseText;
         console.log(text);
 
         let responseJson = JSON.parse(text);
@@ -51,7 +50,7 @@ loginForm.addEventListener('submit', (event) => {
             loginErrorLabel.innerHTML = responseJson['message'];
             return;
         }
-        
+
         window.location = '../pages/profile.php';
     });
 
