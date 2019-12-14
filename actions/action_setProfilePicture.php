@@ -23,6 +23,6 @@ while (file_exists(ROOT . 'database/profilePictures/' . $profilePictureName)) {
 
 setProfilePicture($user['id'], $profilePictureName);
 
-header('Location: ../pages/home.php');
+header('Location: ../pages/profile.php');
 
 ?>
