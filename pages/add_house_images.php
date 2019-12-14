@@ -3,8 +3,9 @@ include_once('../config.php');
 include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'includes/session.php');
 
-if (!isset($_SESSION['username'])) {
-    header('Location: ../pages/home.php');
+$user = getSessionUser();
+if (!$user) {
+    header('Location: home.php');
     die;
 }
 

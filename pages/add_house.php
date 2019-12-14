@@ -1,6 +1,13 @@
 <?php 
 include_once('../config.php');
+include_once(ROOT . 'includes/session.php');
 include_once(ROOT . 'templates/drawTemplate.php');
+
+$user = getSessionUser();
+if (!$user) {
+    header('Location: home.php');
+    die;
+}
 
 renderPage(array(), array(), function() { ?>
     <form id="house-form" action="../actions/action_addHouse.php" method="post">

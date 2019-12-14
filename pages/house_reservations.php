@@ -5,14 +5,13 @@ include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
 include_once(ROOT . 'templates/drawTemplate.php');
 
-if (!isset($_SESSION['username'])) {
+$user = getSessionUser();
+if (!$user) {
     header('Location: home.php');
     die;
 }
 
-$user = getUser($_SESSION['username']);
 $house = getHouse($_GET['id']);
-
 if ($house['landlordID'] !== $user['id']) {
     header('Location: home.php');
     die;

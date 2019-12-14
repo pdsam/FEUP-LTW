@@ -5,6 +5,7 @@ include_once(ROOT . 'templates/common/footer.php');
 include_once(ROOT . 'templates/common/loginForm.php');
 include_once(ROOT . 'includes/session.php');
 
+$user = getSessionUser();
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@ include_once(ROOT . 'includes/session.php');
     <script src="../javascript/login.js" defer></script>
     <link rel="stylesheet" href="../stylesheets/forms.css">
 
-    <?php if (!isset($_SESSION['username'])) { ?>
+    <?php if (!$user) { ?>
         <script src="../javascript/login.js" defer></script>
     <?php } ?>
 

@@ -5,13 +5,13 @@ include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
 
-if (!isset($_SESSION['username'])) {
+$user = getSessionUser();
+if (!$user) {
   header('Location: home.php');
   die;
 }
 
 $houseID = $_GET['id'];
-$user = getUser($_SESSION['username']);
 
 renderPage(array('reservation'), array('reservation'), function () use ($houseID, $user) { ?>
 <form action="#" method="post" id="reservation-form">
