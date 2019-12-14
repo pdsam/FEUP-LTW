@@ -47,3 +47,7 @@ main{
     flex-grow: 1;
     background-color: var(--content-background);
 }
+
+#hidden{
+    display: none;
+}

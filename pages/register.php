@@ -22,7 +22,6 @@ function register_page() { ?>
 
     <label class="block-label" for="cpassword">Confirm password</label>
     <input class="text-input" type="password" name="cpassword" id="cpassword" required>
-
     <p id="registration-error-field"></p>
     <input class="standart-border submit-button button" type="submit" value="Register">
 </form>
@@ -30,5 +29,5 @@ function register_page() { ?>
 <?php
 }
 
-renderPage(array('registration'), array('register'), 'register_page');
+renderPage(array('registration','formPlacement'), array('register'), 'register_page');
 ?>

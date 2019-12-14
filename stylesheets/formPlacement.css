@@ -5,14 +5,9 @@ main{
 }
 
 
-#registration-form {
+form {
     padding: 1em;
     padding-top: 4em;
 
-}
-
-#registration-error-field {
-    display: none;
-    color: red;
 }
 

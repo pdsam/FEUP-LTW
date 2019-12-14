@@ -4,7 +4,6 @@ include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'includes/database.php');
 include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
-include_once(ROOT . 'templates/common/editProfileForm.php');
 
 $id = $_GET['id'];
 $signedUser = getUser($_SESSION['username']);
@@ -29,7 +28,9 @@ if ($user) {
           <div class="first-line">
             <h1 class="name"><?= $user['firstName'] ?> <?= $user['lastName'] ?></h1> <span>(<?= $user['username'] ?>)</span>
             <?php if ($user['id'] == $signedUser['id']) { ?>
+              <a href="editProfile.php">
               <button id="edit-profile">Edit Profile</button>
+            </a>
             <?php } ?>
             <?php if (!isLandlord($user['id']) && $user['id'] == $signedUser['id']) { ?>
               <a href="../actions/action_register_landlord.php"><button>Register this account as landlord.</button></a>
@@ -43,7 +44,6 @@ if ($user) {
 
 <?php
     }
-    draw_edit_profile_form();
   }
 );
 } else {
