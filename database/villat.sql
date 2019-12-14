@@ -51,10 +51,11 @@ CREATE TABLE reservation(
     startDate text,
     endDate text,
     numberOfPeople integer check(numberOfPeople > 0), 
-    status text check(status='pending' or status='accepted' or status='rejected') default 'pending'
+    status text check(status='pending' or status='accepted' or status='rejected' or status='canceled') default 'pending'
 );
 INSERT INTO reservation VALUES(1,3,6,'2019-12-09','2019-12-11',2,'accepted');
 INSERT INTO reservation VALUES(2,3,6,'2019-12-12','2019-12-21',2,'accepted');
+INSERT INTO reservation VALUES(3,3,6,'2019-12-23','2019-12-27',2,'pending');
 CREATE TABLE review(
     reviewID integer primary key,
     houseID integer references house on delete cascade on update cascade,
@@ -82,6 +83,14 @@ for each row
 when(exists(select houseID from house where (new.tenantID == house.landlordID and new.houseID == house.houseID)))
 begin
     select raise(ABORT, "Can't rent own house.");
+end;
+CREATE TRIGGER UpdateHouseAvgScore
+after insert on review
+for each row
+begin
+    update house set avgRating=(
+        select avg(rating) from review where houseID=new.houseID
+    ) where houseID=new.houseID;
 end;
 COMMIT;
 PRAGMA foreign_keys=ON;

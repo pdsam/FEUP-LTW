@@ -4,25 +4,36 @@ include_once(ROOT . 'includes/session.php');
 include_once(ROOT . 'database/db_houses.php');
 include_once(ROOT . 'includes/Reservation.php');
 
-if (!isset($_SESSION['username'])) {
-    header('Location: ../pages/home.php');
+$response = array(
+    'result'=>'error',
+    'type'=>'0',
+    'message'=>''
+);
+
+$user = getSessionUser();
+if (!$user) {
+    $response['type'] = '1';
+    $response['message'] = 'Operation no allowed.'; 
     die;
 }
 
-$response = array(
-    'result'=>'error',
-    'message'=>''
-);
+if ($user['id'] !== $_POST['tenantId']) {
+    $response['type'] = '1';
+    $response['message'] = 'Operation no allowed.'; 
+    die;
+}
 
 $checkInDate = $_POST['checkInDate'];
 $checkOutDate = $_POST['checkOutDate'];
 
 if ($checkInDate == $checkOutDate) {
+    $response['type'] = '2';
     $response['message'] = 'Check in and check out dates coincide.';
     echo json_encode($response);
     die;
 }
 if ($checkInDate > $checkOutDate) {
+    $response['type'] = '2';
     $response['message'] = 'Check in date happens before check out date.';
     echo json_encode($response);
     die;
@@ -60,7 +71,7 @@ if ($numberOfPeople > $houseCapacity) {
 
 $reservation = new Reservation();
 $reservation->houseId = $_POST['houseId'];
-$reservation->userId = $_POST['userId'];
+$reservation->tenantId = $_POST['tenantId'];
 $reservation->startDate = $checkInDate;
 $reservation->endDate = $checkOutDate;
 $reservation->numberOfPeople = $numberOfPeople;

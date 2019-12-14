@@ -25,17 +25,17 @@ renderPage(
     array('request', 'house_reservations'), 
     function() use ($house) { ?>
 
-<h1>House overview</h1>
-<h2><?= $house['title'] ?></h2>
-<div id="reservation-type-buttons">
-    <a class="selected-tab" id="confirmed-reservations-tab">
-            Confirmed
-    </a>
-    <a id="pending-reservations-tab">
-            Pending
-    </a>
-</div>
-<table id="reservations-table">
-</table>
+        <h1>House overview</h1>
+        <h2><?= $house['title'] ?></h2>
+        <div id="reservation-type-buttons">
+            <a class="selected-tab" id="confirmed-reservations-tab">
+                Confirmed
+            </a>
+            <a id="pending-reservations-tab">
+                Pending
+            </a>
+        </div>
+        <div id="reservations-table">
+        </div>
 
 <?php }) ?>
