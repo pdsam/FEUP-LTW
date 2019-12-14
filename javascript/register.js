@@ -44,7 +44,7 @@ registrationForm.addEventListener('submit', (e) => {
     if (password != confirmPass) {
         showError("Passwords do not match");
     }
-
+    else{
     let request = new XMLHttpRequest();
     request.open('post', '../actions/action_register.php', true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -57,4 +57,5 @@ registrationForm.addEventListener('submit', (e) => {
         email: email,
         password: password
     }));
+}
 });
