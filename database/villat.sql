@@ -38,7 +38,7 @@ CREATE TABLE house(
     address text,
     capacity integer check(capacity > 0)
 );
-INSERT INTO house VALUES(1,1,NULL,0.0,NULL,'A very nice house much wow',NULL,NULL,NULL);
+INSERT INTO house VALUES(1,1,12,0.0,'Very nice description','A very nice house much wow',NULL,NULL,NULL);
 INSERT INTO house VALUES(2,NULL,NULL,0.0,NULL,'House arround the sea with beautiful landscapes',NULL,NULL,NULL);
 INSERT INTO house VALUES(3,NULL,NULL,0.0,NULL,'Im kinda running out of descriptions',NULL,NULL,NULL);
 INSERT INTO house VALUES(4,NULL,NULL,0.0,NULL,'Damn, I need another description',NULL,NULL,NULL);
@@ -64,6 +64,8 @@ CREATE TABLE review(
     reviewText text,
     postedDate integer not null default CURRENT_TIMESTAMP
 );
+INSERT INTO review(houseID,userID,rating,reviewText) VALUES (1,1,4,'muito lindo');
+INSERT INTO review(houseID,userID,rating,reviewText) VALUES (1,3,7,'muito feio');
 CREATE TRIGGER AddedUser
 after insert on user
 for each row

@@ -29,7 +29,7 @@ function handleResponse(event) {
         return;
     }
 
-    //window.location = '../pages/profile.php';
+    window.location = '../pages/profile.php';
 }
 
 editForm.addEventListener('submit', (e) => {

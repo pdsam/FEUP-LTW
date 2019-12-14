@@ -4,7 +4,7 @@ function encodeForAjax(data) {
   }).join('&')
 }
 
-function makeReqest(url, method, successCallback, object) {
+function makeRequest(url, method, successCallback, object) {
     let request = new XMLHttpRequest();
 
     let isPost = method === 'post';

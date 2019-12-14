@@ -5,7 +5,7 @@ include_once(ROOT . 'database/db_houses.php');
 
 $houseID = $_GET['h'];
 
-renderPage(array('house'),array(),function() use ($houseID) {
+renderPage(array('house'),array('house','request'),function() use ($houseID) {
   $house = getHouse($houseID);
 
   if ($house === false) {
@@ -28,17 +28,17 @@ renderPage(array('house'),array(),function() use ($houseID) {
   <div class="house-content-wrapper">
     <div class="house-information">
       <h1><?= $house['title'] ?></h1>
-      <p>Rating</p>
-      <p><?= $house['pricePerNight'] ?>€ per night</p>
+      <p>Average Rating: <?= $house['avgRating'] ?></p>
+      <p><?= $house['pricePerNight'] ?>$/night</p>
     </div>
   
-    <ul class="content-tabs" >
+    <ul class="content-tabs" id="tabs">
       <li class="selected-tab" id="description-tab">Description</li>
       <li id="reviews-tab">Reviews</li>
     </ul>
   
     <!-- only description for now -->
-    <section class="tabbed-content" > 
+    <section class="tabbed-content" id="tabbed-content"> 
       <div>
         <p><?= $house['description'] ?></p>
       </div>

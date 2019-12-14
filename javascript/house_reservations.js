@@ -22,7 +22,7 @@ function cancelReservationButton(reservationId) {
         if (!confirm("Are you sure you want to cancel the reservation?")) {
             return;
         }
-        makeReqest(
+        makeRequest(
             '../actions/action_setReservationStatus.php',
             'post',
             handleReservationStatusResponse,
@@ -116,17 +116,17 @@ confirmedButton.addEventListener('click', (e) => {
     reservationsTable.innerHTML = '';
     pendingButton.classList.remove('selected-tab');
     confirmedButton.classList.add('selected-tab');
-    makeReqest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
+    makeRequest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
 });
 
 pendingButton.addEventListener('click', (e) => {
     reservationsTable.innerHTML = '';
     confirmedButton.classList.remove('selected-tab');
     pendingButton.classList.add('selected-tab');
-    makeReqest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'pending'});
+    makeRequest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'pending'});
 });
 
-makeReqest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
+makeRequest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
 
 function handleReservationStatusResponse(event) {
     let json = event.currentTarget.responseText;
@@ -149,7 +149,7 @@ function acceptReservation(reservationId) {
     if (!confirm('Are you sure you want to accept this reservation?')) {
         return;
     }
-    makeReqest(
+    makeRequest(
         '../actions/action_setReservationStatus.php', 
         'post', 
         handleReservationStatusResponse,
@@ -160,7 +160,7 @@ function rejectReservation(reservationId) {
     if (!confirm('Are you sure you want to reject this reservation?')) {
         return;
     }
-    makeReqest(
+    makeRequest(
         '../actions/action_setReservationStatus.php', 
         'post', 
         handleReservationStatusResponse,
