@@ -11,15 +11,15 @@ function setTableContent(event) {
 
 confirmedButton.addEventListener('click', (e) => {
     reservationsTable.innerHTML = '';
-    makeReqest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
+    makeRequest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
 });
 
 pendingButton.addEventListener('click', (e) => {
     reservationsTable.innerHTML = '';
-    makeReqest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'pending'});
+    makeRequest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'pending'});
 });
 
-makeReqest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
+makeRequest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
 
 function handleReservationStatusResponse(event) {
     let json = event.currentTarget.responseText;
@@ -40,7 +40,7 @@ function handleReservationStatusResponse(event) {
 
 function acceptReservation(reservationId) {
     confirm('Are you sure you want to accept this reservation?');
-    makeReqest(
+    makeRequest(
         '../actions/action_setReservationStatus.php', 
         'post', 
         handleReservationStatusResponse,
@@ -49,7 +49,7 @@ function acceptReservation(reservationId) {
 
 function rejectReservation(reservationId) {
     confirm('Are you sure you want to reject this reservation?');
-    makeReqest(
+    makeRequest(
         '../actions/action_setReservationStatus.php', 
         'post', 
         handleReservationStatusResponse,

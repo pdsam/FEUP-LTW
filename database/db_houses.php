@@ -87,4 +87,14 @@ function addReservation($reservation) {
     return $db->lastInsertId();
 }
 
+
+function getReviews($houseID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM review WHERE houseID = ?');
+    $stmt->execute(array($houseID));
+
+    return $stmt->fetchAll();
+}
+
 ?>
