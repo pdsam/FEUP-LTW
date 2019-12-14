@@ -1,34 +1,65 @@
 #reservations-table {
-    border-collapse: collapse;
     width: 100%;
 }
 
-#reservations-table td, th {
-    padding: 1em;
-    border-top: 1px solid rgba(0,0,0,0.6);
-    border-bottom: 1px solid rgba(0,0,0,0.6);
+.table-header {
+    font-weight: bold;
 }
 
-#reservation-type-buttons {
-    margin: 0 1em;
-    display: flex;
+.reservations-table-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+
+    border: 1px solid var(--gray-lines);
 }
 
-#reservation-type-buttons a {
-    border-width: 0 1px;
-    border-style: solid;
-    border-color: gray;
-    cursor: pointer;
-}
-
-.tab-button-container {
-    padding: 1em;
-}
-
-.tab-button-container:hover {
-    background-color: gray;
+.reservations-table-row p {
+    text-align: center;
 }
 
 #reservations-table .reservation:hover {
+    background-color: gray;
+}
+
+.status-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reject-button {
+    background-color: red;
+}
+
+.status-button {
+    margin: 0.5rem;
+}
+
+.table-row-name {
+    font-weight: bold;
+}
+
+#reservation-type-buttons {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+#reservation-type-buttons a {
+    margin: 0 1rem;
+    padding: 1em;
+    cursor: pointer;
+
+    border-radius: 5px;
+
+    background-color: gray;
+}
+
+#reservation-type-buttons .selected-tab {
+    background-color: var(--green);
+}
+
+#reservation-type-buttons a:hover {
     background-color: gray;
 }

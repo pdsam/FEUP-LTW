@@ -36,13 +36,13 @@ reservationForm.addEventListener('submit', (e)=>{
     let checkInDate = getFormValue(reservationForm, 'checkInDate');
     let checkOutdate = getFormValue(reservationForm, 'checkOutDate');
     let houseId = getFormValue(reservationForm, 'houseId');
-    let userId = getFormValue(reservationForm, 'tenantId');
+    let tenantId = getFormValue(reservationForm, 'tenantId');
 
     request.send(encodeForAjax({
         numberOfPeople: numberOfPeople,
         checkInDate: checkInDate,
         checkOutDate: checkOutdate,
         houseId: houseId,
-        userId: userId
+        tenantId: tenantId
     }));
 });

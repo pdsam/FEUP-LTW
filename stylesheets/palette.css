@@ -1,8 +1,9 @@
 :root {
     --green: #5fd96e;
     --main-background: white;
+    --content-background: rgb(250,250,250);
     --gray-lines: #e6e6e6;
-    --light-grey-background: #ddd;
+    --light-gray-background: #ddd;
 
     /* Fonts */ 
 

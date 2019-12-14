@@ -5,14 +5,13 @@ include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
 include_once(ROOT . 'templates/drawTemplate.php');
 
-if (!isset($_SESSION['username'])) {
+$user = getSessionUser();
+if (!$user) {
     header('Location: home.php');
     die;
 }
 
-$user = getUser($_SESSION['username']);
 $house = getHouse($_GET['id']);
-
 if ($house['landlordID'] !== $user['id']) {
     header('Location: home.php');
     die;
@@ -23,23 +22,19 @@ $reservations = getReservations($house['houseID'], 'accepted');
 renderPage(
     array('house_reservations'), 
     array('request', 'house_reservations'), 
-    function() use ($house, $reservations) { ?>
+    function() use ($house) { ?>
 
-<h1>House overview</h1>
-<h2><?= $house['title'] ?></h2>
-<div id="reservation-type-buttons">
-    <a id="confirmed-reservations-tab">
-        <div class="tab-button-container">
-            Confirmed
+        <h1>House overview</h1>
+        <h2><?= $house['title'] ?></h2>
+        <div id="reservation-type-buttons">
+            <a class="selected-tab" id="confirmed-reservations-tab">
+                Confirmed
+            </a>
+            <a id="pending-reservations-tab">
+                Pending
+            </a>
         </div>
-    </a>
-    <a id="pending-reservations-tab">
-        <div class="tab-button-container">
-            Pending
+        <div id="reservations-table">
         </div>
-    </a>
-</div>
-<table id="reservations-table">
-</table>
 
 <?php }) ?>

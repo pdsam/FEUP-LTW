@@ -1,7 +1,7 @@
 <?php 
 class Reservation {
     public $userId;
-    public $houseId;
+    public $tenantId;
     public $startDate;
     public $endDate;
     public $numberOfPeople;

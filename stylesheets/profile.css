@@ -1,35 +1,43 @@
-.profile-content {
-    display: grid;
-    padding: 1em;
-    grid-template-columns: 1fr 2fr;
+.profile-header {
+    display: flex;
+    margin-bottom: 44px;
+    
 }
 
 .profile-picture-container {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    justify-self: center;
+    margin-right:2em;
+    flex-basis: 0;
 }
 
 .profile-picture-container img {
-    height: 20em;
+    height: 15em;
     border-radius: 50%;
     border: 2px solid var(--gray-lines);
 }
 
 .user-details {
-    grid-column-start: 2;
-    grid-column-end: 3;
-
+    flex-grow: 2;
     margin-left: 1em;
+    flex-basis: 30px;
 }
 
-.houses-container {
-    padding: 1em;
+.profile-container{
+   display: flex;
+   padding-top: 2em;
+   justify-content: center;
+   
 }
 
-.house-overview {
-    padding: 0.5em;
+.first-line{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
-    border: 1px solid black;
+button{
+    margin-left: 2em;
+}
 
+span{
+    margin-left: 0.5em;
 }

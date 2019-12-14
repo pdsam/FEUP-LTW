@@ -5,12 +5,11 @@ include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
 include_once(ROOT . 'includes/House.php');
 
-if (!isset($_SESSION['username'])) {
+$user = getSessionUser();
+if (!$user) {
     header('Location: ../pages/home.php');
     die;
 }
-
-$user = getUser($_SESSION['username']);
 
 $house = new House();
 $house->landlordID = $user['id'];
@@ -23,6 +22,6 @@ $house->description = $_POST['description'];
 
 $houseID = addHouse($house);
 
-header("Location: ../pages/add_house_images.php?houseid=$houseID");
+header("Location: ../pages/add_house_images.php?houseId=$houseID");
 
 ?>

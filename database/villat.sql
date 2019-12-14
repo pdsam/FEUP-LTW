@@ -11,11 +11,12 @@ CREATE TABLE user(
     lastName text,
     email text unique,
     profilePicture text default 'default',
-    password text not null
+    password text not null,
+    bio text default 'Bio Out of service'
 );
-INSERT INTO user VALUES(1,'jradaval','Jarvazio','Radaval','jradaval@gmail.com','default','$2y$10$zEqUtTFDw5YLwArg.imnoOwHIDYWxbp3cBJFx0k3Yzx4ULD8wWiQe');
-INSERT INTO user VALUES(2,'manel','Manel','Manuel','manel@manel.manel','default','$2y$10$oL01mgnRlqmXaE2mpMfkNeFDu.otdBtG4fMy8oJu6Z8zrfEXnFala');
-INSERT INTO user VALUES(3,'motavia','Maria','Otavia','motavia@gmail.com','default','$2y$10$T6PDAC.jFX0rsbJAg.TSy.sTL1QCcukGYjOAc/gIPEd.9/NTumrRa');
+INSERT INTO user VALUES(1,'jradaval','Jarvazio','Radaval','jradaval@gmail.com','default','$2y$10$zEqUtTFDw5YLwArg.imnoOwHIDYWxbp3cBJFx0k3Yzx4ULD8wWiQe', '');
+INSERT INTO user VALUES(2,'manel','Manel','Manuel','manel@manel.manel','default','$2y$10$oL01mgnRlqmXaE2mpMfkNeFDu.otdBtG4fMy8oJu6Z8zrfEXnFala', '');
+INSERT INTO user VALUES(3,'motavia','Maria','Otavia','motavia@gmail.com','default','$2y$10$T6PDAC.jFX0rsbJAg.TSy.sTL1QCcukGYjOAc/gIPEd.9/NTumrRa', '');
 CREATE TABLE tenant(
     id integer primary key references user on delete cascade on update cascade
 );
@@ -50,10 +51,11 @@ CREATE TABLE reservation(
     startDate text,
     endDate text,
     numberOfPeople integer check(numberOfPeople > 0), 
-    status text check(status='pending' or status='accepted' or status='rejected') default 'pending'
+    status text check(status='pending' or status='accepted' or status='rejected' or status='canceled') default 'pending'
 );
 INSERT INTO reservation VALUES(1,3,6,'2019-12-09','2019-12-11',2,'accepted');
 INSERT INTO reservation VALUES(2,3,6,'2019-12-12','2019-12-21',2,'accepted');
+INSERT INTO reservation VALUES(3,3,6,'2019-12-23','2019-12-27',2,'pending');
 CREATE TABLE review(
     reviewID integer primary key,
     houseID integer references house on delete cascade on update cascade,
@@ -83,6 +85,14 @@ for each row
 when(exists(select houseID from house where (new.tenantID == house.landlordID and new.houseID == house.houseID)))
 begin
     select raise(ABORT, "Can't rent own house.");
+end;
+CREATE TRIGGER UpdateHouseAvgScore
+after insert on review
+for each row
+begin
+    update house set avgRating=(
+        select avg(rating) from review where houseID=new.houseID
+    ) where houseID=new.houseID;
 end;
 COMMIT;
 PRAGMA foreign_keys=ON;

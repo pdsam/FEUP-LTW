@@ -76,7 +76,12 @@ function getUserById($userId) {
     return $stmt->fetch();
 }
 
+function setProfilePicture($userId, $picId) {
+    $db = Database::instance()->db();
 
+    $stmt = $db->prepare("UPDATE user SET profilePicture=? WHERE id=?");
+    $stmt->execute(array($picId, $userId));
+}
 
 function userExists($username) {
     $db = Database::instance()->db();
