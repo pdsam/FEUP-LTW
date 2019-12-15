@@ -14,6 +14,8 @@ if (isset($id)) {
   $user = getUser($_SESSION['username']);
 }
 
+
+
 if ($user) {
   renderPage(
     array('profile'),
@@ -22,18 +24,33 @@ if ($user) {
     <section class="profile-container">
       <header class="profile-header">
         <div class="profile-picture-container">
+
+          <?php 
+            $path = ROOT . "database/profilePictures/". $user['profilePicture'];
+          if(file_exists($path)){ ?>
           <img src="../database/profilePictures/<?= $user['profilePicture'] ?>" alt="Profile picture">
+          <?php } else{ echo " <img src='../database/profilePictures/default' alt='Profile picture'>" ;
+          }?>
+          <?php if ($user['id'] == $signedUser['id']) { ?>
+            <form action="../actions/action_addProfilePhoto.php" method="post" enctype="multipart/form-data">
+              <input type="file" name="fileToUpload" id="fileToUpload">
+              <input type="submit" value="Upload Image" name="submit">
+            </form>
+
+
+          <?php } ?>
         </div>
         <div class="user-details">
           <div class="first-line">
             <h1 class="name"><?= $user['firstName'] ?> <?= $user['lastName'] ?></h1> <span>(<?= $user['username'] ?>)</span>
             <?php if ($user['id'] == $signedUser['id']) { ?>
               <a href="editProfile.php">
-              <button id="edit-profile">Edit Profile</button>
-            </a>
+                <button id="edit-profile">Edit Profile</button>
+              </a>
             <?php } ?>
             <?php if (!isLandlord($user['id']) && $user['id'] == $signedUser['id']) { ?>
               <a href="../actions/action_register_landlord.php"><button>Register this account as landlord.</button></a>
+            <?php } ?>
           </div>
           <p class="user-email"><?= $user['email'] ?></p>
           <p class="user-bio"><?= $user['bio'] ?></p>
@@ -43,7 +60,7 @@ if ($user) {
     </section>
 
 <?php
-    }
+
   }
 );
 } else {
