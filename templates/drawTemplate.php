@@ -4,51 +4,57 @@ include_once(ROOT . 'templates/common/footer.php');
 include_once(ROOT . 'templates/common/loginForm.php');
 include_once(ROOT . 'includes/session.php');
 
-function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc)
-{ ?>
-  <!DOCTYPE html>
-  <html>
+function error($message) { 
+	return function () use($message) {?>
+		<h1><?= $message ?></h1>
+<?php 
+	};
+}
 
-  <head>
-    <title>Villat</title>
-    <meta charset="utf-8" />
+function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) { ?>
+	<!DOCTYPE html>
+	<html>
 
-    <link rel="stylesheet" href="../stylesheets/palette.css">
-    <link rel="stylesheet" href="../stylesheets/common.css">
-    <link rel="stylesheet" href="../stylesheets/topbar.css">
-    <link rel="stylesheet" href="../stylesheets/login.css">
-    <link rel="stylesheet" href="../stylesheets/footer.css">
-    <link rel="stylesheet" href="../stylesheets/forms.css">
-    <link rel="stylesheet" href="../stylesheets/elements/button.css">
+	<head>
+		<title>Villat</title>
+		<meta charset="utf-8" />
 
-    <?php if (!isset($_SESSION['username'])) { ?>
-      <script src="../javascript/login.js" defer></script>
-    <?php } ?>
+		<link rel="stylesheet" href="../stylesheets/palette.css">
+		<link rel="stylesheet" href="../stylesheets/common.css">
+		<link rel="stylesheet" href="../stylesheets/topbar.css">
+		<link rel="stylesheet" href="../stylesheets/login.css">
+		<link rel="stylesheet" href="../stylesheets/footer.css">
+		<link rel="stylesheet" href="../stylesheets/forms.css">
+		<link rel="stylesheet" href="../stylesheets/elements/button.css">
 
-    <?php foreach ($stylesheets as $stylesheet) { ?>
-      <link rel="stylesheet" href="../stylesheets/<?= $stylesheet ?>.css">
-    <?php } ?>
+		<?php if (!isset($_SESSION['username'])) { ?>
+			<script src="../javascript/login.js" defer></script>
+		<?php } ?>
 
-    <?php foreach ($scripts as $script) { ?>
-      <script src="../javascript/<?= $script ?>.js" defer></script>
-    <?php } ?>
-  </head>
+		<?php foreach ($stylesheets as $stylesheet) { ?>
+			<link rel="stylesheet" href="../stylesheets/<?= $stylesheet ?>.css">
+		<?php } ?>
 
-  <body>
+		<?php foreach ($scripts as $script) { ?>
+			<script src="../javascript/<?= $script ?>.js" defer></script>
+		<?php } ?>
+	</head>
 
-    <?php draw_header(); ?>
-    <main class="main-content">
-      
-      <?php $rendererFunc(); ?>
-      
-    </main>
-    <?php draw_footer(); ?>
+	<body>
 
-    <?php if (!isset($_SESSION['username'])) {
-        draw_login_form();
-      } ?>
+		<?php draw_header(); ?>
+		<main class="main-content">
 
-  </body>
+			<?php $rendererFunc(); ?>
 
-  </html>
+		</main>
+		<?php draw_footer(); ?>
+
+		<?php if (!isset($_SESSION['username'])) {
+				draw_login_form();
+			} ?>
+
+	</body>
+
+	</html>
 <?php } ?>
