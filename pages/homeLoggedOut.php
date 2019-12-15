@@ -44,10 +44,10 @@ $user = getSessionUser();
                     $nextDay = new DateTime(date('Y-m-d'));
                     $nextDay->modify('+1 day');
 
-                    echo '<label class="block-label" for="start-date" >Check-In:</label>';
-                    echo '<input type= "date" id="start-date" min=$today >';
-                    echo '<label class="block-label" for="end-date" >Checkout:</label>';
-                    echo '<input type= "date" id="end-date" min=$nextDay >';
+                    echo "<label class='block-label' for='start-date' >Check-In:</label>";
+                    echo "<input type= 'date' id='start-date' min=$today >";
+                    echo "<label class='block-label' for='end-date' >Checkout:</label>";
+                    echo "<input type= 'date' id='end-date' min=$nextDay >";
 
                     ?>
 

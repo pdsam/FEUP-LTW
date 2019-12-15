@@ -2,6 +2,7 @@
     margin: 1em auto 1em auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .filter-form {
@@ -100,4 +101,16 @@
 
 .price-rating-container p {
     margin-right: 1rem;
+}
+
+.search-field-container{
+    display: flex;
+
+}
+
+.submit-button{
+    flex: none;
+}
+.form-element{
+    padding-right: 2em;
 }
