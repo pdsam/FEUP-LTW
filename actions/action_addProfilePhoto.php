@@ -2,7 +2,7 @@
 include_once('../config.php');
 include_once(ROOT . 'includes/session.php');
 include_once(ROOT . 'database/db_houses.php');
-
+include_once(ROOT . 'includes/images.php');
 
 $user = getSessionUser();
 if (!$user) {
@@ -11,42 +11,24 @@ if (!$user) {
 }
 
 $target_dir = ROOT . "database/profilePictures/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-var_dump($target_file);
-$pictureID = generateRandomName(32);
-$new_target_file = $target_dir . $pictureID;
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-$error_message = "";
+$uploaded_file = $_FILES["fileToUpload"]["tmp_name"];
 
-if(isset($_POST["submit"])) {
+$pictureID = '';
+do {
+    $pictureID = generateRandomName(32);
+} while(file_exists($target_dir . $pictureID));
 
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check=== true){
-        $uploadOk = 0;
-        $error_message = "Not a real image";
-        echo "$error_message";
+if (validImage($_FILES['fileToUpload'])) {
+    $target_file = $target_dir . $pictureID;
+    
+    move_uploaded_file($uploaded_file, $target_file);
+
+    if ($user['profilePicture'] !== 'default') {
+        unlink($target_dir . $user['profilePicture']);
     }
 
-    else if ($_FILES["fileToUpload"]["size"] > 2000000) {
-        $uploadOk = 0;
-        $error_message = "Image size must be lower then 2mb";
-        echo "$error_message";
-    } 
-
-    else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-        $uploadOk = 0;
-        $error_message = "<p>Unsupported Image Type</p>";
-        echo "$imageFileType" . " :stuff";
-        echo "$error_message";
-    } 
-
-    if($uploadOk == 1){
-        move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-        rename($target_file,$new_target_file);
-        setProfilePicture($user['id'],$pictureID);
-    }
+    setProfilePicture($user['id'], $pictureID);
 }
 
-    header('Location:../pages/profile.php');
+header('Location:../pages/profile.php');
 ?>
