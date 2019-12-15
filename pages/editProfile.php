@@ -25,11 +25,13 @@ renderPage(
     <div id="edit-form-wrapper" class="edit-wrapper">
         <div id="edit-form-container" class="edit-form-container">
             <form id="edit-profile-form" action="#" method="post">
+            <div class="inline-form-elements">
                 <label class="block-label" for="fname">First Name</label>
                 <?= "<input class='text-input' type='text' name='fname' id='fname' value=$firstName required>" ?>
 
                 <label class="block-label" for="lname">Last Name</label>
                 <?= "<input class='text-input' type='text' name='lname' id='lname' value=$lastName required>" ?>
+            </div>
 
                 <label class="block-label" for="email">Email</label>
                 <?= "<input class='text-input' type='email' name='email' id='email' value='$email' required>" ?>

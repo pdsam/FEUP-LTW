@@ -5,9 +5,13 @@ main{
 }
 
 
+/*
 form {
-    padding: 1em;
-    padding-top: 4em;
-
+    border: 1px solid var(--light-gray-background);
+    padding:1em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
+*/
