@@ -1,7 +1,7 @@
 <?php 
 include_once('../config.php');
 include_once(ROOT . 'includes/session.php');
-include_once(ROOT . 'databse/db_users.php');
+include_once(ROOT . 'database/db_users.php');
 
 if (!isset($_SESSION['username'])) {
     header('Location: ../pages/home.php');

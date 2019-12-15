@@ -30,12 +30,12 @@ function updateUserInfo($username, $firstname, $lastname, $email) {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('UPDATE user SET firstName=?, lastName=?, email=? where username=?');
-    $stmt->execute(
-        $firstname,
-        $lastname,
-        $email,
+    $stmt->execute(array( 
+        $firstname, 
+        $lastname, 
+        $email, 
         $username
-    );
+    ));
 }
 
 function updateUserPassword($username, $oldPassword, $newPassword) {
@@ -50,10 +50,10 @@ function updateUserPassword($username, $oldPassword, $newPassword) {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('UPDATE user SET password=? where username=?');
-    $stmt->execute(
+    $stmt->execute(array(
         password_hash($newPassword, PASSWORD_DEFAULT),
         $username
-    );
+    ));
 
     return true;
 }
