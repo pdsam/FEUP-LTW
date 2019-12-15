@@ -2,11 +2,10 @@
 include_once(ROOT . 'includes/session.php');
 include_once(ROOT . 'database/db_users.php');
 
-$user = getSessionUser();
 
 function draw_header()
 { 
-  global $user;
+  $user = getSessionUser();
   ?>
   <nav class="topbar">
     <section class="bar-logo">
@@ -14,7 +13,7 @@ function draw_header()
         <p>Villat</p>
       </a>
     </section>
-    <?php if ($user) { 
+    <?php if ($user) {
       ?>
       <section class="user-options-container">
         
