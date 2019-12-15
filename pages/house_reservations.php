@@ -11,19 +11,7 @@ if (!$user) {
     die;
 }
 
-$house = getHouse($_GET['id']);
-if ($house['landlordID'] !== $user['id']) {
-    header('Location: home.php');
-    die;
-}
-
-$reservations = getReservations($house['houseID'], 'accepted');
-
-renderPage(
-    array('house_reservations'), 
-    array('request', 'house_reservations'), 
-    function() use ($house) { ?>
-
+$renderFunction = function() use ($house) { ?>
         <h1>House overview</h1>
         <h2><?= $house['title'] ?></h2>
         <div id="reservation-type-buttons">
@@ -36,5 +24,16 @@ renderPage(
         </div>
         <div id="reservations-table">
         </div>
+<?php };
 
-<?php }) ?>
+$house = getHouse($_GET['id']);
+if ($house['landlordID'] !== $user['id']) {
+    $renderFunction = error("You have no permission to access this page.");
+    die;
+}
+
+renderPage(
+    array('house_reservations'), 
+    array('request', 'house_reservations'),
+    $renderFunction 
+); ?>

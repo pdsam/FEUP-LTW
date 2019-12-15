@@ -4,23 +4,20 @@ include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'includes/database.php');
 include_once(ROOT . 'database/db_users.php');
 
+$user = getSessionUser();
+if (!$user) {
+    header('Location: home.php');
+    die;
+}
+
 renderPage(
     array('formPlacement'),
     array('editProfile'),
-    function () {
-
-        if (!isset($_SESSION['username'])) {
-            die;
-        }
-
-        $user = getUser($_SESSION['username']);
-
+    function () use ($user) {
         $firstName = $user['firstName'];
         $lastName = $user['lastName'];
         $email = $user['email'];
-        $username = $_SESSION['username'];
-
-
+        $username = $user['username'];
         ?>
     <div id="edit-form-wrapper" class="edit-wrapper">
         <div id="edit-form-container" class="edit-form-container">
@@ -41,7 +38,7 @@ renderPage(
 
                 <label class="block-label" for="new-password">Enter new password</label>
                 <input class="text-input" type="password" name="new-password" id="new-password">
-                
+
                 <label class="block-label" for="new-c-password">Confirm new password</label>
                 <input class="text-input" type="password" name="new-c-password" id="new-c-password">
 

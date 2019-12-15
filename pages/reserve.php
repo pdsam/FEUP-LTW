@@ -11,9 +11,13 @@ if (!$user) {
   die;
 }
 
-$houseID = $_GET['id'];
+if (!isset($_GET['id'])) {
+  header('Location: home.php');
+  die;
+}
 
-renderPage(array('reservation'), array('reservation'), function () use ($houseID, $user) { ?>
+$houseID = $_GET['id'];
+$renderFunction = function () use ($houseID, $user) { ?>
 <form action="#" method="post" id="reservation-form">
   <p id="reservation-error-label"></p>
   <div>
@@ -34,6 +38,8 @@ renderPage(array('reservation'), array('reservation'), function () use ($houseID
 
   <input type="submit" value="Submit">
 </form>
-<?php });
+<?php };
+
+renderPage(array('reservation'), array('reservation'), $renderFunction);
 
 ?>
