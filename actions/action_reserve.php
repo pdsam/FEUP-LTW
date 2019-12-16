@@ -39,14 +39,17 @@ if ($checkInDate > $checkOutDate) {
     die;
 }
 
-$reservations = getReservations($_POST['houseId'], 'accepted');
+$reservations = array_merge(
+    getReservations($_POST['houseId'], 'accepted'), 
+    getReservations($_POST['houseID'], 'pending')
+);
+
 
 foreach ($reservations as $reservation) {
     $reservationStart = $reservation['startDate'];
     $reservationEnd = $reservation['endDate'];
     if (strcmp($checkInDate,$reservationEnd) <= 0 && strcmp($checkOutDate,$reservationStart) >= 0){
         $response['message'] = 'House will be occupied during the period you requested.';
-        //$response['message'] = $reservationStart;
         echo json_encode($response);
         die;
     }
