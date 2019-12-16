@@ -1,0 +1,32 @@
+.reservation-list {
+    margin: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.list-item-reservation {
+    margin: 1em 0;
+    padding: 0.5em;
+
+    box-shadow: 0 0 6px rgba(0,0,0,0.6);
+
+    border: 1px solid var(--gray-lines);
+    border-radius: 5px;
+}
+
+.reservation-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.reservation-status-canceled, .reservation-status-rejected {
+    color:red;
+}
+
+.reservation-status-accepted {
+    color:green;
+}
+
+.reservation-status-pending {
+    color:gray;
+}
