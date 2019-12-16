@@ -10,8 +10,12 @@ renderPage(array('home', 'forms'), array('slider'), function () {
   $today = date('Y-m-d');
   $nextDay = new DateTime(date('Y-m-d'));
   $nextDay->modify('+1 day');
-
   $nextDay = date('Y-m-d', $nextDay);
+
+
+  
+  
+
 
   ?>
   <section class="filter-renderer">

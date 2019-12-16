@@ -117,10 +117,3 @@ function isLandlord($userID) {
     return $stmt->fetch()['count'] > 0;
 }
 
-function search(){
-
-    $searchString= "Select * from house where ";
-
-}
-
-?>

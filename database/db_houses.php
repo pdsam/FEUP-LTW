@@ -147,4 +147,15 @@ function getReviews($houseID) {
     return $stmt->fetchAll();
 }
 
+
+function search($query,$params){
+    $db = Database::instance()->db();
+
+
+    $stmt = $db->prepare($query);
+    $stmt->execute($params);
+    
+}
 ?>
+
+
