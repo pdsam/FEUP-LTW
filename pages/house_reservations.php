@@ -7,8 +7,7 @@ include_once(ROOT . 'templates/drawTemplate.php');
 
 $user = getSessionUser();
 if (!$user) {
-    header('Location: home.php');
-    die;
+    error('401');
 }
 
 $house = getHouse($_GET['id']);
@@ -33,8 +32,7 @@ $renderFunction = function() use ($house) { ?>
 <?php };
 
 if ($house['landlordID'] !== $user['id']) {
-    $renderFunction = error("You have no permission to access this page.");
-    die;
+    error('403');
 }
 
 renderPage(

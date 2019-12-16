@@ -6,8 +6,7 @@ include_once(ROOT . 'database/db_users.php');
 
 $user = getSessionUser();
 if (!$user) {
-    header('Location: home.php');
-    die;
+    error('401');
 }
 
 renderPage(

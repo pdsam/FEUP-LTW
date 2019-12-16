@@ -6,8 +6,7 @@ include_once(ROOT . 'database/db_houses.php');
 
 $user = getSessionUser();
 if (!$user) {
-    header('Location: home.php');
-    die;
+    error('401');
 }
 
 if (!isset($_GET['houseId'])) {
