@@ -18,6 +18,7 @@ renderPage(
         $lastName = $user['lastName'];
         $email = $user['email'];
         $username = $user['username'];
+        $bio = $user['bio'];
         ?>
     <div id="edit-form-wrapper" class="edit-wrapper">
         <div id="edit-form-container" class="edit-form-container">
@@ -33,6 +34,9 @@ renderPage(
                 <label class="block-label" for="email">Email</label>
                 <?= "<input class='text-input' type='email' name='email' id='email' value='$email' required>" ?>
 
+                <label class="block-label" for="bio">Bio</label>
+                <?= "<input class='text-input' type='text' name='bio' id='bio' value='$bio' required>" ?>
+
                 <label class="block-label" for="old-password">Enter old password</label>
                 <input class="text-input" type="password" name="old-password" id="old-password">
 
@@ -41,6 +45,8 @@ renderPage(
 
                 <label class="block-label" for="new-c-password">Confirm new password</label>
                 <input class="text-input" type="password" name="new-c-password" id="new-c-password">
+
+
 
                 <p id="profile-error-field"></p>
                 <input class="standart-border submit-button button" type="submit" value="Save">

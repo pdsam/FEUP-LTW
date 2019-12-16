@@ -20,7 +20,7 @@ function showError(errorMessage) {
 
 function handleResponse(event) {
     let responseText = event.currentTarget.responseText;
-    console.log(event);
+    console.log("event: "+event);
 
     let json = JSON.parse(responseText);
 
@@ -41,9 +41,10 @@ editForm.addEventListener('submit', (e) => {
     let oldPassword = getFormValue(editForm, 'old-password');
     let newPassword = getFormValue(editForm, 'new-password');
     let cNewPassword = getFormValue(editForm,'new-c-password');
+    let bio = getFormValue(editForm,'bio');
     let username = document.getElementById("hidden").textContent;
-
-    console.log(username);
+    
+    
     if (newPassword != cNewPassword) {
         showError("Passwords do not match");
     }
@@ -60,6 +61,8 @@ editForm.addEventListener('submit', (e) => {
         email: email,
         oldPassword: oldPassword,
         newPassword: newPassword,
+        bio: bio
     }));
+    console.log(request);
 }
 });

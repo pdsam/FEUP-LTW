@@ -26,15 +26,16 @@ function checkUserPassword($username, $password) {
     return $user !== false && password_verify($password, $user['password']);
 }
 
-function updateUserInfo($username, $firstname, $lastname, $email) {
+function updateUserInfo($username, $firstname, $lastname, $email, $bio) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('UPDATE user SET firstName=?, lastName=?, email=? where username=?');
+    $stmt = $db->prepare('UPDATE user SET firstName=?, lastName=?, email=?, bio=? where username=?');
     $stmt->execute(array( 
         $firstname, 
         $lastname, 
-        $email, 
-        $username
+        $email,
+        $bio, 
+        $username,
     ));
 }
 

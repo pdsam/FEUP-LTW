@@ -22,6 +22,7 @@ $username = $_POST['username'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $email = $_POST['email'];
+$bio = $_POST['bio'];
 $oldPassword = $_POST['oldPassword'];
 $newPassword = $_POST['newPassword'];
 
@@ -33,7 +34,7 @@ if ($oldPassword !== '') {
     }
 }
 
-updateUserInfo($username, $firstname, $lastname, $email);
+updateUserInfo($username, $firstname, $lastname, $email, $bio);
 
 $response['result'] = 'success';
 $response['message'] = 'Profile updated with success';
