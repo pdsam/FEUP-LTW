@@ -4,18 +4,26 @@ include_once(ROOT . 'includes/database.php');
 function addHouse($house) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('insert into house(landlordID, pricePerNight, title, description, area, address, capacity) values (?,?,?,?,?,?,?)');
+    $stmt = $db->prepare('insert into house(landlordID, pricePerNight, title, description, area, locationID, capacity) values (?,?,?,?,?,?,?)');
     $stmt->execute(array(
         $house->landlordID,
         $house->pricePerNight,
         $house->title,
         $house->description,
         $house->area,
-        $house->address,
+        $house->location,
         $house->capacity
     ));
 
     return $db->lastInsertId();
+}
+
+function getLocations() {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM location');
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
 
 function getAllHouseInfo() {

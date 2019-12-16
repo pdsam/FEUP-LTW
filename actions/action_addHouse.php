@@ -13,10 +13,10 @@ if (!$user) {
 
 $house = new House();
 $house->landlordID = $user['id'];
-$house->title = $_POST['title'];
-$house->pricePerNight = $_POST['pricePerNight'];
-$house->area = $_POST['area'];
-$house->address = $_POST['address'];
+$house->title = htmlspecialchars($_POST['title']);
+$house->pricePerNight = htmlspecialchars($_POST['pricePerNight']);
+$house->area = htmlspecialchars($_POST['area']);
+$house->location = $_POST['locationId'];
 $house->capacity = $_POST['capacity'];
 $house->description = $_POST['description'];
 

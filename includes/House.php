@@ -4,7 +4,7 @@ class House {
     public $title;
     public $pricePerNight;
     public $area;
-    public $address;
+    public $location;
     public $capacity;
     public $description;
 
