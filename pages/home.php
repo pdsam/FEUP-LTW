@@ -20,7 +20,7 @@ renderPage(array('home', 'forms'), array('slider'), function () {
   ?>
   <section class="filter-renderer">
     <div class="search-form-container">
-      <form class="filter-form" action="#" method="POST">
+      <form class="filter-form" action="action_search" method="POST">
         <div class="search-field-container">
 
           <div class="form-element">
@@ -71,6 +71,8 @@ renderPage(array('home', 'forms'), array('slider'), function () {
   </section>
 
   <section class="houses-display">
-    <?php draw_house_cards(); ?>
+    <?php
+    $houses = array();
+    draw_house_cards($houses); ?>
   </section>
 <?php }) ?>

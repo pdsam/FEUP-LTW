@@ -183,7 +183,7 @@ function search($query,$params){
 
     $stmt = $db->prepare($query);
     $stmt->execute($params);
-    
+    return $stmt->fetchAll();
 }
 ?>
 

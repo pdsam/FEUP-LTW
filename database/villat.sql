@@ -33,24 +33,10 @@ CREATE TABLE location(
     locationID integer primary key,
     name text
 );
-INSERT INTO location values (1, "Aveiro");
-INSERT INTO location values (2, "Beja");
-INSERT INTO location values (3, "Braga");
-INSERT INTO location values (4, "Bragança");
-INSERT INTO location values (5, "Castelo Branco");
-INSERT INTO location values (6, "Coimbra");
-INSERT INTO location values (7, "Évora");
-INSERT INTO location values (8, "Faro");
-INSERT INTO location values (9, "Guarda");
-INSERT INTO location values (10, "Leiria");
-INSERT INTO location values (11, "Lisboa");
-INSERT INTO location values (12, "Portalegre");
-INSERT INTO location values (13, "Porto");
-INSERT INTO location values (14, "Santarém");
-INSERT INTO location values (15, "Setúbal");
-INSERT INTO location values (16, "Viana do Castelo");
-INSERT INTO location values (17, "Vila Real");
-INSERT INTO location values (18, "Viseu");
+INSERT INTO location values (1, "Aveiro"),(2, "Beja"),(3, "Braga"),(4, "Bragança"),
+(5, "Castelo Branco"),(6, "Coimbra"),(7, "Évora"),(8, "Faro"),(9, "Guarda"),
+(10, "Leiria"),(11, "Lisboa"),(12, "Portalegre"),(13, "Porto"),(14, "Santarém"),
+(15, "Setúbal"),(16, "Viana do Castelo"),(17, "Vila Real"),(18, "Viseu");
 
 CREATE TABLE house(
     houseID integer primary key,

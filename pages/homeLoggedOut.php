@@ -43,6 +43,7 @@ $user = getSessionUser();
                     $today = date('Y-m-d');
                     $nextDay = new DateTime(date('Y-m-d'));
                     $nextDay->modify('+1 day');
+                    $nextDay = date('Y-m-d', $nextDay);
 
                     echo "<label class='block-label' for='start-date' >Check-In:</label>";
                     echo "<input type= 'date' id='start-date' min=$today >";
@@ -78,8 +79,8 @@ $user = getSessionUser();
     </main>
 
     <?php if (!isset($_SESSION['username'])) {
-        draw_login_form();
-    } ?>
+                        draw_login_form();
+                    } ?>
 
     <?php draw_footer(); ?>
 </body>
