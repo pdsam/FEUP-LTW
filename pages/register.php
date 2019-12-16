@@ -5,11 +5,11 @@ include_once(ROOT . 'templates/drawTemplate.php');
 function register_page() { ?>
 
 <form id="registration-form" action="#" method="post">
-    <label class="block-label" for="fname">First Name</label>
-    <input class="text-input" type="text" name="fname" id="fname" required>
+    <label class="block-label" for="firstname">First Name</label>
+    <input class="text-input" type="text" name="firstname" id="firstname" required>
 
-    <label class="block-label" for="lname">Last Name</label>
-    <input class="text-input" type="text" name="lname" id="lname" required>
+    <label class="block-label" for="lastname">Last Name</label>
+    <input class="text-input" type="text" name="lastname" id="lastname" required>
 
     <label class="block-label" for="reg-username">Username</label>
     <input class="text-input" type="text" name="username" id="reg-username" required>

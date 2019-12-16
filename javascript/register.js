@@ -34,28 +34,17 @@ function handleResponse(event) {
 registrationForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let firstName = getFormValue(registrationForm, 'fname');
-    let lastName = getFormValue(registrationForm, 'lname');
-    let username = getFormValue(registrationForm, 'username');
-    let email = getFormValue(registrationForm, 'email');
     let password = getFormValue(registrationForm, 'password');
     let confirmPass = getFormValue(registrationForm, 'cpassword');
 
     if (password != confirmPass) {
         showError("Passwords do not match");
+        return;
     }
-    else{
+
     let request = new XMLHttpRequest();
     request.open('post', '../actions/action_register.php', true);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     request.addEventListener('load', handleResponse);
-    request.send(encodeForAjax({
-        firstname: firstName,
-        lastname: lastName,
-        username: username,
-        email: email,
-        password: password
-    }));
-}
+    request.send(new FormData(registrationForm));
 });
