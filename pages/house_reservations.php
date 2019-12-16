@@ -11,6 +11,12 @@ if (!$user) {
     die;
 }
 
+$house = getHouse($_GET['id']);
+if (!$house) {
+    header('Location: home.php');
+    die;
+}
+
 $renderFunction = function() use ($house) { ?>
         <h1>House overview</h1>
         <h2><?= $house['title'] ?></h2>
@@ -26,7 +32,6 @@ $renderFunction = function() use ($house) { ?>
         </div>
 <?php };
 
-$house = getHouse($_GET['id']);
 if ($house['landlordID'] !== $user['id']) {
     $renderFunction = error("You have no permission to access this page.");
     die;
