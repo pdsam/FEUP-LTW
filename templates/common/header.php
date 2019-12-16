@@ -18,11 +18,14 @@ function draw_header()
       <section class="user-options-container">
         
         <?php
-        $user = getUser($_SESSION['username']);
+        //$user = getUser($_SESSION['username']);
         $userID = $user['id'];
        echo "<a href='../pages/profile.php?id=$userID'>" ;?>
           <p class="nav-button">Profile</p>
         </a>
+        <a href="../pages/user_reservations.php">
+        <p class="nav-button">Your Reservations</p>
+      </a>
         <?php if (isLandlord($user['id'])) { ?>
           <a href="../pages/dashboard.php">
             <p class="nav-button">Dashboard</p>

@@ -83,6 +83,15 @@ function postReview($houseId, $userId, $rating, $text) {
     $stmt->execute(array($houseId, $userId, $rating, $text));
 }
 
+function getReservationByTenant($tenantId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM reservation join house using(houseID) WHERE tenantID=?');
+    $stmt->execute(array($tenantId));
+
+    return $stmt->fetchAll();
+}
+
 function getReservations($houseID, $status) {
     $db = Database::instance()->db();
 
