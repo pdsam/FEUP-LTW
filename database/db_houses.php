@@ -6,13 +6,13 @@ function addHouse($house) {
 
     $stmt = $db->prepare('insert into house(landlordID, pricePerNight, title, description, area, locationID, capacity) values (?,?,?,?,?,?,?)');
     $stmt->execute(array(
-        $house->landlordID,
-        $house->pricePerNight,
-        $house->title,
-        $house->description,
-        $house->area,
-        $house->location,
-        $house->capacity
+        htmlspecialchars($house->landlordID),
+        htmlspecialchars($house->pricePerNight),
+        htmlspecialchars($house->title),
+        htmlspecialchars($house->description),
+        htmlspecialchars($house->area),
+        htmlspecialchars($house->location),
+        htmlspecialchars($house->capacity)
     ));
 
     return $db->lastInsertId();
@@ -24,6 +24,14 @@ function getLocations() {
     $stmt = $db->prepare('SELECT * FROM location');
     $stmt->execute();
     return $stmt->fetchAll();
+}
+
+function locationExists($locationId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT count(*) as count FROM location WHERE locationID=?');
+    $stmt->execute(array($locationId));
+    return intval($stmt->fetch()['count']) > 0;
 }
 
 function getAllHouseInfo() {
@@ -88,7 +96,11 @@ function postReview($houseId, $userId, $rating, $text) {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('INSERT INTO review(houseID, userID, rating, reviewText) values(?,?,?,?)');
-    $stmt->execute(array($houseId, $userId, $rating, $text));
+    $stmt->execute(array(
+        $houseId, 
+        $userId, 
+        $rating, 
+        htmlspecialchars($text)));
 }
 
 function getReservationByTenant($tenantId) {
