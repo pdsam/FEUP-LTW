@@ -17,7 +17,7 @@ if(isset($_POST[''])){
     if(array_key_exists('checkin',$_get) && array_key_exists('checkout',$_get)){
         
         
-        $query .= "and house.houseID not in (select houseID from reservation where julianDate(?)<julianDate(endDate) and julianDate(?) > julianDate(startDate))";
+        $query .= "and house.houseID not in (select houseID from reservation where julianDate(?)<julianDate(endDate) or julianDate(?) > julianDate(startDate))";
         
         $params[] = $_get['checkin'];
         $params[] = $_get['checkout'];

@@ -4,12 +4,6 @@ include_once(ROOT . 'templates/common/footer.php');
 include_once(ROOT . 'templates/common/loginForm.php');
 include_once(ROOT . 'includes/session.php');
 
-function error($message) { 
-	return function () use($message) {?>
-        <h1><?= $message ?></h1>
-<?php };
-}
-
 function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) { ?>
 	<!DOCTYPE html>
 	<html>

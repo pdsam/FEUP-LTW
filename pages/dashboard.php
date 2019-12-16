@@ -7,13 +7,11 @@ include_once(ROOT . 'database/db_users.php');
 
 $user = getSessionUser();
 if (!$user) {
-    header('Location: home.php');
-    die;
+    error('401');
 }
 
 if (!isLandlord($user['id'])) {
-    header('Location: home.php');
-    die;
+    error('403');
 }
 
 $houses = getLandlordHouses($user['id']);

@@ -16,7 +16,6 @@ reservationForm.addEventListener('submit', (e)=>{
 
     let request = new XMLHttpRequest();
     request.open("post", '../actions/action_reserve.php', true);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 
     request.addEventListener('load', (event) => {
         let text =event.currentTarget.responseText;
@@ -32,17 +31,5 @@ reservationForm.addEventListener('submit', (e)=>{
         window.location = '../pages/home.php';
     });
 
-    let numberOfPeople = getFormValue(reservationForm, 'numberOfPeople');
-    let checkInDate = getFormValue(reservationForm, 'checkInDate');
-    let checkOutdate = getFormValue(reservationForm, 'checkOutDate');
-    let houseId = getFormValue(reservationForm, 'houseId');
-    let tenantId = getFormValue(reservationForm, 'tenantId');
-
-    request.send(encodeForAjax({
-        numberOfPeople: numberOfPeople,
-        checkInDate: checkInDate,
-        checkOutDate: checkOutdate,
-        houseId: houseId,
-        tenantId: tenantId
-    }));
+    request.send(new FormData(reservationForm));
 });
