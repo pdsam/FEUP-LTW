@@ -16,7 +16,13 @@ $house->landlordID = $user['id'];
 $house->title = $_POST['title'];
 $house->pricePerNight = $_POST['pricePerNight'];
 $house->area = $_POST['area'];
-$house->address = $_POST['address'];
+$house->location = $_POST['locationId'];
+
+if (!locationExists($house->location)) {
+    header('Location: ../pages/home.php');
+    die;
+}
+
 $house->capacity = $_POST['capacity'];
 $house->description = $_POST['description'];
 

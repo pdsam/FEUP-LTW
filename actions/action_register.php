@@ -21,6 +21,12 @@ $response = array(
     'message'=>$message
 );
 
+if ($user->username !== htmlspecialchars($user->username)) {
+    $response['message'] = 'Username must not contain special characters.';
+    echo json_encode($response);
+    die;
+}
+
 if (userExists($user->username)) {
     $response['message'] = 'Username ' . $user->username . ' already in use.';
     echo json_encode($response);

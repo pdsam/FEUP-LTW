@@ -27,6 +27,31 @@ CREATE TABLE landlord(
     id integer primary key references user on delete cascade on update cascade
 );
 INSERT INTO landlord VALUES(1);
+INSERT INTO landlord VALUES(2);
+
+CREATE TABLE location(
+    locationID integer primary key,
+    name text
+);
+INSERT INTO location values (1, "Aveiro");
+INSERT INTO location values (2, "Beja");
+INSERT INTO location values (3, "Braga");
+INSERT INTO location values (4, "Bragança");
+INSERT INTO location values (5, "Castelo Branco");
+INSERT INTO location values (6, "Coimbra");
+INSERT INTO location values (7, "Évora");
+INSERT INTO location values (8, "Faro");
+INSERT INTO location values (9, "Guarda");
+INSERT INTO location values (10, "Leiria");
+INSERT INTO location values (11, "Lisboa");
+INSERT INTO location values (12, "Portalegre");
+INSERT INTO location values (13, "Porto");
+INSERT INTO location values (14, "Santarém");
+INSERT INTO location values (15, "Setúbal");
+INSERT INTO location values (16, "Viana do Castelo");
+INSERT INTO location values (17, "Vila Real");
+INSERT INTO location values (18, "Viseu");
+
 CREATE TABLE house(
     houseID integer primary key,
     landlordID integer references landlord on delete cascade on update cascade,
@@ -35,15 +60,15 @@ CREATE TABLE house(
     title text,
     description text,
     area integer check(area > 0),
-    address text,
+    locationID integer references location on delete set null on update cascade,
     capacity integer check(capacity > 0)
 );
-INSERT INTO house VALUES(1,1,12,0.0,'Very nice description','A very nice house much wow',NULL,NULL,NULL);
-INSERT INTO house VALUES(2,NULL,NULL,0.0,NULL,'House arround the sea with beautiful landscapes',NULL,NULL,NULL);
-INSERT INTO house VALUES(3,NULL,NULL,0.0,NULL,'Im kinda running out of descriptions',NULL,NULL,NULL);
-INSERT INTO house VALUES(4,NULL,NULL,0.0,NULL,'Damn, I need another description',NULL,NULL,NULL);
-INSERT INTO house VALUES(5,NULL,NULL,0.0,NULL,'I dont like php very much :(',NULL,NULL,NULL);
-INSERT INTO house VALUES(6,1,5,0.0,'Casa','Casa muito bonita.',200,'Porto',2);
+INSERT INTO house VALUES(1,1,12,0.0,'Very nice description','A very nice house much wow',100,6,5);
+INSERT INTO house VALUES(2,2,10,0.0,'Casota','House arround the sea with beautiful landscapes',140,7,3);
+INSERT INTO house VALUES(3,2,9,0.0,'Casinha','Im kinda running out of descriptions',50,20,1);
+INSERT INTO house VALUES(4,2,20,0.0,'Casarao','Damn, I need another description',400,16,6);
+INSERT INTO house VALUES(5,2,15,0.0,'Haha','I dont like php very much :(',200,18,3);
+INSERT INTO house VALUES(6,1,5,0.0,'Casa','Casa muito bonita.',200,13,2);
 CREATE TABLE reservation(
     reservationID integer primary key,
     tenantID integer references tenant on delete cascade on update cascade,

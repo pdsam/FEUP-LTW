@@ -7,10 +7,10 @@ function addUser($user, $password) {
 
     $stmt = $db->prepare("INSERT INTO USER(username, firstName, lastName, email, password) values (?, ?, ?, ?, ?)");
     $stmt->execute(array(
-        $user->username,
-        $user->firstname,
-        $user->lastname,
-        $user->email,
+        htmlspecialchars($user->username),
+        htmlspecialchars($user->firstname),
+        htmlspecialchars($user->lastname),
+        htmlspecialchars($user->email),
         password_hash($password, PASSWORD_DEFAULT)
     ));
 }
@@ -31,11 +31,11 @@ function updateUserInfo($username, $firstname, $lastname, $email, $bio) {
 
     $stmt = $db->prepare('UPDATE user SET firstName=?, lastName=?, email=?, bio=? where username=?');
     $stmt->execute(array( 
-        $firstname, 
-        $lastname, 
-        $email,
-        $bio, 
-        $username,
+        htmlspecialchars($firstname),
+        htmlspecialchars($lastname),
+        htmlspecialchars($email),
+        htmlspecialchars($bio),
+        htmlspecialchars($username),
     ));
 }
 

@@ -2,6 +2,7 @@
 include_once('../config.php');
 include_once(ROOT . 'includes/session.php');
 include_once(ROOT . 'templates/drawTemplate.php');
+include_once(ROOT . 'database/db_houses.php');
 
 $user = getSessionUser();
 if (!$user) {
@@ -20,8 +21,17 @@ renderPage(array(), array(), function() { ?>
         <label class="block-label" for="area">Area of the house</label>
         <input class="text-input" type="number" name="area" id="area" required>
 
-        <label class="block-label" for="address">Address</label>
-        <input class="text-input" type="text" name="address" id="address" required>
+        <label for="location-id">Location</label>
+        <select name="locationId" id="location-id">
+            <?php 
+            $locations = getLocations();
+            foreach ($locations as $location) {
+                ?>
+                <option value="<?= $location['locationID'] ?>"><?= $location['name'] ?></option>
+            <?php }
+            ?>
+            
+        </select>
 
         <label class="block-label" for="capacity">Number of people</label>
         <input class="text-input" type="number" name="capacity" id="capacity" required>
