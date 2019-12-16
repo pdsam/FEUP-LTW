@@ -21,7 +21,7 @@ function addHouse($house) {
 function getAllHouseInfo() {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM house');
+    $stmt = $db->prepare('SELECT *, location.name as address FROM house JOIN location using(locationID)');
     $stmt->execute();
     return $stmt->fetchAll();
 }
@@ -29,7 +29,7 @@ function getAllHouseInfo() {
 function getHouse($houseId) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM house WHERE houseID=?');
+    $stmt = $db->prepare('SELECT *, location.name as address FROM house JOIN location using(locationID) WHERE houseID=?');
     $stmt->execute(array($houseId));
     return $stmt->fetch();
 }
@@ -53,7 +53,7 @@ function addHousePicture($houseId, $pictureId) {
 function getLandlordHouses($landlordID) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM house where landlordID=?');
+    $stmt = $db->prepare('SELECT *, location.name as address FROM house JOIN location using(locationID) where landlordID=?');
     $stmt->execute(array($landlordID));
     return $stmt->fetchAll();
 }
