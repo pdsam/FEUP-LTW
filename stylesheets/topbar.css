@@ -64,7 +64,13 @@
 }
 
 .hamburguer-nav{
-    display: hidden;
+    display: none;
+}
+.hamburguer-nav > div{
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 1px var(--gray-lines);
+    
 }
 @media (max-width:680px) {
 
@@ -82,7 +88,10 @@
         background: var(--green);
         border-radius: 3px;
     }
-    .user-options-container > a{
+    .user-options-container > .nav-button{
         display: none;
     }
+
+    
+    
 }
