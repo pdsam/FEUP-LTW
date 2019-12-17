@@ -14,6 +14,7 @@ renderPage(array('house'),array('house','request'),function() use ($houseID) {
   }
 
   $housePics = getAllHousePictures($houseID);
+  $user = getSessionUser();
   ?>
 
   <div class="house-carousel">
@@ -34,16 +35,34 @@ renderPage(array('house'),array('house','request'),function() use ($houseID) {
       <p id="right-arrow">&rarr;</p>
     </div>
   </div>
+  
   <div class="house-content-wrapper">
     <div class="house-information">
       <h1><?= $house['title'] ?></h1>
-      <div class=info-wrapper>
-        <p class="info-title">Average Rating</p> 
-        <p class="info"><?= $house['avgRating'] ?></p>
-      </div>
-      <div class="info-wrapper">
-        <p class="info-title">Price</p>
-        <p class="info"><?= $house['pricePerNight'] ?>$/night</p>
+      
+      <div class="house-content">
+        <div class="main-info">
+          <div class=info-wrapper>
+            <p class="info-title">Average Rating</p> 
+            <p class="info"><?= $house['avgRating'] ?></p>
+          </div>
+          <div class="info-wrapper">
+            <p class="info-title">Price</p>
+            <p class="info"><?= $house['pricePerNight'] ?>$/night</p>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <a href="reserve.php?id=<?= $houseID ?>">
+            <button>Reserve</button>
+          </a>
+          <?php if ($house['landlordID'] == $user['id']) { ?>
+            <a href="manage_house_pictures.php?houseId=<?= $houseID ?>">
+              <button>Manage Pictures</button>
+            </a>
+          <?php } ?>
+        </div>
+
       </div>
     </div>
   

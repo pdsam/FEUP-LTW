@@ -10,7 +10,7 @@ $landlord = getUserById($house['landlordID']);
 <div class="house-sec-information">
     <div class=sec-info-wrapper>
         <p class="info-title">Landlord</p> 
-        <p class="info"><?= $landlord['firstName'] ?> <?= $landlord['lastName'] ?></p>
+        <a href="../pages/profile.php?id=<?= $landlord['id'] ?>" class="info"><?= $landlord['firstName'] ?> <?= $landlord['lastName'] ?></a>
     </div>
     <div class="sec-info-wrapper">
         <p class="info-title">Area</p>

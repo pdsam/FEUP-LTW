@@ -46,8 +46,6 @@ renderPage(array('home', 'forms'), array('slider'), function () {
       $params[] = $_GET['priceRange'];
     }
 
-    var_dump($query);
-    var_dump($params);
     $houses = search($query, $params);
   } else {
 
