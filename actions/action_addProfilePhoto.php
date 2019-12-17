@@ -13,12 +13,13 @@ if (!$user) {
 $target_dir = ROOT . "database/profilePictures/";
 $uploaded_file = $_FILES["fileToUpload"]["tmp_name"];
 
-$pictureID = '';
-do {
-    $pictureID = generateRandomName(32);
-} while(file_exists($target_dir . $pictureID));
 
 if (validImage($_FILES['fileToUpload'])) {
+    $pictureID = '';
+    do {
+        $pictureID = generateRandomName(32);
+    } while(file_exists($target_dir . $pictureID));
+    
     $target_file = $target_dir . $pictureID;
     
     move_uploaded_file($uploaded_file, $target_file);

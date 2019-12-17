@@ -14,14 +14,28 @@ if (!isset($_GET['houseId'])) {
     die;
 }
 
-$renderFunction = function() { ?>
+$house = getHouse($_GET['houseId']);
+if ($house['landlordID'] !== $user['id']) {
+    error('403');
+}
+
+$pictures = getAllHousePictures($house['houseID']);
+
+$renderFunction = function() use($pictures) { ?>
     <h1>Add images to your house</h1>
     <form id="house-images" action="../actions/action_addPhotos.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="images[]" id="images" multiple>
+        <input type="file" name="image" id="image">
         <input type="hidden" name="houseId" value="<?= $_GET['houseId'] ?>">
 
         <input type="submit" value="Submit">
     </form>
+    <div class="house-image-galery">
+        <?php 
+        foreach ($pictures as $picture) { ?>
+            <img src="../database/housePictures/<?= $picture['pictureID'] ?>" alt="House picture">
+        <?php }
+        ?>
+    </div>
 <?php };
 
 $house = getHouse($_GET['houseId']);
