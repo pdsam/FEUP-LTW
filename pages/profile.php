@@ -24,7 +24,7 @@ if ($user) {
     <section class="profile-container">
       <header class="profile-header">
         <div class="profile-picture-container">
-
+          <div class="profile-picture-wrapper">
           <?php 
             $path = ROOT . "database/profilePictures/". $user['profilePicture'];
           if(file_exists($path)){ ?>
@@ -32,6 +32,7 @@ if ($user) {
           <?php } else{ echo " <img src='../database/profilePictures/default' alt='Profile picture'>" ;
           }?>
           <?php if ($user['id'] == $signedUser['id']) { ?>
+          </div>
             <form action="../actions/action_addProfilePhoto.php" method="post" enctype="multipart/form-data">
               <input type="file" name="fileToUpload" id="fileToUpload">
               <input type="submit" value="Upload Image" name="submit">
