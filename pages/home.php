@@ -98,8 +98,6 @@ renderPage(array('home', 'forms'), array('slider'), function () {
             </div>
           </div>
 
-
-
         </div>
         
         <div class="submit-button-wrapper">

@@ -49,5 +49,7 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 
 	</body>
 
+	<script> </script>
+
 	</html>
 <?php } ?>

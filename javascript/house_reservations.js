@@ -147,7 +147,7 @@ function handleReservationStatusResponse(event) {
             alert(data['message']);
         } else {
             alert('An error has ocurred.');
-            //window.location = '../pages/home.php';
+            window.location = '../pages/home.php';
         }
         return;
     }
