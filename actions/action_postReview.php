@@ -61,4 +61,7 @@ if ($rating < 0 || $rating > 10) {
 $text = htmlspecialchars($_POST['text']);
 postReview($house['houseID'], $user['id'], $rating, $text);
 
+$response['result'] = 'success';
+echo json_encode($response);
+
 ?>

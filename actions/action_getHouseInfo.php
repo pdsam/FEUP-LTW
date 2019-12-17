@@ -14,7 +14,7 @@ $landlord = getUserById($house['landlordID']);
     </div>
     <div class="sec-info-wrapper">
         <p class="info-title">Area</p>
-        <p class="info"><?= $house['area'] ?>$/night</p>
+        <p class="info"><?= $house['area'] ?> m<sup>2</sup></p>
     </div>
     <div class="sec-info-wrapper">
         <p class="info-title">Capacity</p>

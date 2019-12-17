@@ -2,10 +2,18 @@
     background-color: var(--gray-lines);
     padding: 1em;
     margin-top: auto;
-    
 }
 
+.footer-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: flex-start;
+}
 
 .site-footer p{
+    margin: 0em;
+    padding-left: 1em;
+    padding-right: 1em;
     color: var(#273c48);
 }
