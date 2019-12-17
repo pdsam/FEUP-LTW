@@ -6,4 +6,5 @@ function hamburguerDraw() {
     } else {
       x.style.display = "block";
     }
+    console.log(x);
   }

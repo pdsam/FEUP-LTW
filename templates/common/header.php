@@ -62,24 +62,24 @@ function draw_header()
         <?php
         $userID = $user['id'];
         echo "<a href='../pages/profile.php?id=$userID'>"; ?>
-        <p class="nav-button">Profile</p>
+        <p>Profile</p>
         </a>
       </div>
       <div>
         <a href="../pages/user_reservations.php">
-          <p class="nav-button">Your Reservations</p>
+          <p>Your Reservations</p>
         </a>
       </div>
-      <div>
-        <?php if (isLandlord($user['id'])) { ?>
+      <?php if (isLandlord($user['id'])) { ?>
+        <div>
           <a href="../pages/dashboard.php">
-            <p class="nav-button">Dashboard</p>
+            <p>Dashboard</p>
           </a>
+        </div>
         <?php } ?>
-      </div>
       <div>
         <a href="../actions/action_logout.php">
-          <p class="nav-button">Sign Out</p>
+          <p>Sign Out</p>
         </a>
       </div>
 
