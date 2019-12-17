@@ -7,6 +7,6 @@ $houseID = $_GET['houseId'];
 $house = getHouse($houseID);
 ?>
       
-<div>
+<div class="description">
     <p><?= $house['description'] ?></p>
 </div>

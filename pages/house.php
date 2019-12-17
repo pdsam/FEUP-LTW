@@ -37,12 +37,19 @@ renderPage(array('house'),array('house','request'),function() use ($houseID) {
   <div class="house-content-wrapper">
     <div class="house-information">
       <h1><?= $house['title'] ?></h1>
-      <p>Average Rating: <?= $house['avgRating'] ?></p>
-      <p><?= $house['pricePerNight'] ?>$/night</p>
+      <div class=info-wrapper>
+        <p class="info-title">Average Rating</p> 
+        <p class="info"><?= $house['avgRating'] ?></p>
+      </div>
+      <div class="info-wrapper">
+        <p class="info-title">Price</p>
+        <p class="info"><?= $house['pricePerNight'] ?>$/night</p>
+      </div>
     </div>
   
     <ul class="content-tabs" id="tabs">
       <li class="selected-tab" id="description-tab">Description</li>
+      <li class="unselected-tab" id="information-tab">Information</li>
       <li class="unselected-tab" id="reviews-tab">Reviews</li>
     </ul>
   

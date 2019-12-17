@@ -2,6 +2,7 @@ let tabbedContent = document.getElementById('tabbed-content');
 
 let descriprionTab = document.getElementById('description-tab');
 let reviewsTab = document.getElementById('reviews-tab');
+let informationTab = document.getElementById('information-tab')
 
 let houseId = new URL(window.location.href).searchParams.get('h');
 
@@ -26,12 +27,21 @@ function setReview(event) {
     tabbedContent.innerHTML = event.currentTarget.responseText;
     descriprionTab.className = "unselected-tab";
     reviewsTab.className = "selected-tab";
+    informationTab.className = "unselected-tab";
 }
 
 function setDescription(event) {
     tabbedContent.innerHTML = event.currentTarget.responseText;
     reviewsTab.className = "unselected-tab";
+    informationTab.className = "unselected-tab";
     descriprionTab.className = "selected-tab";
+}
+
+function setInformation(event) {
+    tabbedContent.innerHTML = event.currentTarget.responseText;
+    reviewsTab.className = "unselected-tab";
+    informationTab.className = "selected-tab";
+    descriprionTab.className = "unselected-tab";
 }
 
 reviewsTab.addEventListener('click', (e) => {
@@ -40,6 +50,10 @@ reviewsTab.addEventListener('click', (e) => {
 
 descriprionTab.addEventListener('click', (e) => {
     makeRequest('../actions/action_getDescription.php','get',setDescription,{houseId : houseId});
+});
+
+informationTab.addEventListener('click', (e) => {
+    makeRequest('../actions/action_getHouseInfo.php','get',setInformation,{houseId : houseId});
 });
 
 leftArrow.addEventListener('click', (e) => {
