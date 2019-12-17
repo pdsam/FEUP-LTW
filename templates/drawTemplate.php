@@ -19,9 +19,9 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 		<link rel="stylesheet" href="../stylesheets/footer.css">
 		<link rel="stylesheet" href="../stylesheets/forms.css">
 		<link rel="stylesheet" href="../stylesheets/elements/button.css">
-		<script src="../javascript/hamburguer.js"
+		<script src="../javascript/hamburguer.js" defer > </script>
 		<?php if (!isset($_SESSION['username'])) { ?>
-			<script src="../javascript/login.js" defer></script>
+			<script src="../javascript/login.js" defer> </script>
 		<?php } ?>
 
 		<?php foreach ($stylesheets as $stylesheet) { ?>

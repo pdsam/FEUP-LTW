@@ -88,7 +88,7 @@
         background: var(--green);
         border-radius: 3px;
     }
-    .user-options-container > .nav-button{
+    .nav-button{
         display: none;
     }
 
