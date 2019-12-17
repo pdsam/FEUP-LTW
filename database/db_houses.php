@@ -66,6 +66,40 @@ function addHousePicture($houseId, $pictureId) {
     $stmt->execute(array($pictureId, $houseId));
 }
 
+function removeHousePicture($picID, $houseID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("DELETE FROM housePicture WHERE houseID=? and pictureID=?");
+    $stmt->execute(array($houseID, $picID));
+}
+
+function getHousePicture($picID, $houseID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("SELECT * FROM housePicture WHERE houseID=? and pictureID=?");
+    $stmt->execute(array($houseID, $picID));
+
+    return $stmt->fetch();
+}
+
+function getAllHousePictures($houseId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("SELECT * FROM housePicture WHERE houseID = ?");
+    $stmt->execute(array($houseId));
+
+    return $stmt->fetchAll();
+}
+
+function getFirstHousePic($houseId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("SELECT * FROM housePicture WHERE houseID = ?");
+    $stmt->execute(array($houseId));
+
+    return $stmt->fetch();
+}
+
 function getLandlordHouses($landlordID) {
     $db = Database::instance()->db();
 

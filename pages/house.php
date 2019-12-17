@@ -12,17 +12,21 @@ renderPage(array('house'),array('house','request'),function() use ($houseID) {
     header('Location: ../pages/404.php');
     die;
   }
+
+  $housePics = getAllHousePictures($houseID);
   ?>
 
   <div class="house-carousel">
     <div class="image-changer">
-      <p>&larr;</p>
+      <p id="left-arrow">&larr;</p>
     </div>
-    <div class="image-wrapper">
-      <img class="house-image" src="../house.jpg" alt="House image">
+    <div class="image-wrapper" id="image-wrapper">
+      <?php foreach($housePics as $housePic) { ?> 
+        <img class="house-image" src=<?= '../database/housePictures/' . $housePic['pictureID'] ?> alt="House image">
+      <?php } ?>
     </div>
     <div class="image-changer">
-      <p>&rarr;</p>
+      <p id="right-arrow">&rarr;</p>
     </div>
   </div>
   <div class="house-content-wrapper">
@@ -34,7 +38,7 @@ renderPage(array('house'),array('house','request'),function() use ($houseID) {
   
     <ul class="content-tabs" id="tabs">
       <li class="selected-tab" id="description-tab">Description</li>
-      <li id="reviews-tab">Reviews</li>
+      <li class="unselected-tab" id="reviews-tab">Reviews</li>
     </ul>
   
     <!-- only description for now -->

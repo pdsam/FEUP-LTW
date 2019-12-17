@@ -12,12 +12,12 @@ else {
     foreach($reviews as $review) { 
         $user = getUserById($review['userID']);?>
     
-        <article class="review">
+        <article class="review-card">
             <h1><?= $user['firstName']?>  <?=$user['lastName']?></h1>
             <p><?= $review['reviewText'] ?></p>
-            <footer>
+            <footer class="review-card-footer">
                 <p>Rating: <?= $review['rating'] ?></p>
-                <p>Date : <?= $review['postedDate'] ?></p>
+                <p><?= $review['postedDate'] ?></p>
             </footer>
         </article>
     <?php } 

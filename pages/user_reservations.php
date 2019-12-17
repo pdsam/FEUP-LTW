@@ -16,21 +16,33 @@ $renderFunction = function() use($reservations) { ?>
     <ul class="reservation-list">
         <?php foreach($reservations as $reservation) { ?>
             <li class="list-item-reservation">
-                <a class="reservation-title" href="../pages/house.php?h=<?= $reservation['houseID'] ?>"> 
-                    <p><?= $reservation['title'] ?></p>
-                </a>
-                <p class="reservation-date">Start date: <?= $reservation['startDate'] ?></p>
-                <p class="reservation-date">End date: <?= $reservation['endDate'] ?></p>
-                <p class="reservation-status-<?=$reservation['status']?>"> 
+                <div class="reservation-house-pic-container">
+                    <img class="reservation-house-picture" src="../house.jpg" alt="House picture">
+                </div>
+                <div>
+                    <a class="reservation-title" href="../pages/house.php?h=<?= $reservation['houseID'] ?>"> 
+                        <p><?= $reservation['title'] ?></p>
+                    </a>
+                    <p class="reservation-date">Start date: <?= $reservation['startDate'] ?></p>
+                    <p class="reservation-date">End date: <?= $reservation['endDate'] ?></p>
+                    <p class="reservation-status-<?=$reservation['status']?>"> 
+                        <?php 
+                            switch($reservation['status']) {
+                                case 'pending' : echo 'Pending'; break;
+                                case 'accepted' : echo 'Accepted'; break;
+                                case 'rejected' : echo 'Rejected'; break;
+                                case 'canceled' : echo 'Canceled'; break;
+                            }
+                        ?>
+                    </p>
                     <?php 
-                        switch($reservation['status']) {
-                            case 'pending' : echo 'Pending'; break;
-                            case 'accepted' : echo 'Accepted'; break;
-                            case 'rejected' : echo 'rejected'; break;
-                            case 'canceled' : echo 'Rejected'; break;
-                        }
+                        $twoDaysFromNow = new DateTime('+2 days');
+                        if (strcmp($reservation['startDate'], $twoDaysFromNow->format('Y-m-d')) > 0 &&
+                            ($reservation['status'] !== 'canceled' && $reservation['status'] !== 'rejected')) { ?>
+                            <button class="cancel-reservation-button" id="<?= $reservation['reservationID'] ?>">Cancel</button>
+                        <?php }
                     ?>
-                </p>
+                </div>
             </li>
         <?php } ?>
     </ul>
@@ -38,7 +50,7 @@ $renderFunction = function() use($reservations) { ?>
 
 renderPage(
     array('user_reservations'),
-    array(),
+    array('request', 'user_reservations'),
     $renderFunction  
 );
 

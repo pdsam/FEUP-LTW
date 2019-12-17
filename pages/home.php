@@ -100,8 +100,6 @@ renderPage(array('home', 'forms'), array('slider'), function () {
             </div>
           </div>
 
-
-
         </div>
 
     </div>
