@@ -2,7 +2,7 @@
 include_once('../config.php');
 include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'templates/common/house_card.php');
-
+include_once(ROOT . 'database/db_houses.php');
 
 
 
@@ -10,17 +10,57 @@ renderPage(array('home', 'forms'), array('slider'), function () {
   $today = date('Y-m-d');
   $nextDay = new DateTime(date('Y-m-d'));
   $nextDay->modify('+1 day');
-  $nextDay = date('Y-m-d', $nextDay);
+  $nextDay = $nextDay->format('Y-m-d');
+
+  $maxPrice = maxPrice()['max(pricePerNight)'];
+  
+  if(!empty($_GET)){
+    
+
+    $query = 'select * from house where 1';
+    $params = array();
+
+    if(array_key_exists('location',$_GET)&&$_GET['location'] != ""){
+        $query .= " and house.locationID=(select locationID from location where name=?) ";//prolly will break;
+        $params[] = $_GET['location'];
+    }
+
+    if(array_key_exists('checkin',$_GET) && array_key_exists('checkout',$_GET)){
+        
+        
+        $query .= "and house.houseID not in (select houseID from reservation where julianDate(?)<julianDate(endDate) or julianDate(?) > julianDate(startDate))";
+        
+        $params[] = $_GET['checkin'];
+        $params[] = $_GET['checkout'];
+
+    }
+
+    
+    
+
+    if(array_key_exists('capacity',$_GET)){
+        $query .= " and house.adress  like '%?%' ";//prolly will break;
+        $params[] = $_GET['capacity'];
+    }
+
+    if(array_key_exists('pricePerNight',$_GET)){
+        $query .= " and house.pricePerNight  < ? ";//prolly will break;
+        $params[] = $_GET['pricePerNight'];
+    }
 
 
-  
-  
+   $houses= search($query,$params);
+  }
+  else{
+    
+    $houses = getAllHouseInfo();
+  }
 
 
   ?>
   <section class="filter-renderer">
     <div class="search-form-container">
-      <form class="filter-form" action="action_search" method="POST">
+      <form class="filter-form" action="#" method="GET">
         <div class="search-field-container">
 
           <div class="form-element">
@@ -56,7 +96,7 @@ renderPage(array('home', 'forms'), array('slider'), function () {
           <div>
             <p>Price: <span id="rangeValue"></span></p>
             <div>
-              <input type="range" name="priceRange" id="myRange" min="0" max="999">
+             <?= "<input type='range' name='priceRange' id='myRange' min='0' max='$maxPrice'>" ?>
             </div>
           </div>
 
@@ -72,7 +112,6 @@ renderPage(array('home', 'forms'), array('slider'), function () {
 
   <section class="houses-display">
     <?php
-    $houses = array();
     draw_house_cards($houses); ?>
   </section>
 <?php }) ?>

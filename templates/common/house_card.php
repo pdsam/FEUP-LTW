@@ -2,7 +2,6 @@
 include_once(ROOT . 'database/db_houses.php');
 
 function draw_house_cards($houses) {
-  $houses = getAllHouseInfo();//todo remove this
 
   foreach ($houses as $house) {
     draw_house_card($house);

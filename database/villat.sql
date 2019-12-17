@@ -51,7 +51,7 @@ CREATE TABLE house(
 );
 INSERT INTO house VALUES(1,1,12,0.0,'Very nice description','A very nice house much wow',100,6,5);
 INSERT INTO house VALUES(2,2,10,0.0,'Casota','House arround the sea with beautiful landscapes',140,7,3);
-INSERT INTO house VALUES(3,2,9,0.0,'Casinha','Im kinda running out of descriptions',50,20,1);
+INSERT INTO house VALUES(3,2,9,0.0,'Casinha','Im kinda running out of descriptions',50,1,1);
 INSERT INTO house VALUES(4,2,20,0.0,'Casarao','Damn, I need another description',400,16,6);
 INSERT INTO house VALUES(5,2,15,0.0,'Haha','I dont like php very much :(',200,18,3);
 INSERT INTO house VALUES(6,1,5,0.0,'Casa','Casa muito bonita.',200,13,2);
