@@ -44,7 +44,7 @@ renderPage(array('dashboard'), array(), function() use($houses) { ?>
                         <p class="dashboard-card-rating"><?=$house['avgRating'] ?> &star;</p>
                         <p class="dashboard-card-price"><?=$house['pricePerNight']?>$/night </p>
                     </div>
-                    <p class="dashboard-card-capacity"><?= $house['capacity'] ?> people</p>
+                    <p class="dashboard-card-capacity">For <?= $house['capacity'] ?> people</p>
                     <p class="dashboard-card-address"><?=$house['address'] ?></p>
                     <p class="dashboard-card-description"><?=$house['description'] ?></p>
                 </div>
