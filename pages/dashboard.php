@@ -26,16 +26,28 @@ renderPage(array('dashboard'), array(), function() use($houses) { ?>
     <section class="dashboard-houses">
     <?php 
     foreach ($houses as $house) {
+        $housePic = getFirstHousePic($house['houseID']);  
     ?>
-        <a href="house_reservations.php?id=<?= $house['houseID'] ?>">
+        <a href="house_overview.php?id=<?= $house['houseID'] ?>">
             <div class="dashboard-card">
-                <h2 class="dashboard-card-title"><?=$house['title'] ?></h2>
-                <div class="dashboard-card-main-info">
-                    <p class="dashboard-card-rating"><?=$house['avgRating'] ?> &star;</p>
-                    <p class="dashboard-card-price"><?=$house['pricePerNight']?>$/night. </p>
+                <div class="dashboard-house-pic-container">
+                    <?php if ($housePic === FALSE)  { ?>
+                        <img src="../database/housePictures/default" alt="House picture" class="reservation-house-picture">
+                    <?php } 
+                    else { ?>
+                        <img src="../database/housePictures/<?= $housePic['pictureID'] ?>" alt="House picture" class="reservation-house-picture">
+                    <?php } ?>
                 </div>
-                <p class="dashboard-card-address"><?=$house['address'] ?></p>
-                <p class="dashboard-card-description"><?=$house['description'] ?></p>
+                <div class="dashboard-card-main-info">
+                    <h2 class="dashboard-card-title"><?=$house['title'] ?></h2>
+                    <div class="dashboard-card-rating-price-info">
+                        <p class="dashboard-card-rating"><?=$house['avgRating'] ?> &star;</p>
+                        <p class="dashboard-card-price"><?=$house['pricePerNight']?>$/night </p>
+                    </div>
+                    <p class="dashboard-card-capacity"><?= $house['capacity'] ?> people</p>
+                    <p class="dashboard-card-address"><?=$house['address'] ?></p>
+                    <p class="dashboard-card-description"><?=$house['description'] ?></p>
+                </div>
             </div>
         </a>
     <?php } ?>

@@ -19,14 +19,11 @@ if (!$house) {
 $renderFunction = function() use ($house) { ?>
         <h1>House overview</h1>
         <h2><?= $house['title'] ?></h2>
-        <div id="reservation-type-buttons">
-            <a class="selected-tab" id="confirmed-reservations-tab">
-                Confirmed
-            </a>
-            <a id="pending-reservations-tab">
-                Pending
-            </a>
-        </div>
+        <a href="manage_house_pictures.php?houseId=<?= $house['houseID'] ?>">Manage Pictures</a>
+        <ul class="content-tabs" id="tabs">
+            <li class="selected-tab" id="confirmed-reservations-tab">Confirmed</li>
+            <li class="unselected-tab" id="pending-reservations-tab">Pending</li>
+        </ul>
         <div id="reservations-table">
         </div>
 <?php };
@@ -36,7 +33,7 @@ if ($house['landlordID'] !== $user['id']) {
 }
 
 renderPage(
-    array('house_reservations'), 
-    array('request', 'house_reservations'),
+    array('house_overview', 'elements/tabs'), 
+    array('request', 'house_overview'),
     $renderFunction 
 ); ?>

@@ -29,7 +29,11 @@
 }
 
 .reject-button {
-    background-color: red;
+    background-color: var(--red);
+}
+
+.reject-button:hover {
+    background-color: var(--dark-red);
 }
 
 .status-button {
@@ -38,28 +42,4 @@
 
 .table-row-name {
     font-weight: bold;
-}
-
-#reservation-type-buttons {
-    margin: 1rem;
-    display: flex;
-    justify-content: center;
-}
-
-#reservation-type-buttons a {
-    margin: 0 1rem;
-    padding: 1em;
-    cursor: pointer;
-
-    border-radius: 5px;
-
-    background-color: gray;
-}
-
-#reservation-type-buttons .selected-tab {
-    background-color: var(--green);
-}
-
-#reservation-type-buttons a:hover {
-    background-color: gray;
 }

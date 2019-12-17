@@ -51,7 +51,7 @@ function pendingReservationButtons(reservationId) {
     rejectBtn.classList.add('status-button');
     rejectBtn.classList.add('reject-button');
     rejectBtn.addEventListener('click', () => {
-        rejectReservation(reservtionId)
+        rejectReservation(reservationId)
     });
     rejectBtn.innerHTML = 'Reject';
 
@@ -64,11 +64,7 @@ function pendingReservationButtons(reservationId) {
 }
 
 function setTableContent(event) {
-    //console.log(event.currentTarget.responseText);
-    
     const data = JSON.parse(event.currentTarget.responseText);
-
-    //console.log(data);
 
     if (data['result'] === 'error') {
         alert('An error has ocurred.');

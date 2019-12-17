@@ -1,5 +1,5 @@
 button{
-    background-color: #5fd96e;
+    background-color: var(--green);
     transition-duration: 300ms;
     padding: 12px 20px;
     border: none;
@@ -11,5 +11,21 @@ button{
 }
 
 button:hover{
-    background-color: #3b8a45;
+    background-color: var(--dark-green);
+}
+
+.button{
+    background-color: var(--green);
+    transition-duration: 300ms;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    /*margin-top: 0.5rem;*/
+    align-content: center;
+}
+
+.button:hover{
+    background-color: var(--dark-green);
 }

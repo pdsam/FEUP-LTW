@@ -14,10 +14,17 @@ $reservations = getReservationByTenant($user['id']);
 $renderFunction = function() use($reservations) { ?>
     <h1>Your reservations</h1>
     <ul class="reservation-list">
-        <?php foreach($reservations as $reservation) { ?>
+        <?php foreach($reservations as $reservation) { 
+            $housePic = getFirstHousePic($reservation['houseID']);  
+            ?>
             <li class="list-item-reservation">
                 <div class="reservation-house-pic-container">
-                    <img class="reservation-house-picture" src="../house.jpg" alt="House picture">
+                    <?php if ($housePic === FALSE)  { ?>
+                        <img src="../database/housePictures/default" alt="House picture" class="reservation-house-picture">
+                    <?php } 
+                    else { ?>
+                        <img src="../database/housePictures/<?= $housePic['pictureID'] ?>" alt="House picture" class="reservation-house-picture">
+                    <?php } ?>
                 </div>
                 <div>
                     <a class="reservation-title" href="../pages/house.php?h=<?= $reservation['houseID'] ?>"> 

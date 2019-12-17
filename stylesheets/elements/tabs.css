@@ -1,0 +1,31 @@
+.content-tabs {
+    background-color: var(--gray-lines);
+
+    list-style-type: none;
+    width: 100%;
+
+    display: flex;
+
+    padding: 0;
+}
+
+.content-tabs li {
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.unselected-tab:hover {
+    background-color: var(--main-color);
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+
+.selected-tab {
+    background-color: var(--green);
+    color: white;
+}
+
+.selected-tab:hover {
+    cursor: pointer;
+}
