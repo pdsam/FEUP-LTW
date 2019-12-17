@@ -29,11 +29,11 @@
 }
 
 .reject-button {
-    background-color: red;
+    background-color: var(--red);
 }
 
 .reject-button:hover {
-    background-color: rgb(120, 0, 0);
+    background-color: var(--dark-red);
 }
 
 .status-button {
