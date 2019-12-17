@@ -21,9 +21,14 @@ renderPage(array('house'),array('house','request'),function() use ($houseID) {
       <p id="left-arrow">&larr;</p>
     </div>
     <div class="image-wrapper" id="image-wrapper">
-      <?php foreach($housePics as $housePic) { ?> 
-        <img class="house-image" src=<?= '../database/housePictures/' . $housePic['pictureID'] ?> alt="House image">
-      <?php } ?>
+      <?php if (sizeof($housePics) === 0) { ?>
+        <img class="house-image" src='../house.jpg' alt="House image">
+      <?php }
+      else {
+        foreach($housePics as $housePic) { ?> 
+          <img class="house-image" src=<?= '../database/housePictures/' . $housePic['pictureID'] ?> alt="House image">
+        <?php } 
+      } ?>
     </div>
     <div class="image-changer">
       <p id="right-arrow">&rarr;</p>
