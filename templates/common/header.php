@@ -4,9 +4,9 @@ include_once(ROOT . 'database/db_users.php');
 
 
 function draw_header()
-{ 
+{
   $user = getSessionUser();
-  ?>
+?>
   <nav class="topbar">
     <section class="bar-logo">
       <a href="../index.php">
@@ -14,18 +14,17 @@ function draw_header()
       </a>
     </section>
     <?php if ($user) {
-      ?>
+    ?>
       <section class="user-options-container">
-        
+
         <?php
-        //$user = getUser($_SESSION['username']);
         $userID = $user['id'];
-       echo "<a href='../pages/profile.php?id=$userID'>" ;?>
-          <p class="nav-button">Profile</p>
+        echo "<a href='../pages/profile.php?id=$userID'>"; ?>
+        <p class="nav-button">Profile</p>
         </a>
         <a href="../pages/user_reservations.php">
-        <p class="nav-button">Your Reservations</p>
-      </a>
+          <p class="nav-button">Your Reservations</p>
+        </a>
         <?php if (isLandlord($user['id'])) { ?>
           <a href="../pages/dashboard.php">
             <p class="nav-button">Dashboard</p>
@@ -35,7 +34,7 @@ function draw_header()
           <p class="nav-button">Sign Out</p>
         </a>
       </section>
-    <?php } else { ?> 
+    <?php } else { ?>
       <section class="user-options-container">
         <p id="login-button" class="nav-button">Sign in</p>
 
@@ -43,6 +42,30 @@ function draw_header()
           <p id="register-button" class="nav-button">Sign up</p>
         </a>
       </section>
+      </a>
     <?php } ?>
+    <div class="menu">
+      <a href="javascript:void(0)" id="icon-menu" onClick="hamburguerFunction()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+    </div>
+  </nav>
+  <nav class="hamburguer-nav">
+
+
+
+  <?php
+  if($user){ ?>
+
+<?php
+  }
+  else{ ?>
+      <div><p id="login-button" class="nav-button">Sign in</p></div>
+      <div><a href="../pages/register.php">
+          <p id="register-button" class="nav-button">Sign up</p>
+        </a></div>
+  <?php }?>
   </nav>
 <?php } ?>
