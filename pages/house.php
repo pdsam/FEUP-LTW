@@ -53,14 +53,14 @@ renderPage(array('house'),array('house','request'),function() use ($houseID) {
         </div>
 
         <div class="buttons">
-          <a href="reserve.php?id=<?= $houseID ?>">
-            <button>Reserve</button>
-          </a>
-          <?php if ($house['landlordID'] == $user['id']) { ?>
-            <a href="manage_house_pictures.php?houseId=<?= $houseID ?>">
-              <button>Manage Pictures</button>
+            <a href="reserve.php?id=<?= $houseID ?>">
+              <button>Reserve</button>
             </a>
-          <?php } ?>
+            <?php if ($house['landlordID'] == $user['id']) { ?>
+              <a href="manage_house_pictures.php?houseId=<?= $houseID ?>">
+                <button>Manage Pictures</button>
+              </a>
+            <?php } ?>
         </div>
 
       </div>
