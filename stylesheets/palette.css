@@ -1,5 +1,8 @@
 :root {
     --green: #5fd96e;
+    --dark-green: #3b8a45;
+    --red: #f00;
+    --dark-red: rgb(120, 0, 0);
     --main-background: white;
     --content-background: rgb(250,250,250);
     --gray-lines: #e6e6e6;

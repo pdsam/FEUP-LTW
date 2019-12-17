@@ -1,3 +1,17 @@
+.finish-button {
+    padding: 1rem;
+    margin-left:5rem;
+
+    color: white;
+    background-color: var(--red);
+
+    border-radius: 4px;
+}
+
+.finish-button:hover {
+    background-color: var(--dark-red);
+}
+
 .house-picture-galery {
     display: flex;
     flex-wrap: wrap;

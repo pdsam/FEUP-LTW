@@ -52,8 +52,11 @@ if ($user) {
               <a href="../actions/action_register_landlord.php"><button>Register this account as landlord.</button></a>
             <?php } ?>
           </div>
+          
+          <div class=email-line>
+          <i class="material-icons">email</i>
           <p class="user-email"><?= $user['email'] ?></p>
-        
+          </div>
           <div class="user-bio-wrapper">
           <p class="user-bio"><?= $user['bio'] ?></p>
             </div>

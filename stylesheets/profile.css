@@ -49,11 +49,38 @@ span{
     max-width: 40vw;
 }
 
+.user-email{
+    font-size: 1.1em;
+    margin-top: 0;
+}
+
+.email-line{
+    display: flex;
+}
+
+.material-icons{
+    color: gray;
+    margin-right: 0.3em;
+}
+
 @media (max-width:1050px){
     .profile-header{
         flex-direction: column;
         flex-grow: 2;
         align-items: center;
     }
+    .user-bio-wrapper{
+        max-width: 80vw;
+        word-wrap: break-word
+    }    
+    
+}
+@media (max-width:605px){
 
+    .first-line{
+        flex-direction: column;
+    }
+    button{
+        margin-top: 1em;
+    }
 }

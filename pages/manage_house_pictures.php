@@ -31,6 +31,7 @@ $renderFunction = function() use($pictures, $house) { ?>
 
             <input type="submit" value="Submit">
         </form>
+        <a class="finish-button" href="house.php?h=<?= $_GET['houseId'] ?>">Finish</a>
     </div>
     <div class="house-picture-galery">
         <?php 
