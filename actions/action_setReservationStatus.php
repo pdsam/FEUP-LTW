@@ -21,11 +21,29 @@ if (!$user) {
 $reservation = getReservation($_POST['reservationId']);
 $house = getHouse($reservation['houseID']);
 
-if ($house['landlordID'] !== $user['id']) {
-    $response['type'] = '1';
-    $response['message'] = 'Not owner of the house.';
-    echo json_encode($response);
-    die;
+if ($_POST['status'] === 'canceled') {
+    if ($house['landlordID'] !== $user['id'] && $reservation['tenantID'] !== $user['id']) {
+        $response['type'] = '1';
+        $response['message'] = 'Not allowed to do this.';
+        echo json_encode($response);
+        die;
+    }
+
+    $twoDaysFromNow = new DateTime('+2 days');
+
+    if (strcmp($reservation['startDate'], $twoDaysFromNow->format('Y-m-d')) <= 0) {
+        $response['type'] = '2';
+        $response['message'] = 'Too late.';
+        echo json_encode($response);
+        die;
+    }
+} else {
+    if ($house['landlordID'] !== $user['id']) { 
+        $response['type'] = '1';
+        $response['message'] = 'Not owner of the house.';
+        echo json_encode($response);
+        die;
+    }
 }
 
 if (!setReservationStatus($_POST['reservationId'], $_POST['status'])) {

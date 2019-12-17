@@ -23,6 +23,9 @@ foreach ($reservations as $reservation) {
     $res['numberOfPeople'] = $reservation['numberOfPeople'];
     $res['status'] = $reservation['status'];
 
+    $twoDaysFromNow = new DateTime('+2 days');
+    $res['cancelable'] = strcmp($reservation['startDate'], $twoDaysFromNow->format('Y-m-d')) > 0;
+
     $responseContent[] = $res;
 }
 
