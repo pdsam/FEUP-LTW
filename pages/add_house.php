@@ -9,8 +9,9 @@ if (!$user) {
     error('401');
 }
 
-renderPage(array(), array(), function() { ?>
-    <form id="house-form" action="../actions/action_addHouse.php" method="post">
+renderPage(array('add_house'), array('request', 'add_house'), function() { ?>
+    <p id="house-form-error-label"></p>
+    <form id="add-house-form" action="#" method="post" enctype="multipart/form-data">
         <label class="block-label" for="title">House Title</label>
         <input class="text-input" type="text" name="title" id="title" required>
 
@@ -32,7 +33,7 @@ renderPage(array(), array(), function() { ?>
             
         </select>
 
-        <label class="block-label" for="capacity">Number of people</label>
+        <label class="block-label" for="capacity">Capacity</label>
         <input class="text-input" type="number" name="capacity" id="capacity" required>
 
         <label class="block-label" for="description">Description</label>

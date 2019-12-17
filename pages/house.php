@@ -56,6 +56,9 @@ renderPage(array('house', 'elements/tabs'),array('house','request'),function() u
             <a href="reserve.php?id=<?= $houseID ?>">
               <button>Reserve</button>
             </a>
+            <a href="post_review.php?id=<?= $houseID ?>">
+              <button>Review</button>
+            </a>
             <?php if ($house['landlordID'] == $user['id']) { ?>
               <a href="manage_house_pictures.php?houseId=<?= $houseID ?>">
                 <button>Manage Pictures</button>
