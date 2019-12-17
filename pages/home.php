@@ -12,11 +12,6 @@ renderPage(array('home', 'forms'), array('slider'), function () {
   $nextDay->modify('+1 day');
   $nextDay = date('Y-m-d', $nextDay);
 
-
-  
-  
-
-
   ?>
   <section class="filter-renderer">
     <div class="search-form-container">
@@ -60,8 +55,6 @@ renderPage(array('home', 'forms'), array('slider'), function () {
             </div>
           </div>
 
-
-
         </div>
 
     </div>
@@ -72,7 +65,6 @@ renderPage(array('home', 'forms'), array('slider'), function () {
 
   <section class="houses-display">
     <?php
-    $houses = array();
-    draw_house_cards($houses); ?>
+    draw_house_cards(); ?>
   </section>
 <?php }) ?>
