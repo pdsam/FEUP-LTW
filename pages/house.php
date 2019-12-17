@@ -22,7 +22,7 @@ renderPage(array('house'),array('house','request'),function() use ($houseID) {
     </div>
     <div class="image-wrapper" id="image-wrapper">
       <?php foreach($housePics as $housePic) { ?> 
-        <img class="house-image" src=<?= ROOT . "database/" . $housePic['pictureID'] ?> alt="House image">
+        <img class="house-image" src=<?= '../database/housePictures/' . $housePic['pictureID'] ?> alt="House image">
       <?php } ?>
     </div>
     <div class="image-changer">
@@ -38,7 +38,7 @@ renderPage(array('house'),array('house','request'),function() use ($houseID) {
   
     <ul class="content-tabs" id="tabs">
       <li class="selected-tab" id="description-tab">Description</li>
-      <li id="reviews-tab">Reviews</li>
+      <li class="unselected-tab" id="reviews-tab">Reviews</li>
     </ul>
   
     <!-- only description for now -->

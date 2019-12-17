@@ -16,16 +16,21 @@ for (let i = 1; i < housePics.length; i++) {
     housePics[i].style.display = "none";
 }
 
+//If there is only one image hide the buttons
+if (housePics.length < 2) {
+    leftArrow.style.display = "none";
+    rightArrow.style.display = "none";
+}
 
 function setReview(event) {
     tabbedContent.innerHTML = event.currentTarget.responseText;
-    descriprionTab.className = "";
+    descriprionTab.className = "unselected-tab";
     reviewsTab.className = "selected-tab";
 }
 
 function setDescription(event) {
     tabbedContent.innerHTML = event.currentTarget.responseText;
-    reviewsTab.className = "";
+    reviewsTab.className = "unselected-tab";
     descriprionTab.className = "selected-tab";
 }
 
@@ -35,6 +40,17 @@ reviewsTab.addEventListener('click', (e) => {
 
 descriprionTab.addEventListener('click', (e) => {
     makeRequest('../actions/action_getDescription.php','get',setDescription,{houseId : houseId});
+});
+
+leftArrow.addEventListener('click', (e) => {
+    housePics[currentImageDis].style.display = "none";
+    currentImageDis = currentImageDis - 1;
+
+    if (currentImageDis === -1) {
+        currentImageDis = housePics.length - 1;
+    }
+
+    housePics[currentImageDis].style.display = "block";
 });
 
 rightArrow.addEventListener('click', (e) => {
