@@ -1,0 +1,30 @@
+.house-picture-galery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.picture-form-container {
+    display: flex;
+    align-items: center;
+}
+
+.picture-form-container p {
+    margin-right: 1rem;
+}
+
+.picture-form-container form {
+    display: flex;
+
+    align-items: center;
+}
+
+.house-picture-container {
+    max-width: 20rem;
+    overflow: hidden;
+    margin: 1rem;
+}
+
+.house-picture-container img {
+    height: 10rem;
+    width: auto;
+}

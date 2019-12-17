@@ -40,10 +40,11 @@ $user = getSessionUser();
                     <input class="text-input" type="text" name="fname" id="flocation" required>
 
                     <?php
-                    $today = date('Y-m-d');
                     $nextDay = new DateTime(date('Y-m-d'));
                     $nextDay->modify('+1 day');
-                    $nextDay = date('Y-m-d', $nextDay);
+                    $nextDay = $nextDay->format('Y-m-d');
+                    $maxPrice = maxPrice()['max(pricePerNight)'];
+                    
 
                     echo "<label class='block-label' for='start-date' >Check-In:</label>";
                     echo "<input type= 'date' id='start-date' min=$today >";
@@ -56,7 +57,7 @@ $user = getSessionUser();
                     <input type="number" id="numberPeople" value="1" min="1" max="100" step="1">
                     <!--<label class="block-label" for="priceRange">Price:</label>-->
                     <p>Price: <span id="rangeValue"></span></p>
-                    <input type="range" name="priceRange" id="myRange" min="0" max="999">
+                    <?= "<input type='range' name='priceRange' id='myRange' min='0' max='$maxPrice'>" ?>
                     <input type="submit">
 
                     <script>

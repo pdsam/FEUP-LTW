@@ -8,6 +8,9 @@
     margin: 1em 0;
     padding: 0.5em;
 
+    display: flex;
+    align-items: center;
+
     box-shadow: 0 0 6px rgba(0,0,0,0.6);
 
     border: 1px solid var(--gray-lines);
@@ -29,4 +32,13 @@
 
 .reservation-status-pending {
     color:gray;
+}
+
+.reservation-house-pic-container {
+    margin-right: 1rem;
+}
+
+.reservation-house-picture {
+    height: 10rem;
+    width: auto;
 }

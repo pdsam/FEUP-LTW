@@ -1,8 +1,7 @@
 <?php
 include_once(ROOT . 'database/db_houses.php');
 
-function draw_house_cards() {
-  $houses = getAllHouseInfo();
+function draw_house_cards($houses) {
 
   foreach ($houses as $house) {
     draw_house_card($house);

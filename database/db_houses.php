@@ -66,6 +66,22 @@ function addHousePicture($houseId, $pictureId) {
     $stmt->execute(array($pictureId, $houseId));
 }
 
+function removeHousePicture($picID, $houseID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("DELETE FROM housePicture WHERE houseID=? and pictureID=?");
+    $stmt->execute(array($houseID, $picID));
+}
+
+function getHousePicture($picID, $houseID) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("SELECT * FROM housePicture WHERE houseID=? and pictureID=?");
+    $stmt->execute(array($houseID, $picID));
+
+    return $stmt->fetch();
+}
+
 function getAllHousePictures($houseId) {
     $db = Database::instance()->db();
 
@@ -203,6 +219,15 @@ function search($query,$params){
     $stmt->execute($params);
     return $stmt->fetchAll();
 }
-?>
 
+function maxPrice(){
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT max(pricePerNight) FROM house');
+    $stmt->execute();
+
+    return $stmt->fetch();
+
+}
+?>
 

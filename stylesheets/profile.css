@@ -17,9 +17,11 @@
 }
 
 .user-details {
-    flex-grow: 2;
+    flex-grow: 1;
     margin-left: 1em;
     flex-basis: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-container{
@@ -40,4 +42,18 @@ button{
 
 span{
     margin-left: 0.5em;
+}
+
+
+.user-bio-wrapper{
+    max-width: 40vw;
+}
+
+@media (max-width:1050px){
+    .profile-header{
+        flex-direction: column;
+        flex-grow: 2;
+        align-items: center;
+    }
+
 }
