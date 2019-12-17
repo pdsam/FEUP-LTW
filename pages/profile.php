@@ -53,9 +53,11 @@ if ($user) {
             <?php } ?>
           </div>
           <p class="user-email"><?= $user['email'] ?></p>
+        
+          <div class="user-bio-wrapper">
           <p class="user-bio"><?= $user['bio'] ?></p>
+            </div>
         </div>
-
       </header>
     </section>
 

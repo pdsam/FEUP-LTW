@@ -8,15 +8,17 @@
 .filter-form {
     display: flex;
     margin: 0;
+    align-items: center;
 }
+
 
 .search-form-container {
     padding: 0.5em;
     display: flex;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    box-shadow: 0 0 3px #aaa;
+    border-bottom: 1px solid var(--gray-lines);
+    border-radius: 1px;
 }
+
 
 .search-field {
     width: 35em;
@@ -24,16 +26,13 @@
     border: 0px solid black;
     border-radius: 5px 0 0 5px;
     background-color: var(--main-background);
+
 }
 
-.search-form-container .submit-button {
-    border-style: solid;
-    border-color: #aaa;
-    border-width: 0 0 0 1px;
-    cursor: pointer;
-    background-color: var(--main-background);
-    color: black;
+.submit-button-wrapper{
+    margin-left: 5em;
 }
+
 
 .houses-display {
     display: grid;

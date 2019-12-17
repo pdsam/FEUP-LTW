@@ -219,6 +219,15 @@ function search($query,$params){
     $stmt->execute($params);
     return $stmt->fetchAll();
 }
-?>
 
+function maxPrice(){
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT max(pricePerNight) FROM house');
+    $stmt->execute();
+
+    return $stmt->fetch();
+
+}
+?>
 
