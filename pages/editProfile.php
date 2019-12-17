@@ -24,26 +24,26 @@ renderPage(
             <form id="edit-profile-form" action="#" method="post">
             <div class="inline-form-elements">
                 <label class="block-label" for="fname">First Name</label>
-                <?= "<input class='text-input' type='text' name='fname' id='fname' value=$firstName required>" ?>
+                <?= "<input class='text-input' type='text' name='fname' id='fname' value=$firstName maxlength='50' required>" ?>
 
                 <label class="block-label" for="lname">Last Name</label>
-                <?= "<input class='text-input' type='text' name='lname' id='lname' value=$lastName required>" ?>
+                <?= "<input class='text-input' type='text' name='lname' id='lname' value=$lastName maxlength='50' required>" ?>
             </div>
 
                 <label class="block-label" for="email">Email</label>
-                <?= "<input class='text-input' type='email' name='email' id='email' value='$email' required>" ?>
+                <?= "<input class='text-input' type='email' name='email' id='email' value='$email' maxlength='50' required>" ?>
 
                 <label class="block-label" for="bio">Bio</label>
-                <?= "<input class='text-input' type='text' name='bio' id='bio' value='$bio' required>" ?>
+                <?= "<input class='text-input' type='text' name='bio' id='bio' value='$bio' maxlength='160' required>" ?>
 
                 <label class="block-label" for="old-password">Enter old password</label>
-                <input class="text-input" type="password" name="old-password" id="old-password">
+                <input class="text-input" type="password" name="old-password" id="old-password"maxlength="1000">
 
                 <label class="block-label" for="new-password">Enter new password</label>
-                <input class="text-input" type="password" name="new-password" id="new-password">
+                <input class="text-input" type="password" name="new-password" id="new-password" maxlength="1000">
 
                 <label class="block-label" for="new-c-password">Confirm new password</label>
-                <input class="text-input" type="password" name="new-c-password" id="new-c-password">
+                <input class="text-input" type="password" name="new-c-password" id="new-c-password" maxlength="1000">
 
 
 

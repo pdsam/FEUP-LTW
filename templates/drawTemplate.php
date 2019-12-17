@@ -19,6 +19,7 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 		<link rel="stylesheet" href="../stylesheets/footer.css">
 		<link rel="stylesheet" href="../stylesheets/forms.css">
 		<link rel="stylesheet" href="../stylesheets/elements/button.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<script src="../javascript/hamburguer.js" defer> </script>
 		<?php if (!isset($_SESSION['username'])) { ?>
 			<script src="../javascript/login.js" defer></script>
