@@ -28,6 +28,6 @@ $house->description = $_POST['description'];
 
 $houseID = addHouse($house);
 
-header("Location: ../pages/add_house_images.php?houseId=$houseID");
+header("Location: ../pages/manage_house_pictures.php?houseId=$houseID");
 
 ?>

@@ -13,6 +13,9 @@ renderPage(
     array(),
     function() use($errors) {
         $message = $errors[$_GET['e']];
+        if (!$message) {
+            $message = $_GET['e'];
+        }
     ?>
         <h2><?= $message ?></h2>
     <?php }

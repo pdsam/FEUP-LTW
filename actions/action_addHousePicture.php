@@ -32,6 +32,6 @@ if (validImage($_FILES['image'])) {
     move_uploaded_file($uploaded_file, $target_file);
 }
 
-header("Location: ../pages/add_house_images.php?houseId=$houseId");
+header("Location: ../pages/manage_house_pictures.php?houseId=$houseId");
 
 ?>
