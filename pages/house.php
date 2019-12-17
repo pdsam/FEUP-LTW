@@ -5,7 +5,7 @@ include_once(ROOT . 'database/db_houses.php');
 
 $houseID = $_GET['h'];
 
-renderPage(array('house'),array('house','request'),function() use ($houseID) {
+renderPage(array('house', 'elements/tabs'),array('house','request'),function() use ($houseID) {
   $house = getHouse($houseID);
 
   if ($house === false) {

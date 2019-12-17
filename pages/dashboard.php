@@ -27,7 +27,7 @@ renderPage(array('dashboard'), array(), function() use($houses) { ?>
     <?php 
     foreach ($houses as $house) {
     ?>
-        <a href="house_reservations.php?id=<?= $house['houseID'] ?>">
+        <a href="house_overview.php?id=<?= $house['houseID'] ?>">
             <div class="dashboard-card">
                 <h2 class="dashboard-card-title"><?=$house['title'] ?></h2>
                 <div class="dashboard-card-main-info">
