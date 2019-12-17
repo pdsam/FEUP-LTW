@@ -66,6 +66,15 @@ function addHousePicture($houseId, $pictureId) {
     $stmt->execute(array($pictureId, $houseId));
 }
 
+function getAllHousePictures($houseId) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("SELECT * FROM housePicture WHERE houseID = ?");
+    $stmt->execute(array($houseId));
+
+    return $stmt->fetchAll();
+}
+
 function getLandlordHouses($landlordID) {
     $db = Database::instance()->db();
 
