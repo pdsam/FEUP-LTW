@@ -13,5 +13,5 @@ function makeRequest(url, method, successCallback, object) {
     request.open(method, address, true);
     request.addEventListener('load', successCallback);
     
-    request.send(isPost ? encodeForAjax(object) : null);
+    request.send(isPost ? object : null);
 }

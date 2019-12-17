@@ -37,7 +37,7 @@ $reservations = getUserHouseReservations($user['id'], $house['houseID']);
 $beenTo = false;
 $now = new DateTime();
 foreach($reservations as $reservation) {
-    if ($reservation['startDate'] < $now->format('Y-m-d')) {
+    if (strcmp($reservation['startDate'], $now->format('Y-m-d')) < 0) {
         $beenTo = true;
         break;
     }

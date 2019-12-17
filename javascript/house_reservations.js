@@ -22,12 +22,14 @@ function cancelReservationButton(reservationId) {
         if (!confirm("Are you sure you want to cancel the reservation?")) {
             return;
         }
+        let formData = new FormData();
+        formData.append('reservationId', reservationId);
+        formData.append('status', 'canceled');
         makeRequest(
             '../actions/action_setReservationStatus.php',
             'post',
             handleReservationStatusResponse,
-            {reservationId: reservationId,
-            status: 'canceled'});
+            formData);
     })
     button.innerHTML = 'Cancel';
 
@@ -62,9 +64,11 @@ function pendingReservationButtons(reservationId) {
 }
 
 function setTableContent(event) {
-    console.log(event.currentTarget.responseText);
+    //console.log(event.currentTarget.responseText);
     
     const data = JSON.parse(event.currentTarget.responseText);
+
+    //console.log(data);
 
     if (data['result'] === 'error') {
         alert('An error has ocurred.');
@@ -72,13 +76,10 @@ function setTableContent(event) {
         return;
     }
 
-    console.log(data);
-
     reservationsTable.innerHTML = '';
     reservationsTable.appendChild(tableHeader);
 
     data['content'].forEach(reservation => {
-        console.log(reservation);
 
         if (reservation['status'] !== data['reservationsStatus']) {
             return;
@@ -98,15 +99,19 @@ function setTableContent(event) {
             <p>${reservation['numberOfPeople']}</p>
         `;
 
-        let buttons;
+        let buttons = null;
         switch (reservation['status']) {
             case 'accepted':
-                buttons = cancelReservationButton(reservation['reservationId']);
+                if (reservation['cancelable']) {
+                    buttons = cancelReservationButton(reservation['reservationId']);
+                }
                 break;
             case 'pending':
                 buttons = pendingReservationButtons(reservation['reservationId']);
         }
-        tableRow.appendChild(buttons);
+        if (buttons) {
+            tableRow.appendChild(buttons);
+        }
 
         reservationsTable.appendChild(tableRow);
     });
@@ -126,16 +131,24 @@ pendingButton.addEventListener('click', (e) => {
     makeRequest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'pending'});
 });
 
+
 makeRequest('../actions/action_getReservations.php', 'get', setTableContent, {houseId:houseId, status:'accepted'});
 
 function handleReservationStatusResponse(event) {
     let json = event.currentTarget.responseText;
 
+    console.log(json);
     let data = JSON.parse(json);
 
+    console.log(data);
+
     if (data['result'] === 'error') {
-        alert('An error has ocurred.');
-        window.location = '../pages/home.php';
+        if (data['type'] === '2') {
+            alert(data['message']);
+        } else {
+            alert('An error has ocurred.');
+            //window.location = '../pages/home.php';
+        }
         return;
     }
 
@@ -149,20 +162,26 @@ function acceptReservation(reservationId) {
     if (!confirm('Are you sure you want to accept this reservation?')) {
         return;
     }
+    let formData = new FormData();
+    formData.append('reservationId', reservationId);
+    formData.append('status', 'accepted');
     makeRequest(
         '../actions/action_setReservationStatus.php', 
         'post', 
         handleReservationStatusResponse,
-        {reservationId:reservationId, status:'accepted'});
+        formData);
 }
 
 function rejectReservation(reservationId) {
     if (!confirm('Are you sure you want to reject this reservation?')) {
         return;
     }
+    let formData = new FormData();
+    formData.append('reservationId', reservationId);
+    formData.append('status', 'rejected');
     makeRequest(
         '../actions/action_setReservationStatus.php', 
         'post', 
         handleReservationStatusResponse,
-        {reservationId:reservationId, status:'rejected'});
+        formData);
 }
