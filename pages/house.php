@@ -9,8 +9,7 @@ renderPage(array('house', 'elements/tabs'),array('house','request'),function() u
   $house = getHouse($houseID);
 
   if ($house === false) {
-    header('Location: ../pages/404.php');
-    die;
+    error('404');
   }
 
   $housePics = getAllHousePictures($houseID);

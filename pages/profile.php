@@ -5,16 +5,12 @@ include_once(ROOT . 'includes/database.php');
 include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
 
-$id = $_GET['id'];
-$signedUser = getUser($_SESSION['username']);
-
-if (isset($id)) {
-  $user = getUserById($id);
-} else if (isset($_SESSION['username'])) {
-  $user = getUser($_SESSION['username']);
+$signedUser = getSessionUser();
+if (isset($_GET['id'])) {
+  $user = getUserById($_GET['id']);
+} else if ($signedUser) {
+  $user = $signedUser;
 }
-
-
 
 if ($user) {
   renderPage(
@@ -70,6 +66,6 @@ if ($user) {
   }
 );
 } else {
-  header('Location: ../pages/404.php');
+  error('404');
 }
 ?>
