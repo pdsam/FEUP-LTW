@@ -136,7 +136,7 @@
 
     .form-element{
         display: flex;
-        flex-direction: center;
+        flex-direction: column;
         justify-content: space-between;
     }
     .block-label{
