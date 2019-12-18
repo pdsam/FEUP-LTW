@@ -2,8 +2,30 @@
     width: 100%;
 }
 
+.heading {
+    margin: 1rem;
+}
+
+.house-info {
+    margin: 1rem;
+}
+
+.house-info p {
+    margin: 0.5rem 0;
+}
+
+.management-buttons {
+    margin-left: 1rem;
+}
+
 .table-header {
     font-weight: bold;
+}
+
+.edit-button {
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: var(--green);
 }
 
 .reservations-table-row {

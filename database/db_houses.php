@@ -18,6 +18,21 @@ function addHouse($house) {
     return $db->lastInsertId();
 }
 
+function updateHouseInfo($houseId, $house) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('update house set pricePerNight=?, title=?, description=?, area=?, locationID=?, capacity=? where houseID=?');
+    $stmt->execute(array(
+        htmlspecialchars($house->pricePerNight),
+        htmlspecialchars($house->title),
+        htmlspecialchars($house->description),
+        htmlspecialchars($house->area),
+        htmlspecialchars($house->location),
+        htmlspecialchars($house->capacity),
+        $houseId
+    ));
+}
+
 function getLocations() {
     $db = Database::instance()->db();
 

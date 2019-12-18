@@ -17,9 +17,22 @@ if (!$house) {
 }
 
 $renderFunction = function() use ($house) { ?>
-        <h1>House overview</h1>
-        <h2><?= $house['title'] ?></h2>
-        <a href="manage_house_pictures.php?houseId=<?= $house['houseID'] ?>">Manage Pictures</a>
+        <h1 class="heading">House overview</h1>
+        <div class="house-info">
+            <h2 class="house-info-title"><?= $house['title'] ?></h2>
+            <p class="house-info-rating"><?= $house['avgRating'] ?> &star;</p>
+            <p class="house-info-price"><?= $house['pricePerNight'] ?>$/night</p>
+            <p class="house-info-capacity">For <?= $house['capacity'] ?> people.</p>
+            <p class="house-info-address"><?= $house['address'] ?></p>
+        </div>
+        <div class="management-buttons">
+            <a href="edit_house.php?houseId=<?= $house['houseID'] ?>">
+                <button>Edit information</button>
+            </a>
+            <a href="manage_house_pictures.php?houseId=<?= $house['houseID'] ?>">
+                <button>Manage pictures</button>
+            </a>
+        </div>
         <ul class="content-tabs" id="tabs">
             <li class="selected-tab" id="confirmed-reservations-tab">Confirmed</li>
             <li class="unselected-tab" id="pending-reservations-tab">Pending</li>
