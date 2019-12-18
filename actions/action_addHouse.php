@@ -33,10 +33,24 @@ if (intval($house->pricePerNight) <= 0) {
     reply($response);
 }
 
+$house->pricePerNight = $_POST['pricePerNight'];
+if (intval($house->pricePerNight) > 1000000) {
+    $response['type'] = '2';
+    $response['message'] = 'Price per night should not me greater than one million.';
+    reply($response);
+}
+
 $house->area = $_POST['area'];
 if (intval($house->area) <= 0) {
     $response['type'] = '2';
     $response['message'] = 'Area should be positive.';
+    reply($response);
+}
+
+$house->area = $_POST['area'];
+if (intval($house->area) > 1000) {
+    $response['type'] = '2';
+    $response['message'] = 'Area should not be greater than 1000 meters squared.';
     reply($response);
 }
 
@@ -51,6 +65,13 @@ $house->capacity = $_POST['capacity'];
 if (intval($house->capacity) <= 0) {
     $response['type'] = '2';
     $response['message'] = 'Capacity should be positive.';
+    reply($response);
+}
+
+$house->capacity = $_POST['capacity'];
+if (intval($house->capacity) > 1000) {
+    $response['type'] = '2';
+    $response['message'] = 'Capacity should not be greater than 1000 people.';
     reply($response);
 }
 
