@@ -21,14 +21,15 @@ if ($user) {
       <header class="profile-header">
         <div class="profile-picture-container">
           <div class="profile-picture-wrapper">
-          <?php 
-            $path = ROOT . "database/profilePictures/". $user['profilePicture'];
-          if(file_exists($path)){ ?>
-          <img src="../database/profilePictures/<?= $user['profilePicture'] ?>" alt="Profile picture">
-          <?php } else{ echo " <img src='../database/profilePictures/default' alt='Profile picture'>" ;
-          }?>
-          <?php if ($user['id'] == $signedUser['id']) { ?>
+            <?php
+            $path = ROOT . "database/profilePictures/" . $user['profilePicture'];
+            if (file_exists($path)) { ?>
+              <img src="../database/profilePictures/<?= $user['profilePicture'] ?>" alt="Profile picture">
+            <?php } else {
+                                                    echo " <img src='../database/profilePictures/default' alt='Profile picture'>";
+                                                  } ?>
           </div>
+          <?php if ($user['id'] == $signedUser['id']) { ?>
             <form action="../actions/action_addProfilePhoto.php" method="post" enctype="multipart/form-data">
               <input type="file" name="fileToUpload" id="fileToUpload">
               <input type="submit" value="Upload Image" name="submit">
@@ -49,23 +50,23 @@ if ($user) {
               <a href="../actions/action_register_landlord.php"><button>Register this account as landlord.</button></a>
             <?php } ?>
           </div>
-          
+
           <div class=email-line>
-          <i class="material-icons">email</i>
-          <p class="user-email"><?= $user['email'] ?></p>
+            <i class="material-icons">email</i>
+            <p class="user-email"><?= $user['email'] ?></p>
           </div>
           <div class="user-bio-wrapper">
-          <p class="user-bio"><?= $user['bio'] ?></p>
-            </div>
+            <p class="user-bio"><?= $user['bio'] ?></p>
+          </div>
         </div>
       </header>
     </section>
 
 <?php
 
-  }
-);
-} else {
-  error('404');
-}
+                                                                                          }
+                                                                                        );
+                                                                                      } else {
+                                                                                        error('404');
+                                                                                      }
 ?>

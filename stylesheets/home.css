@@ -204,9 +204,7 @@
     grid-template-columns: repeat(2, 1fr);
     }
 
-    .house-card{
-        max-width: 315px;
-    }
+    
     .houses-display > a{
         display: flex;
         justify-content: center;
