@@ -4,6 +4,15 @@ CREATE TABLE housePicture(
     pictureID text primary key,
     houseID references house on delete cascade on update cascade
 );
+INSERT INTO housePicture VALUES('oGiyw8GBWgjKyWneaV81lZKj8Cjt7xJX','1');
+INSERT INTO housePicture VALUES('LWuCbSTfRa1SmLinBajab5zdybV8fFaF','1');
+INSERT INTO housePicture VALUES('W4lxxscKi3QWtd9O5i8l9vP9pLUhZHrw','2');
+INSERT INTO housePicture VALUES('vp0QDzWy8dk0CColh7D8rBP8tNNgQ12g','6');
+INSERT INTO housePicture VALUES('N0r5IB0XCNBE5wPo41k7jyq4xfbcEheF','6');
+INSERT INTO housePicture VALUES('vTM5fUK7CPcoQnComCILkit6ivlrcY31','3');
+INSERT INTO housePicture VALUES('vLVqU4HNvS972r0iyr80tLPALT4EmG6u','4');
+INSERT INTO housePicture VALUES('HJCONhsOeItekNoWOMDhBTAxn3JYCeMk','5');
+INSERT INTO housePicture VALUES('cQZDjySQUhqnx6keAWYVqrw9850mviJk','5');
 CREATE TABLE user(
     id integer primary key,
     username text unique,
@@ -14,9 +23,9 @@ CREATE TABLE user(
     password text not null,
     bio text default 'Bio Out of service'
 );
-INSERT INTO user VALUES(1,'jradaval','Jarvazio','Radaval','jradaval@gmail.com','default','$2y$10$zEqUtTFDw5YLwArg.imnoOwHIDYWxbp3cBJFx0k3Yzx4ULD8wWiQe', 'Biography of Javarzio Radaval');
-INSERT INTO user VALUES(2,'manel','Manel','Manuel','manel@manel.manel','default','$2y$10$oL01mgnRlqmXaE2mpMfkNeFDu.otdBtG4fMy8oJu6Z8zrfEXnFala', 'My parents didnt have much creativity.');
-INSERT INTO user VALUES(3,'motavia','Maria','Otavia','motavia@gmail.com','default','$2y$10$T6PDAC.jFX0rsbJAg.TSy.sTL1QCcukGYjOAc/gIPEd.9/NTumrRa', 'I love travelling.');
+INSERT INTO user VALUES(1,'jradaval','Jarvazio','Radaval','jradaval@gmail.com','3eZwOqzwMWCR5ALhYnjx7PgMbiKehLyT','$2y$10$zEqUtTFDw5YLwArg.imnoOwHIDYWxbp3cBJFx0k3Yzx4ULD8wWiQe', 'Biography of Javarzio Radaval');
+INSERT INTO user VALUES(2,'manel','Manel','Manuel','manel@manel.manel','8kBtlEAgvwYMkpXGn5yza2W2KXSM8P1c','$2y$10$oL01mgnRlqmXaE2mpMfkNeFDu.otdBtG4fMy8oJu6Z8zrfEXnFala', 'My parents didnt have much creativity.');
+INSERT INTO user VALUES(3,'motavia','Maria','Otavia','motavia@gmail.com','QloeM7VaZbzKz0aCBnpvlE9kho97S71W','$2y$10$T6PDAC.jFX0rsbJAg.TSy.sTL1QCcukGYjOAc/gIPEd.9/NTumrRa', 'I love travelling.');
 CREATE TABLE tenant(
     id integer primary key references user on delete cascade on update cascade
 );
