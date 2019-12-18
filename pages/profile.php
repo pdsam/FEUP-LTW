@@ -6,6 +6,7 @@ include_once(ROOT . 'database/db_users.php');
 include_once(ROOT . 'database/db_houses.php');
 
 $signedUser = getSessionUser();
+$user = null;
 if (isset($_GET['id'])) {
   $user = getUserById($_GET['id']);
 } else if ($signedUser) {

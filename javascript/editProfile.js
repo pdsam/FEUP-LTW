@@ -3,7 +3,6 @@ let editForm = document.getElementById('edit-profile-form');
 let errorField = document.getElementById('profile-error-field')
 
 function getFormValue(form, fieldName) {
-    console.log(fieldName);
     return form.elements[fieldName].value;
 }
 
@@ -35,34 +34,19 @@ function handleResponse(event) {
 editForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let firstName = getFormValue(editForm, 'fname');
-    let lastName = getFormValue(editForm, 'lname');
-    let email = getFormValue(editForm, 'email');
-    let oldPassword = getFormValue(editForm, 'old-password');
     let newPassword = getFormValue(editForm, 'new-password');
     let cNewPassword = getFormValue(editForm,'new-c-password');
-    let bio = getFormValue(editForm,'bio');
-    let username = document.getElementById("hidden").textContent;
-    
+
+    let form = new FormData(editForm);
     
     if (newPassword != cNewPassword) {
         showError("Passwords do not match");
-    }
-    else{
-    let request = new XMLHttpRequest();
-    request.open('post', '../actions/action_updateProfile.php', true);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    } else {
+        let request = new XMLHttpRequest();
+        request.open('post', '../actions/action_updateProfile.php', true);
 
-    request.addEventListener('load', handleResponse);
-    request.send(encodeForAjax({
-        firstname: firstName,
-        lastname: lastName,
-        username: username,
-        email: email,
-        oldPassword: oldPassword,
-        newPassword: newPassword,
-        bio: bio
-    }));
-    console.log(request);
-}
+        request.addEventListener('load', handleResponse);
+        request.send(form);
+        console.log(request);
+    }
 });

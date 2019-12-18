@@ -1,30 +1,39 @@
 <?php 
 include_once('../config.php');
 include_once(ROOT . 'includes/session.php');
+include_once(ROOT . 'includes/responses.php');
 include_once(ROOT . 'database/db_users.php');
 
-if (!isset($_SESSION['username'])) {
-    header('Location: ../pages/home.php');
-    die;
+$response = prepareResponse();
+
+$user = getSessionUser();
+if (!$user) {
+    $response['type'] = '1';
+    $response['message'] = 'User not logged in.';
+    reply($response);
 }
 
-if ($_SESSION['username'] !== $_POST['username']) {
-    header('Location: ../pages/home.php');
-    die;
-}
-
-$response = array(
-    'result'=>'error',
-    'message'=>''
-);
-
-$username = $_POST['username'];
 $firstname = $_POST['firstname'];
+if (strlen($firstname) > 180) {
+    $response['type'] = '2';
+    $response['message'] = 'First name is too long. Must shorter than 180 characters.';
+    reply($response);
+}
 $lastname = $_POST['lastname'];
+if (strlen($lastname) > 180) {
+    $response['type'] = '2';
+    $response['message'] = 'Last name is too long. Must shorter than 180 characters.';
+    reply($response);
+}
 $email = $_POST['email'];
 $bio = $_POST['bio'];
-$oldPassword = $_POST['oldPassword'];
-$newPassword = $_POST['newPassword'];
+if (strlen($bio) > 500) {
+    $response['type'] = '2';
+    $response['message'] = 'Bio is too long. Must shorter than 500 characters.';
+    reply($response);
+}
+$oldPassword = $_POST['old-password'];
+$newPassword = $_POST['new-password'];
 
 if ($oldPassword !== '') {
     if (!updateUserPassword($username, $oldPassword, $newPassword)) {

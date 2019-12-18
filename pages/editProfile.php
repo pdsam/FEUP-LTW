@@ -24,10 +24,10 @@ renderPage(
             <form id="edit-profile-form" action="#" method="post">
             <div class="inline-form-elements">
                 <label class="block-label" for="fname">First Name</label>
-                <?= "<input class='text-input' type='text' name='fname' id='fname' value=$firstName maxlength='50' required>" ?>
+                <?= "<input class='text-input' type='text' name='firstname' id='fname' value=$firstName maxlength='50' required>" ?>
 
                 <label class="block-label" for="lname">Last Name</label>
-                <?= "<input class='text-input' type='text' name='lname' id='lname' value=$lastName maxlength='50' required>" ?>
+                <?= "<input class='text-input' type='text' name='lastname' id='lname' value=$lastName maxlength='50' required>" ?>
             </div>
 
                 <label class="block-label" for="email">Email</label>

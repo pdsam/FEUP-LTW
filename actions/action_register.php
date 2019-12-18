@@ -1,9 +1,12 @@
 <?php 
 include_once('../config.php');
 include_once(ROOT . 'includes/session.php');
+include_once(ROOT . 'includes/responses.php');
 include_once(ROOT . 'includes/database.php');
 include_once(ROOT . 'database/db_users.php');
 require_once(ROOT . 'includes/User.php');
+
+$response = prepareResponse();
 
 $user = new User();
 
@@ -13,30 +16,36 @@ $user->username = $_POST['username'];
 $user->email = $_POST['email'];
 $password = $_POST['password'];
 
-$result = "error";
-$message = "";
-
-$response = array(
-    'result'=>$result,
-    'message'=>$message
-);
 
 if ($user->username !== htmlspecialchars($user->username)) {
+    $response['type'] = '2';
     $response['message'] = 'Username must not contain special characters.';
-    echo json_encode($response);
-    die;
+    reply($response);
 }
 
 if (userExists($user->username)) {
+    $response['type'] = '2';
     $response['message'] = 'Username ' . $user->username . ' already in use.';
-    echo json_encode($response);
-    die;
+    reply($response);
 }
 
 if (emailExists($user->email)) {
+    $response['type'] = '2';
     $response['message'] = 'Email already in use.';
-    echo json_encode($response);
-    die;
+    reply($response);
+}
+
+$firstname = $_POST['firstname'];
+if (strlen($firstname) > 180) {
+    $response['type'] = '2';
+    $response['message'] = 'First name is too long. Must shorter than 180 characters.';
+    reply($response);
+}
+$lastname = $_POST['lastname'];
+if (strlen($lastname) > 180) {
+    $response['type'] = '2';
+    $response['message'] = 'Last name is too long. Must shorter than 180 characters.';
+    reply($response);
 }
 
 addUser($user, $password);

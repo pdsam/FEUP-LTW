@@ -19,11 +19,15 @@ function showError(errorMessage) {
 
 function handleResponse(event) {
     let responseText = event.currentTarget.responseText;
-    console.log(event);
+    console.log(responseText);
 
     let json = JSON.parse(responseText);
 
     if (json['result'] == 'error') {
+        if (json['type'] === '1') {
+            window.location.href = '../pages/home.php';
+            return;
+        }
         showError(json['message']);
         return;
     }
