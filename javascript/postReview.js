@@ -25,6 +25,10 @@ function handleResponse(event) {
     let json = JSON.parse(responseText);
 
     if (json['result'] == 'error') {
+        if (json['type'] === '1') {
+            window.location.href = '..pages/home.php';
+            return;
+        }
         showError(json['message']);
         return;
     }

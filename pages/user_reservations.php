@@ -12,7 +12,7 @@ if (!$user) {
 $reservations = getReservationByTenant($user['id']);
 
 $renderFunction = function() use($reservations) { ?>
-    <h1>Your reservations</h1>
+    <h1 class="heading">Your reservations</h1>
     <ul class="reservation-list">
         <?php foreach($reservations as $reservation) { 
             $housePic = getFirstHousePic($reservation['houseID']);  

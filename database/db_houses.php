@@ -135,7 +135,7 @@ function hasRented($userId, $houseId) {
 function getUserHouseReservations($userId, $houseId) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM reservation WHERE houseID=? and tenantID=?');
+    $stmt = $db->prepare('SELECT * FROM reservation WHERE houseID=? and tenantID=? ORDER BY startDate desc');
     $stmt->execute(array($houseId, $userId));
 
     return $stmt->fetchAll();
@@ -155,7 +155,7 @@ function postReview($houseId, $userId, $rating, $text) {
 function getReservationByTenant($tenantId) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM reservation join house using(houseID) WHERE tenantID=?');
+    $stmt = $db->prepare('SELECT * FROM reservation join house using(houseID) WHERE tenantID=? ORDER BY startDate desc');
     $stmt->execute(array($tenantId));
 
     return $stmt->fetchAll();
@@ -164,7 +164,7 @@ function getReservationByTenant($tenantId) {
 function getReservations($houseID, $status) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM reservation WHERE houseID=? and status=?');
+    $stmt = $db->prepare('SELECT * FROM reservation WHERE houseID=? and status=? ORDER BY startDate desc');
     $stmt->execute(array($houseID, $status));
 
     return $stmt->fetchAll();

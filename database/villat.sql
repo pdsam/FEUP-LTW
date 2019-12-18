@@ -14,9 +14,9 @@ CREATE TABLE user(
     password text not null,
     bio text default 'Bio Out of service'
 );
-INSERT INTO user VALUES(1,'jradaval','Jarvazio','Radaval','jradaval@gmail.com','default','$2y$10$zEqUtTFDw5YLwArg.imnoOwHIDYWxbp3cBJFx0k3Yzx4ULD8wWiQe', 'a');
-INSERT INTO user VALUES(2,'manel','Manel','Manuel','manel@manel.manel','default','$2y$10$oL01mgnRlqmXaE2mpMfkNeFDu.otdBtG4fMy8oJu6Z8zrfEXnFala', 'b');
-INSERT INTO user VALUES(3,'motavia','Maria','Otavia','motavia@gmail.com','default','$2y$10$T6PDAC.jFX0rsbJAg.TSy.sTL1QCcukGYjOAc/gIPEd.9/NTumrRa', 'c');
+INSERT INTO user VALUES(1,'jradaval','Jarvazio','Radaval','jradaval@gmail.com','default','$2y$10$zEqUtTFDw5YLwArg.imnoOwHIDYWxbp3cBJFx0k3Yzx4ULD8wWiQe', 'Biography of Javarzio Radaval');
+INSERT INTO user VALUES(2,'manel','Manel','Manuel','manel@manel.manel','default','$2y$10$oL01mgnRlqmXaE2mpMfkNeFDu.otdBtG4fMy8oJu6Z8zrfEXnFala', 'My parents didnt have much creativity.');
+INSERT INTO user VALUES(3,'motavia','Maria','Otavia','motavia@gmail.com','default','$2y$10$T6PDAC.jFX0rsbJAg.TSy.sTL1QCcukGYjOAc/gIPEd.9/NTumrRa', 'I love travelling.');
 CREATE TABLE tenant(
     id integer primary key references user on delete cascade on update cascade
 );
@@ -50,7 +50,7 @@ CREATE TABLE house(
     capacity integer check(capacity > 0)
 );
 INSERT INTO house VALUES(1,1,12,0.0,'Very nice description','A very nice house much wow',100,6,5);
-INSERT INTO house VALUES(2,2,10,0.0,'Casota','House arround the sea with beautiful landscapes',140,7,3);
+INSERT INTO house VALUES(2,1,10,0.0,'Casota','House arround the sea with beautiful landscapes',140,7,3);
 INSERT INTO house VALUES(3,2,9,0.0,'Casinha','Im kinda running out of descriptions',50,1,1);
 INSERT INTO house VALUES(4,2,20,0.0,'Casarao','Damn, I need another description',400,16,6);
 INSERT INTO house VALUES(5,2,15,0.0,'Haha','I dont like php very much :(',200,18,3);
@@ -75,7 +75,7 @@ CREATE TABLE review(
     reviewText text,
     postedDate integer not null default CURRENT_TIMESTAMP
 );
-INSERT INTO review(houseID,userID,rating,reviewText) VALUES (1,1,4,'muito lindo');
+INSERT INTO review(houseID,userID,rating,reviewText) VALUES (1,2,4,'muito lindo');
 INSERT INTO review(houseID,userID,rating,reviewText) VALUES (1,3,7,'muito feio');
 CREATE TRIGGER AddedUser
 after insert on user
