@@ -54,10 +54,10 @@ renderPage(array('home', 'forms'), array('slider','hamburguer'), function () {
 
 
 ?>
-  <section class="filter-renderer">
+  <div class="filter-renderer">
     <div class="search-form-container">
       <a href="javascript:void(0)"  onClick="hiddenMenuDraw()" >
-        <button class="hidden-button" id="hidden-button">Filters</button>
+        <p class="button hidden-button" id="hidden-button">Filters</p>
       </a>
       <form class="filter-form" id="filter-form" action="#" method="GET">
         <div class="search-field-container">
@@ -110,7 +110,7 @@ renderPage(array('home', 'forms'), array('slider','hamburguer'), function () {
         </div>
       </form>
     </div>
-  </section>
+  </div>
 
   <section class="houses-display">
     <?php

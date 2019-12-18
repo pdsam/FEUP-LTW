@@ -40,10 +40,10 @@ $renderFunction = function() use ($house) { ?>
         </div>
         <div class="management-buttons">
             <a href="edit_house.php?houseId=<?= $house['houseID'] ?>">
-                <button>Edit information</button>
+                <p class="button">Edit information</p>
             </a>
             <a href="manage_house_pictures.php?houseId=<?= $house['houseID'] ?>">
-                <button>Manage pictures</button>
+                <p class="button">Manage pictures</p>
             </a>
         </div>
         <ul class="content-tabs" id="tabs">

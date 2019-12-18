@@ -15,7 +15,7 @@ renderPage(array('add_house','forms','formPlacement'), array('request', 'add_hou
             <label class="block-label" for="title">House Title</label>
             <input class="text-input" type="text" name="title" id="title" required>
 
-            <label class="block-label" for="pricePerNight">Price per night</label>
+            <label class="block-label" for="price">Price per night</label>
             <input class="text-input" type="number" name="pricePerNight" id="price" required>
 
             <label class="block-label" for="area">Area of the house</label>

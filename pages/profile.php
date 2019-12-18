@@ -44,11 +44,11 @@ if ($user) {
             <h1 class="name"><?= $user['firstName'] ?> <?= $user['lastName'] ?></h1> <span>(<?= $user['username'] ?>)</span>
             <?php if ($user['id'] == $signedUser['id']) { ?>
               <a href="editProfile.php">
-                <button id="edit-profile">Edit Profile</button>
+                <p class="button" id="edit-profile">Edit Profile</p>
               </a>
             <?php } ?>
             <?php if (!isLandlord($user['id']) && $user['id'] == $signedUser['id']) { ?>
-              <a href="../actions/action_register_landlord.php"><button>Register this account as landlord.</button></a>
+              <a href="../actions/action_register_landlord.php"><p class="button">Register this account as landlord.</p></a>
             <?php } ?>
           </div>
 

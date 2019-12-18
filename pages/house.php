@@ -53,14 +53,14 @@ renderPage(array('house', 'elements/tabs'),array('house','request'),function() u
 
         <div class="buttons">
             <a href="reserve.php?id=<?= $houseID ?>">
-              <button>Reserve</button>
+              <p class="button">Reserve</p>
             </a>
             <a href="post_review.php?id=<?= $houseID ?>">
-              <button>Review</button>
+              <p class="button">Review</p>
             </a>
             <?php if ($house['landlordID'] == $user['id']) { ?>
               <a href="manage_house_pictures.php?houseId=<?= $houseID ?>">
-                <button>Manage Pictures</button>
+                <p class="button">Manage Pictures</p>
               </a>
             <?php } ?>
         </div>
@@ -75,11 +75,11 @@ renderPage(array('house', 'elements/tabs'),array('house','request'),function() u
     </ul>
   
     <!-- only description for now -->
-    <section class="tabbed-content" id="tabbed-content"> 
+    <div class="tabbed-content" id="tabbed-content"> 
       <div>
         <p><?= $house['description'] ?></p>
       </div>
-    </section>
+    </div>
   </div>
 <?php } ); ?>
 

@@ -6,7 +6,7 @@ include_once(ROOT . 'includes/session.php');
 
 function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) { ?>
 	<!DOCTYPE html>
-	<html>
+	<html lang="en">
 
 	<head>
 		<title>Villat</title>
@@ -48,9 +48,9 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 				draw_login_form();
 			} ?>
 
+		<script> </script>
 	</body>
 
-	<script> </script>
 
 	</html>
 <?php } ?>

@@ -21,11 +21,11 @@ if ($house['landlordID'] !== $user['id']) {
 }
 
 $renderFunction = function() use ($house) { ?>
-    <form id="edit-house-form" action="" method="post" enctype="multipart/form-data">
+    <form id="edit-house-form" action="#" method="post" enctype="multipart/form-data">
         <label class="block-label" for="title">House Title</label>
         <input class="text-input" type="text" name="title" id="title" value="<?= $house['title'] ?>" required>
 
-        <label class="block-label" for="pricePerNight">Price per night</label>
+        <label class="block-label" for="price">Price per night</label>
         <input class="text-input" type="number" name="pricePerNight" id="price" value="<?= $house['pricePerNight'] ?>" required>
 
         <label class="block-label" for="area">Area of the house</label>
