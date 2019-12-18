@@ -65,6 +65,7 @@ renderPage(array('home', 'forms'), array('slider','hamburguer'), function () {
           <div class="form-element">
           <label class="block-label" for="flocation">Location</label>
             <select name="location" id="flocation">
+              <option value="" selected="selected"></option>
               <?php 
               $locations = getLocations();
               foreach ($locations as $location) { ?>

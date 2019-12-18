@@ -27,7 +27,7 @@ $renderFunction = function () use ($houseID, $user) { ?>
   <div>
     <label for="myRange">Rating: <span id=rangeValue></span></label>
     <div>
-        <input type='range' name='priceRange' id='myRange' min='0' max='10' value='0'>
+        <input type='range' name='rating' id='myRange' min='0' max='10' value='0'>
     </div>
   </div>
 

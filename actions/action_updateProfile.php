@@ -34,7 +34,7 @@ if (strlen($bio) > 500) {
 }
 $oldPassword = htmlspecialchars($_POST['old-password']);
 $newPassword = htmlspecialchars($_POST['new-password']);
-
+$username = $user['username'];
 if ($oldPassword !== '') {
     if (!updateUserPassword($username, $oldPassword, $newPassword)) {
         $response['message'] = 'Invalid password.';
