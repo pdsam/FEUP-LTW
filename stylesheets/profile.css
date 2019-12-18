@@ -1,11 +1,11 @@
 .profile-header {
     display: flex;
     margin-bottom: 44px;
-    
+
 }
 
 .profile-picture-container {
-    margin-right:2em;
+    margin-right: 2em;
     flex-basis: 0;
 }
 
@@ -24,93 +24,101 @@
     flex-direction: column;
 }
 
-.profile-container{
-   display: flex;
-   padding-top: 2em;
-   justify-content: center;
-   
+.profile-container {
+    display: flex;
+    padding-top: 2em;
+    justify-content: center;
+
 }
 
-.first-line{
+.first-line {
     display: flex;
     align-items: center;
 }
 
-button{
+button {
     margin-left: 2em;
 }
 
-span{
+span {
     margin-left: 0.5em;
 }
 
 
-.user-bio-wrapper{
+.user-bio-wrapper {
     max-width: 40vw;
 }
 
-.user-email{
+.user-email {
     font-size: 1.1em;
     margin-top: 0;
 }
 
-.email-line{
+.email-line {
     display: flex;
 }
 
-.material-icons{
+.material-icons {
     color: lightgray;
     margin-right: 0.3em;
-    
+
 }
 
-@media (max-width:1050px){
-    .profile-header{
+@media (max-width:1050px) {
+    .profile-header {
         flex-direction: column;
         flex-grow: 2;
         align-items: center;
     }
-    .user-bio-wrapper{
+
+    .user-bio-wrapper {
         max-width: 80vw;
         word-wrap: break-word
-    }    
-    
-}
-@media (max-width:605px){
+    }
 
-    .first-line{
+}
+
+@media (max-width:605px) {
+
+    .first-line {
         flex-direction: column;
         align-items: center;
     }
-    button{
+
+    button {
         margin-top: 1em;
     }
-    .email-line{
+
+    .email-line {
         justify-content: center;
         margin-top: 1em;
     }
-    .profile-picture-container{
+
+    .profile-picture-container {
         margin-right: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
-    .user-bio{
+
+    .user-bio {
         text-align: center;
     }
 
-    .profile-picture-container > form{
+    .profile-picture-container>form {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        
+
     }
-    button{
-        margin:0;
-        margin-top:1em;
+
+    button {
+        margin: 0;
+        margin-top: 1em;
     }
-    .profile-picture-wrapper{
+
+    .profile-picture-wrapper {
         display: flex;
         justify-content: center;
-}
+    }
 }

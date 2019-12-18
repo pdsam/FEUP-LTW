@@ -6,7 +6,7 @@ include_once(ROOT . 'database/db_houses.php');
 
 
 
-renderPage(array('home', 'forms'), array('slider'), function () {
+renderPage(array('home', 'forms'), array('slider','hamburguer'), function () {
   $today = date('Y-m-d');
   $nextDay = new DateTime(date('Y-m-d'));
   $nextDay->modify('+1 day');
@@ -24,7 +24,7 @@ renderPage(array('home', 'forms'), array('slider'), function () {
       $params[] = $_GET['location'];
     }
 
-    if (array_key_exists('checkin', $_GET) && array_key_exists('checkout', $_GET) && $_GET['checkin']!="" && $_GET['checkout']) {
+    if (array_key_exists('checkin', $_GET) && array_key_exists('checkout', $_GET) && $_GET['checkin'] != "" && $_GET['checkout']) {
 
 
       $query .= "and house.houseID not in (select houseID from reservation where julianDate(?)<julianDate(endDate) or julianDate(?) > julianDate(startDate))";
@@ -56,7 +56,10 @@ renderPage(array('home', 'forms'), array('slider'), function () {
 ?>
   <section class="filter-renderer">
     <div class="search-form-container">
-      <form class="filter-form" action="#" method="GET">
+      <a href="javascript:void(0)"  onClick="hiddenMenuDraw()" >
+        <button class="hidden-button" id="hidden-button">Filters</button>
+      </a>
+      <form class="filter-form" id="filter-form" action="#" method="GET">
         <div class="search-field-container">
 
           <div class="form-element">
@@ -87,13 +90,13 @@ renderPage(array('home', 'forms'), array('slider'), function () {
 
 
           <div class="form-element">
-            <label class="block-label" for="numberPeople">Number of guests</label>
+            <label class="block-label" for="numberPeople">Number of guests:</label>
             <div>
               <input type="number" id="numberPeople" value="1" min="1" max="100" step="1" name="capacity">
             </div>
           </div>
           <!--<label class="block-label" for="priceRange">Price:</label>-->
-          <div>
+          <div class="ranged-slider">
             <p> Max Price: <span id="rangeValue"></span></p>
             <div>
               <?= "<input type='range' name='priceRange' id='myRange' min='0' max='$maxPrice' value='$maxPrice'>" ?>
@@ -101,10 +104,10 @@ renderPage(array('home', 'forms'), array('slider'), function () {
           </div>
 
         </div>
-        
+
         <div class="submit-button-wrapper">
-        <input class="submit-button" type="submit" value="Search">
-        </div> 
+          <input class="submit-button" type="submit" value="Search">
+        </div>
       </form>
     </div>
   </section>
