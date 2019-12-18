@@ -37,7 +37,7 @@ renderPage(
                 <?= "<input class='text-input' type='text' name='bio' id='bio' value='$bio' maxlength='160' required>" ?>
 
                 <label class="block-label" for="old-password">Enter old password</label>
-                <input class="text-input" type="password" name="old-password" id="old-password"maxlength="1000">
+                <input class="text-input" type="password" name="old-password" id="old-password" maxlength="1000">
 
                 <label class="block-label" for="new-password">Enter new password</label>
                 <input class="text-input" type="password" name="new-password" id="new-password" maxlength="1000">

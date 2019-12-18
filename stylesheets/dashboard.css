@@ -22,8 +22,6 @@
 
     border: 1px solid var(--gray-lines);
     border-radius: 5px;
-
-    overflow: ellipsis;
 }
 
 .dashboard-card:hover {

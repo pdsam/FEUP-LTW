@@ -8,14 +8,14 @@ function draw_header()
   $user = getSessionUser();
 ?>
   <nav class="topbar">
-    <section class="bar-logo">
+    <div class="bar-logo">
       <a href="../index.php">
         <p>Villat</p>
       </a>
-    </section>
+</div>
     <?php if ($user) {
     ?>
-      <section class="user-options-container">
+      <div class="user-options-container">
 
         <?php
         $userID = $user['id'];
@@ -33,16 +33,15 @@ function draw_header()
         <a href="../actions/action_logout.php">
           <p class="nav-button">Sign Out</p>
         </a>
-      </section>
+        </div>
     <?php } else { ?>
-      <section class="user-options-container">
+      <div class="user-options-container">
         <p id="login-button" class="nav-button">Sign in</p>
 
         <a href="../pages/register.php">
           <p id="register-button" class="nav-button">Sign up</p>
         </a>
-      </section>
-      </a>
+    </div>
     <?php } ?>
     <div class="menu">
       <a href="javascript:void(0)" id="icon-menu" onClick="hamburguerDraw()">

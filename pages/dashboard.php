@@ -19,9 +19,9 @@ $houses = getLandlordHouses($user['id']);
 renderPage(array('dashboard'), array(), function() use($houses) { ?>
     <h1 class="heading">Dashboard</h1>
     <a class="add-house-btn" href="../pages/add_house.php">
-        <button>
+        <p class="button">
             Post a house
-        </button>
+        </p>
     </a>
     <section class="dashboard-houses">
     <?php 
