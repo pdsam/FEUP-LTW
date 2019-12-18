@@ -18,7 +18,7 @@ $user = getSessionUser();
     <link rel="stylesheet" href="../stylesheets/palette.css">
     <link rel="stylesheet" href="../stylesheets/homeLoggedOut.css">
     <link rel="stylesheet" href="../stylesheets/common.css">
-    <link rel="stylesheet" href="../stylesheets/topbar.css">
+    <link rel="stylesheet" href="../stylesheets/header.css">
     <link rel="stylesheet" href="../stylesheets/login.css">
     <link rel="stylesheet" href="../stylesheets/footer.css">
     <script src="../javascript/login.js" defer></script>

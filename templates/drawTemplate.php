@@ -14,7 +14,7 @@ function renderPage($stylesheets = array(), $scripts = array(), $rendererFunc) {
 
 		<link rel="stylesheet" href="../stylesheets/palette.css">
 		<link rel="stylesheet" href="../stylesheets/common.css">
-		<link rel="stylesheet" href="../stylesheets/topbar.css">
+		<link rel="stylesheet" href="../stylesheets/header.css">
 		<link rel="stylesheet" href="../stylesheets/login.css">
 		<link rel="stylesheet" href="../stylesheets/footer.css">
 		<link rel="stylesheet" href="../stylesheets/forms.css">
