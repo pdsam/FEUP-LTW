@@ -76,6 +76,9 @@
 .card-info {
     z-index: 10;
     padding: 0.5em;
+
+    max-width: 20rem;
+    overflow: hidden;
 }
 
 .card-info p {
@@ -87,8 +90,8 @@
 }
 
 .clip-text {
-    overflow: hidden;
     white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
@@ -107,7 +110,6 @@
 
 .search-field-container {
     display: flex;
-
 }
 
 .submit-button {

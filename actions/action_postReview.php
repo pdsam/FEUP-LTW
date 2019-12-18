@@ -1,36 +1,36 @@
 <?php 
 include_once('../config.php');
 include_once(ROOT . 'includes/session.php');
+include_once(ROOT . 'includes/responses.php');
 include_once(ROOT . 'database/db_houses.php');
 
-$response = array(
-    'result' => 'error',
-    'type'=>'0',
-    'message'=>''
-);
+$response = prepareResponse();
 
 $user = getSessionUser();
 
 if (!$user) {
     $response['message'] = 'Not logged in.';
     $response['type'] = '1';
-    echo json_encode($response);
-    die;
+    reply($response);
 }
 
 $house = getHouse($_POST['houseId']);
 if (!$house) {
-    $response['message'] = 'House doesnt exist.';
     $response['type'] = '2';
-    echo json_encode($response);
-    die;
+    $response['message'] = 'House doesnt exist.';
+    reply($response);
+}
+
+if ($house['landlordID'] === $user['id']) {
+    $response['type'] = '2';
+    $response['message'] = 'You can\'t review your own house.';
+    reply($response);
 }
 
 if (!hasRented($user['id'], $house['houseID'])) {
     $response['message'] = 'User has never rented the house.';
     $response['type'] = '2';
-    echo json_encode($response);
-    die;
+    reply($response);
 }
 
 $reservations = getUserHouseReservations($user['id'], $house['houseID']);
@@ -46,16 +46,14 @@ foreach($reservations as $reservation) {
 if (!$beenTo) {
     $response['message'] = 'User has reservation but it still hasn\'t passed.';
     $response['type'] = '2';
-    echo json_encode($response);
-    die;
+    reply($response);
 }
 
 $rating = intval($_POST['rating']);
 if ($rating < 0 || $rating > 10) {
     $response['message'] = 'Invalid rating value.';
     $response['type'] = '2';
-    echo json_encode($response);
-    die;
+    reply($response);
 }
 
 $text = htmlspecialchars($_POST['text']);
