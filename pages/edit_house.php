@@ -21,7 +21,6 @@ if ($house['landlordID'] !== $user['id']) {
 }
 
 $renderFunction = function() use ($house) { ?>
-    <p id="house-form-error-label"></p>
     <form id="edit-house-form" action="" method="post" enctype="multipart/form-data">
         <label class="block-label" for="title">House Title</label>
         <input class="text-input" type="text" name="title" id="title" value="<?= $house['title'] ?>" required>
@@ -55,10 +54,12 @@ $renderFunction = function() use ($house) { ?>
         <label class="block-label" for="description">Description</label>
         <textarea class="text-input" name="description" id="description" cols="50" rows="10"><?= $house['description'] ?></textarea>
 
+        <p id="house-form-error-label"></p>
+
         <input type="submit" value="Submit">
     </form>
 <?php };
 
-renderPage(array('add_house'), array('request', 'edit_house'), $renderFunction);
+renderPage(array('add_house','forms','formPlacement'), array('request', 'edit_house'), $renderFunction);
 
 ?>

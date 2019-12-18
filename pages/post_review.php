@@ -18,8 +18,6 @@ if (!isset($_GET['id'])) {
 $houseID = $_GET['id'];
 $renderFunction = function () use ($houseID, $user) { ?>
 <form action="#" method="post" id="review-form">
-  <p id="review-error-label"></p>
-
   <div>
     <label for="text">Review</label>
     <textarea class="text-input" name="text" id="text" cols="50" rows="10"></textarea>
@@ -35,10 +33,12 @@ $renderFunction = function () use ($houseID, $user) { ?>
   <input type="hidden" name="houseId" value="<?= $houseID ?>">
   <input type="hidden" name="tenantId" value="<?= $user['id'] ?>">
 
+  <p id="review-error-label"></p>
+
   <input type="submit" value="Submit">
 </form>
 <?php };
 
-renderPage(array('forms','formPlacement'), array('postReview','slider'), $renderFunction);
+renderPage(array('review','forms','formPlacement'), array('postReview','slider'), $renderFunction);
 
 ?>

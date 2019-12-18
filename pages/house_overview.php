@@ -20,10 +20,23 @@ $renderFunction = function() use ($house) { ?>
         <h1 class="heading">House overview</h1>
         <div class="house-info">
             <h2 class="house-info-title"><?= $house['title'] ?></h2>
-            <p class="house-info-rating"><?= $house['avgRating'] ?> &star;</p>
-            <p class="house-info-price"><?= $house['pricePerNight'] ?>$/night</p>
-            <p class="house-info-capacity">For <?= $house['capacity'] ?> people.</p>
-            <p class="house-info-address"><?= $house['address'] ?></p>
+            <div class=info-wrapper>
+                <p class="info-title">Average Rating</p> 
+                <p class="info"><?= $house['avgRating'] ?> &star;</p>
+          </div>
+          <div class="info-wrapper">
+            <p class="info-title">Price</p> 
+            <p class="info"><?= $house['pricePerNight'] ?>$/night</p>
+          </div>
+          <div class="info-wrapper">
+            <p class="info-title">Capacity</p> 
+            <p class="info"><?= $house['capacity'] ?> people.</p>
+          </div>
+          <div class="info-wrapper">
+            <p class="info-title">Address</p> 
+            <p class="info"><?= $house['address'] ?></p>
+          </div>
+          
         </div>
         <div class="management-buttons">
             <a href="edit_house.php?houseId=<?= $house['houseID'] ?>">

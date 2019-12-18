@@ -43,10 +43,10 @@ renderPage(array('house', 'elements/tabs'),array('house','request'),function() u
         <div class="main-info">
           <div class=info-wrapper>
             <p class="info-title">Average Rating</p> 
-            <p class="info"><?= $house['avgRating'] ?></p>
+            <p class="info"><?= $house['avgRating'] ?> &star;</p>
           </div>
           <div class="info-wrapper">
-            <p class="info-title">Price</p>
+            <p class="info-title">Price</p> 
             <p class="info"><?= $house['pricePerNight'] ?>$/night</p>
           </div>
         </div>

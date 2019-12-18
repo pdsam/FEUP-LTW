@@ -41,13 +41,6 @@ if ($checkInDate > $checkOutDate) {
     die;
 }
 
-if ($checkInDate > date("d/m/Y")) {
-    $response['type'] = '2';
-    $response['message'] = 'Check in date happens in the past.';
-    echo json_encode($response);
-    die;
-}
-
 $reservations = array_merge(
     getReservations($_POST['houseId'], 'accepted'), 
     getReservations($_POST['houseId'], 'pending')

@@ -10,6 +10,23 @@
     margin: 1rem;
 }
 
+.info-wrapper {
+    margin: 1em;
+}
+
+.info-title {
+    color: gray;
+    font-size: small;
+    padding: 0;
+    margin: 0;
+}
+
+.info {
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+}
+
 .house-info p {
     margin: 0.5rem 0;
 }
