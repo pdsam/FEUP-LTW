@@ -1,0 +1,3 @@
+ErrorDocument 404 /pages/error.html?e=404
+ErrorDocument 401 /pages/error.html?e=401
+ErrorDocument 403 /pages/error.html?e=403
