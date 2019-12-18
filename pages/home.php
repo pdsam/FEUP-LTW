@@ -60,12 +60,16 @@ renderPage(array('home', 'forms'), array('slider'), function () {
         <div class="search-field-container">
 
           <div class="form-element">
-            <label class="block-label" for="flocation">Where:</label>
-            <div>
-              <input class="text-input" type="text" name="location" id="flocation">
-            </div>
+          <label class="block-label" for="flocation">Location</label>
+            <select name="location" id="flocation">
+              <?php 
+              $locations = getLocations();
+              foreach ($locations as $location) { ?>
+                  <option value="<?= $location['name'] ?>"><?= $location['name'] ?></option>
+              <?php }
+              ?>
+            </select>
           </div>
-
 
           <div class="form-element">
             <label class="block-label" for="start-date">Check-In:</label>
