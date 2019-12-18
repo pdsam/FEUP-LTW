@@ -3,7 +3,7 @@ include_once('../config.php');
 include_once(ROOT . 'templates/drawTemplate.php');
 include_once(ROOT . 'database/db_houses.php');
 
-$houseID = $_GET['h'];
+$houseID = htmlspecialchars($_GET['h']);
 
 renderPage(array('house', 'elements/tabs'),array('house','request'),function() use ($houseID) {
   $house = getHouse($houseID);

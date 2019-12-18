@@ -21,7 +21,7 @@ renderPage(array('home', 'forms'), array('slider','hamburguer'), function () {
 
     if (array_key_exists('location', $_GET) && $_GET['location'] != "") {
       $query .= " and house.locationID=(select locationID from location where name=?) "; //prolly will break;
-      $params[] = $_GET['location'];
+      $params[] = htmlspecialchars($_GET['location']);
     }
 
     if (array_key_exists('checkin', $_GET) && array_key_exists('checkout', $_GET) && $_GET['checkin'] != "" && $_GET['checkout']) {
@@ -29,8 +29,8 @@ renderPage(array('home', 'forms'), array('slider','hamburguer'), function () {
 
       $query .= "and house.houseID not in (select houseID from reservation where julianDate(?)<julianDate(endDate) or julianDate(?) > julianDate(startDate))";
 
-      $params[] = $_GET['checkin'];
-      $params[] = $_GET['checkout'];
+      $params[] = htmlspecialchars($_GET['checkin']);
+      $params[] = htmlspecialchars($_GET['checkout']);
     }
 
 
@@ -38,12 +38,12 @@ renderPage(array('home', 'forms'), array('slider','hamburguer'), function () {
 
     if (array_key_exists('capacity', $_GET)) {
       $query .= " and house.capacity >= ? "; //prolly will break;
-      $params[] = $_GET['capacity'];
+      $params[] = htmlspecialchars($_GET['capacity']);
     }
 
     if (array_key_exists('priceRange', $_GET)) {
       $query .= " and house.pricePerNight  <= ? "; //prolly will break;
-      $params[] = $_GET['priceRange'];
+      $params[] = htmlspecialchars($_GET['priceRange']);
     }
 
     $houses = search($query, $params);

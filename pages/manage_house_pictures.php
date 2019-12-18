@@ -14,7 +14,7 @@ if (!isset($_GET['houseId'])) {
     die;
 }
 
-$house = getHouse($_GET['houseId']);
+$house = getHouse(htmlspecialchars($_GET['houseId']));
 if ($house['landlordID'] !== $user['id']) {
     error('403');
 }
@@ -28,11 +28,11 @@ $renderFunction = function () use ($pictures, $house) { ?>
             <p>Add a picture:</p>
             <form id="house-picture-form" action="../actions/action_addHousePicture.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="image" id="image">
-                <input type="hidden" name="houseId" value="<?= $_GET['houseId'] ?>">
+                <input type="hidden" name="houseId" value="<?= htmlspecialchars($_GET['houseId']) ?>">
 
                 <input type="submit" value="Submit">
             </form>
-            <a class="finish-button" href="house.php?h=<?= $_GET['houseId'] ?>">Finish</a>
+            <a class="finish-button" href="house.php?h=<?= htmlspecialchars($_GET['houseId']) ?>">Finish</a>
         </div>
         <div class="house-picture-galery">
             <?php
@@ -51,7 +51,7 @@ $renderFunction = function () use ($pictures, $house) { ?>
     </div>
 <?php };
 
-                                                            $house = getHouse($_GET['houseId']);
+                                                            $house = getHouse(htmlspecialchars($_GET['houseId']));
                                                             if ($house['landlordID'] !== $user['id']) {
                                                                 $renderFunction = error("You have no permissions to access this page.");
                                                             }

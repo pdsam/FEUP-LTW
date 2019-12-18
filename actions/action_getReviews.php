@@ -3,8 +3,8 @@ include_once('../config.php');
 include_once(ROOT . 'database/db_houses.php');
 include_once(ROOT . 'database/db_users.php');
 
-$reviews = getReviews($_GET['houseId']);
-$house = getHouse($_GET['houseId']);
+$reviews = getReviews(htmlspecialchars($_GET['houseId']));
+$house = getHouse(htmlspecialchars($_GET['houseId']));
 
 if (sizeof($reviews) === 0) { ?>
     <p>This house has no reviews yet</p>

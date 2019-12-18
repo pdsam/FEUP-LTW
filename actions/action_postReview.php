@@ -14,7 +14,7 @@ if (!$user) {
     reply($response);
 }
 
-$house = getHouse($_POST['houseId']);
+$house = getHouse(htmlspecialchars($_POST['houseId']));
 if (!$house) {
     $response['type'] = '2';
     $response['message'] = 'House doesnt exist.';
@@ -49,7 +49,7 @@ if (!$beenTo) {
     reply($response);
 }
 
-$rating = intval($_POST['rating']);
+$rating = intval(htmlspecialchars($_POST['rating']));
 if ($rating < 0 || $rating > 10) {
     $response['message'] = 'Invalid rating value.';
     $response['type'] = '2';

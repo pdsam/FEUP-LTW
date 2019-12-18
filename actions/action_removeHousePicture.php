@@ -8,7 +8,7 @@ if (!$user) {
     redirectHome();
 }
 
-$house = getHouse($_POST['houseId']);
+$house = getHouse(htmlspecialchars($_POST['houseId']));
 if ($house['landlordID'] !== $user['id']) {
     echo 'e';
     error('403');
@@ -16,7 +16,7 @@ if ($house['landlordID'] !== $user['id']) {
 
 $target_dir = ROOT . 'database/housePictures/';
 
-$filename = $_POST['picId'];
+$filename = htmlspecialchars($_POST['picId']);
 $file = $target_dir . $filename;
 
 $picture = getHousePicture($filename, $house['houseID']);

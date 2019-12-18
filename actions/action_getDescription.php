@@ -2,7 +2,7 @@
 include_once('../config.php');
 include_once(ROOT . 'database/db_houses.php');
 
-$houseID = $_GET['houseId'];
+$houseID = htmlspecialchars($_GET['houseId']);
 
 $house = getHouse($houseID);
 ?>

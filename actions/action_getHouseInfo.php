@@ -3,7 +3,7 @@ include_once('../config.php');
 include_once(ROOT . 'database/db_houses.php');
 include_once(ROOT . 'database/db_users.php');
 
-$house = getHouse($_GET['houseId']);
+$house = getHouse(htmlspecialchars($_GET['houseId']));
 $landlord = getUserById($house['landlordID']);
 ?>
 

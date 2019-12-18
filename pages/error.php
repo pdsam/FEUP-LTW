@@ -12,9 +12,9 @@ renderPage(
     array(),
     array(),
     function() use($errors) {
-        $message = $errors[$_GET['e']];
+        $message = $errors[htmlspecialchars($_GET['e'])];
         if (!$message) {
-            $message = $_GET['e'];
+            $message = htmlspecialchars($_GET['e']);
         }
     ?>
         <h2><?= $message ?></h2>

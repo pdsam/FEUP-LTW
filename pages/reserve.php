@@ -15,7 +15,7 @@ if (!isset($_GET['id'])) {
   die;
 }
 
-$houseID = $_GET['id'];
+$houseID = htmlspecialchars($_GET['id']);
 $renderFunction = function () use ($houseID, $user) { ?>
 <form action="#" method="post" id="reservation-form">
   <div>

@@ -10,7 +10,7 @@ if (!$user) {
     error('401');
 }
 
-$house = getHouse($_GET['id']);
+$house = getHouse(htmlspecialchars($_GET['id']));
 if (!$house) {
     header('Location: home.php');
     die;

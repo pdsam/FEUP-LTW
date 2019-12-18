@@ -10,11 +10,11 @@ $response = prepareResponse();
 
 $user = new User();
 
-$user->firstname = $_POST['firstname'];
-$user->lastname = $_POST['lastname'];
-$user->username = $_POST['username'];
-$user->email = $_POST['email'];
-$password = $_POST['password'];
+$user->firstname = htmlspecialchars($_POST['firstname']);
+$user->lastname = htmlspecialchars($_POST['lastname']);
+$user->username = htmlspecialchars($_POST['username']);
+$user->email = htmlspecialchars($_POST['email']);
+$password = htmlspecialchars($_POST['password']);
 
 
 if ($user->username !== htmlspecialchars($user->username)) {

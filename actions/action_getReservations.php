@@ -3,7 +3,7 @@ include_once('../config.php');
 include_once(ROOT . 'database/db_houses.php');
 include_once(ROOT . 'database/db_users.php');
 
-$reservations = getReservations($_GET['houseId'],  $_GET['status']);
+$reservations = getReservations(htmlspecialchars($_GET['houseId']),  htmlspecialchars($_GET['status']));
 
 $response = array(
     'result'=>'error',
@@ -31,7 +31,7 @@ foreach ($reservations as $reservation) {
 
 $response['result'] = 'success';
 $response['message'] = 'Retrived reservations successfully';
-$response['reservationsStatus'] = $_GET['status'];
+$response['reservationsStatus'] = htmlspecialchars($_GET['status']);
 $response['content'] = $responseContent;
 
 echo json_encode($response);

@@ -8,8 +8,8 @@ $response = array(
     'message'=>''
 );
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = htmlspecialchars($_POST['username']);
+$password = htmlspecialchars($_POST['password']);
 
 if (checkUserPassword($username, $password)) {
     $response['result'] = 'success'; 

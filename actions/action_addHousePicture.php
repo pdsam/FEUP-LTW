@@ -10,7 +10,7 @@ if (!$user) {
     die;
 }
 
-$houseId = $_POST['houseId'];
+$houseId = htmlspecialchars($_POST['houseId']);
 $house = getHouse($houseId);
 
 if ($house['landlordID'] !== $user['id']) {

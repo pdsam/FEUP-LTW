@@ -18,10 +18,10 @@ if (!$user) {
     die;
 }
 
-$reservation = getReservation($_POST['reservationId']);
+$reservation = getReservation(htmlspecialchars($_POST['reservationId']));
 $house = getHouse($reservation['houseID']);
 
-if ($_POST['status'] === 'canceled') {
+if (htmlspecialchars($_POST['status']) === 'canceled') {
     if ($house['landlordID'] !== $user['id'] && $reservation['tenantID'] !== $user['id']) {
         $response['type'] = '1';
         $response['message'] = 'Not allowed to do this.';
@@ -46,7 +46,7 @@ if ($_POST['status'] === 'canceled') {
     }
 }
 
-if (!setReservationStatus($_POST['reservationId'], $_POST['status'])) {
+if (!setReservationStatus(htmlspecialchars($_POST['reservationId']), htmlspecialchars($_POST['status']))) {
     $response['type'] = '2';
     $response['message'] = 'Incorrect status.';
     echo json_encode($response);
@@ -55,7 +55,7 @@ if (!setReservationStatus($_POST['reservationId'], $_POST['status'])) {
 
 $response['result'] = 'success';
 $response['message'] = 'Changed reservation status succesfully';
-$response['reservationId'] = $_POST['reservationId'];
+$response['reservationId'] = htmlspecialchars($_POST['reservationId']);
 
 echo json_encode($response);
 

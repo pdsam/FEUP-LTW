@@ -13,27 +13,27 @@ if (!$user) {
     reply($response);
 }
 
-$firstname = $_POST['firstname'];
+$firstname = htmlspecialchars($_POST['firstname']);
 if (strlen($firstname) > 180) {
     $response['type'] = '2';
     $response['message'] = 'First name is too long. Must shorter than 180 characters.';
     reply($response);
 }
-$lastname = $_POST['lastname'];
+$lastname = htmlspecialchars($_POST['lastname']);
 if (strlen($lastname) > 180) {
     $response['type'] = '2';
     $response['message'] = 'Last name is too long. Must shorter than 180 characters.';
     reply($response);
 }
-$email = $_POST['email'];
-$bio = $_POST['bio'];
+$email = htmlspecialchars($_POST['email']);
+$bio = htmlspecialchars($_POST['bio']);
 if (strlen($bio) > 500) {
     $response['type'] = '2';
     $response['message'] = 'Bio is too long. Must shorter than 500 characters.';
     reply($response);
 }
-$oldPassword = $_POST['old-password'];
-$newPassword = $_POST['new-password'];
+$oldPassword = htmlspecialchars($_POST['old-password']);
+$newPassword = htmlspecialchars($_POST['new-password']);
 
 if ($oldPassword !== '') {
     if (!updateUserPassword($username, $oldPassword, $newPassword)) {

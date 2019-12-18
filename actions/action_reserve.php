@@ -14,14 +14,14 @@ if (!$user) {
     reply($response);
 }
 
-if ($user['id'] !== $_POST['tenantId']) {
+if ($user['id'] !== htmlspecialchars($_POST['tenantId'])) {
     $response['type'] = '1';
     $response['message'] = 'Operation no allowed.'; 
     reply($response);
 }
 
-$checkInDate = $_POST['checkInDate'];
-$checkOutDate = $_POST['checkOutDate'];
+$checkInDate = htmlspecialchars($_POST['checkInDate']);
+$checkOutDate = htmlspecialchars($_POST['checkOutDate']);
 
 if ($checkInDate == $checkOutDate) {
     $response['type'] = '2';
@@ -41,8 +41,8 @@ if (strcmp($checkInDate, date('Y-m-d')) < 0) {
 }
 
 $reservations = array_merge(
-    getReservations($_POST['houseId'], 'accepted'), 
-    getReservations($_POST['houseId'], 'pending')
+    getReservations(htmlspecialchars($_POST['houseId']), 'accepted'), 
+    getReservations(htmlspecialchars($_POST['houseId']), 'pending')
 );
 
 
@@ -56,9 +56,9 @@ foreach ($reservations as $reservation) {
     }
 }
 
-$house = getHouse($_POST['houseId']);
+$house = getHouse(htmlspecialchars($_POST['houseId']));
 
-$numberOfPeople = intval($_POST['numberOfPeople']);
+$numberOfPeople = intval(htmlspecialchars($_POST['numberOfPeople']));
 $houseCapacity = intval($house['capacity']);
 
 if ($numberOfPeople < 1) {
@@ -74,8 +74,8 @@ if ($numberOfPeople > $houseCapacity) {
 }
 
 $reservation = new Reservation();
-$reservation->houseId = $_POST['houseId'];
-$reservation->tenantId = $_POST['tenantId'];
+$reservation->houseId = htmlspecialchars($_POST['houseId']);
+$reservation->tenantId = htmlspecialchars($_POST['tenantId']);
 $reservation->startDate = $checkInDate;
 $reservation->endDate = $checkOutDate;
 $reservation->numberOfPeople = $numberOfPeople;
