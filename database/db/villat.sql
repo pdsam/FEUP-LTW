@@ -49,12 +49,12 @@ CREATE TABLE house(
     locationID integer references location on delete set null on update cascade,
     capacity integer check(capacity > 0)
 );
-INSERT INTO house VALUES(1,1,12,0.0,'Very nice description','A very nice house much wow',100,6,5);
-INSERT INTO house VALUES(2,1,10,0.0,'Casota','House arround the sea with beautiful landscapes',140,7,3);
-INSERT INTO house VALUES(3,2,9,0.0,'Casinha','Im kinda running out of descriptions',50,1,1);
-INSERT INTO house VALUES(4,2,20,0.0,'Casarao','Damn, I need another description',400,16,6);
-INSERT INTO house VALUES(5,2,15,0.0,'Haha','I dont like php very much :(',200,18,3);
-INSERT INTO house VALUES(6,1,5,0.0,'Casa','Casa muito bonita.',200,13,2);
+INSERT INTO house VALUES(1,1,12,0.0,'Student friendly house','Come have fun at the burning of the stripes!!!',100,6,5);
+INSERT INTO house VALUES(2,1,10,0.0,'Comfy little home','Very fresh in the summer.',140,7,3);
+INSERT INTO house VALUES(3,2,9,0.0,'Awesome house','Ovos moles right next door.',50,1,1);
+INSERT INTO house VALUES(4,2,20,0.0,'Big House','Quim Barreiros lived here.',400,16,6);
+INSERT INTO house VALUES(5,2,15,0.0,'Generic house','Not very interesting house.',200,18,3);
+INSERT INTO house VALUES(6,1,5,0.0,'Ribeira House','Very near Adega.',200,13,2);
 CREATE TABLE reservation(
     reservationID integer primary key,
     tenantID integer references tenant on delete cascade on update cascade,
@@ -75,8 +75,8 @@ CREATE TABLE review(
     reviewText text,
     postedDate integer not null default CURRENT_TIMESTAMP
 );
-INSERT INTO review(houseID,userID,rating,reviewText) VALUES (1,2,4,'muito lindo');
-INSERT INTO review(houseID,userID,rating,reviewText) VALUES (1,3,7,'muito feio');
+INSERT INTO review(houseID,userID,rating,reviewText) VALUES (6,3,4,'Too much noise around.');
+INSERT INTO review(houseID,userID,rating,reviewText) VALUES (6,3,7,'Forget the noise, adega is amazing.');
 CREATE TRIGGER AddedUser
 after insert on user
 for each row
