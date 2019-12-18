@@ -17,6 +17,7 @@ if (!isset($_GET['id'])) {
 
 $houseID = htmlspecialchars($_GET['id']);
 $renderFunction = function () use ($houseID, $user) { ?>
+<div>
 <form action="#" method="post" id="review-form">
   <div>
     <label for="text">Review</label>
@@ -37,6 +38,7 @@ $renderFunction = function () use ($houseID, $user) { ?>
 
   <input type="submit" value="Submit">
 </form>
+</div>
 <?php };
 
 renderPage(array('review','forms','formPlacement'), array('postReview','slider'), $renderFunction);
