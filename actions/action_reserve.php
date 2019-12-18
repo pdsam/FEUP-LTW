@@ -13,13 +13,15 @@ $response = array(
 $user = getSessionUser();
 if (!$user) {
     $response['type'] = '1';
-    $response['message'] = 'Operation no allowed.'; 
+    $response['message'] = 'Operation no allowed.';
+    echo json_encode($response);
     die;
 }
 
 if ($user['id'] !== $_POST['tenantId']) {
     $response['type'] = '1';
     $response['message'] = 'Operation no allowed.'; 
+    echo json_encode($response);
     die;
 }
 
@@ -41,7 +43,7 @@ if ($checkInDate > $checkOutDate) {
 
 $reservations = array_merge(
     getReservations($_POST['houseId'], 'accepted'), 
-    getReservations($_POST['houseID'], 'pending')
+    getReservations($_POST['houseId'], 'pending')
 );
 
 
