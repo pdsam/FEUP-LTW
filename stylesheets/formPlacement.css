@@ -6,6 +6,15 @@ main{
 
 
 form{
+    margin-top:1em;
     padding:1em;
-    border: solid black 1px;
+    /*
+    border: solid var(--green) 1px;
+    box-shadow: 4px 4px;
+*/
+box-shadow: 0 0 6px rgba(0,0,0,0.6);
+
+border: 1px solid var(--green);
+border-radius: 5px;
+
 }
