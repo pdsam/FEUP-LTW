@@ -2,6 +2,14 @@
     margin: 1em;
 }
 
+.heading {
+    margin-left: 1rem;
+}
+
+.add-house-btn {
+    margin-left: 1rem;
+}
+
 .dashboard-card {
     margin: 1em 0;
     padding: 0.5em;

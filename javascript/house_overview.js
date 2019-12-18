@@ -87,12 +87,12 @@ function setTableContent(event) {
         tableRow.classList.add('reservation');
 
         tableRow.innerHTML = `
-            <a href="../pages/profile.php?id=${reservation['tenantId']}">    
+            <a class="table-row-name-a" href="../pages/profile.php?id=${reservation['tenantId']}">    
                 <p class="table-row-name">${reservation['tenantName']}</p>
             </a>
-            <p>${reservation['startDate']}</p>
-            <p>${reservation['endDate']}</p>
-            <p>${reservation['numberOfPeople']}</p>
+            <p class="table-row-start-date">${reservation['startDate']}</p>
+            <p class="table-row-end-date">${reservation['endDate']}</p>
+            <p class="table-row-num-people">${reservation['numberOfPeople']}</p>
         `;
 
         let buttons = null;

@@ -17,8 +17,8 @@ if (!isLandlord($user['id'])) {
 $houses = getLandlordHouses($user['id']);
 
 renderPage(array('dashboard'), array(), function() use($houses) { ?>
-    <h1>Dashboard</h1>
-    <a href="../pages/add_house.php">
+    <h1 class="heading">Dashboard</h1>
+    <a class="add-house-btn" href="../pages/add_house.php">
         <button>
             Post a house
         </button>
